@@ -3,4 +3,6 @@
     <string name="username">Username</string>
     <string name="enter_password">Enter Password</string>
     <string name="login">Login</string>
+    <string name="its_fucking_wrong">Its fucking wrong!</string>
+    <string name="its_wrong">Its wrong</string>
 </resources>
