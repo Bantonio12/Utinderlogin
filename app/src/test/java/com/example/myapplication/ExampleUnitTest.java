@@ -11,7 +11,21 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void UserCreationFail() {
+        UserManager testManager = new UserManager();
+        String username = new String("admin");
+        String email = new String("hello.hi@mail.utoronto.ca");
+        String password = new String("hello_world12");
+        boolean test_bool = testManager.createUser(username, email, password);
+        assertEquals(false, test_bool);
+    }
+
+    public void UserCreationSuccess() {
+        UserManager testManager = new UserManager();
+        String username = new String("hello");
+        String email = new String("hello.hi@mail.utoronto.ca");
+        String password = new String("hello_world12");
+        boolean test_bool = testManager.createUser(username, email, password);
+        assertEquals(true, test_bool);
     }
 }

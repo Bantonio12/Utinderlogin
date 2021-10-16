@@ -1,8 +1,30 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="username">Username</string>
-    <string name="enter_password">Enter Password</string>
+    <string name="app_name">UTindergui</string>
     <string name="login">Login</string>
-    <string name="its_fucking_wrong">Its fucking wrong!</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="usernamecapital" />
+    <string name="usercapital">USERNAME</string>
+    <string name="pwcapital">PASSWORD</string>
+    <string name="logincap" />
+    <string name="logincapi">LOGIN</string>
+    <string name="signin">SIGN IN</string>
+    <string name="sin">Sign in</string>
+    <string name="newacc">or create new account</string>
     <string name="its_wrong">Its wrong</string>
+    <string name="welcome">Welcome to</string>
+    <string name="utinder">UTinder.</string>
+    <string name="nothing" />
+    <string name="sibal">Your friendly school life manager</string>
+    <string name="start" />
+    <string name="startt">Get Started</string>
+    <string name="logo">Logo</string>
+    <string name="sign_in_success">Sign In Success!</string>
+    <string name="wrong_password_or_username">Wrong password or username</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_nickname">Enter Nickname</string>
+    <string name="registration">Registration</string>
+    <string name="register">Register</string>
+    <string name="account_with_the_same_username_or_email_exists">Account with the same username or email exists</string>
 </resources>

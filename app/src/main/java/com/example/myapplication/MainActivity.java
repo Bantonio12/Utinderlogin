@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
         final Button loginbutton = findViewById(R.id.loginbutton);
         final TextInputEditText username_input = findViewById(R.id.textInputEditText);
         final EditText password_input = findViewById(R.id.Password);
-        final TextView textView = findViewById(R.id.textView);
+        final TextView wrongPtext = findViewById(R.id.wrongPtext);
+        final Button new_acc_button = findViewById(R.id.button2);
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             public void onClick(View v) {
@@ -30,11 +32,21 @@ public class MainActivity extends AppCompatActivity {
                 String password = password_input.getText().toString();
                 UserManager manager = new UserManager();
                 if (!manager.checkUser(username, password)) {
-                    textView.setVisibility(View.VISIBLE);
+                    wrongPtext.setVisibility(View.VISIBLE);
                 } else {
-                    textView.setText("Sign in complete!");
-                    textView.setVisibility(View.VISIBLE);
+                    //textView.setText("Sign in complete!");
+                    //textView.setVisibility(View.VISIBLE);
+                    Intent afterLoginIntent = new Intent(MainActivity.this, AfterLogin.class);
+                    startActivity(afterLoginIntent);
                 }
+            }
+        });
+
+        new_acc_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent register_intent = new Intent(MainActivity.this, RegisterGui.class);
+                startActivity(register_intent);
             }
         });
     }
