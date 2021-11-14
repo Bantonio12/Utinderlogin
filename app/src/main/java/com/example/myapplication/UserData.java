@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 
 public class UserData {
@@ -8,6 +10,7 @@ public class UserData {
 
     public UserData() {
         user_list.add(new User("admin", "justin.cha@mail.utoronto.ca","IluvUofT"));
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
     }
 
     public void addUserData(User u) {

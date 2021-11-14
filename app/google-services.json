@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "719658619245",
+    "project_id": "utinder-b4662",
+    "storage_bucket": "utinder-b4662.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719658619245:android:dc5ffd951586fa73944a64",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719658619245-gcuj6ketkii89qt2ditsc6gmaqmjfdmu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXzknqIrNQPPhg7neFnQr6KaXO65nvOtM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719658619245-gcuj6ketkii89qt2ditsc6gmaqmjfdmu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
