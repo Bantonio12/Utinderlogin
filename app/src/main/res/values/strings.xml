@@ -1,12 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">UTindergui</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
-    <string name="usernamecapital" />
     <string name="usercapital">USERNAME</string>
     <string name="pwcapital">PASSWORD</string>
-    <string name="logincap" />
     <string name="logincapi">LOGIN</string>
     <string name="signin">SIGN IN</string>
     <string name="sin">Sign in</string>
@@ -14,9 +13,8 @@
     <string name="its_wrong">Its wrong</string>
     <string name="welcome">Welcome to</string>
     <string name="utinder">UTinder.</string>
-    <string name="nothing" />
+    <string name="nothing"/>
     <string name="sibal">Your friendly school life manager</string>
-    <string name="start" />
     <string name="startt">Get Started</string>
     <string name="logo">Logo</string>
     <string name="sign_in_success">Sign In Success!</string>
@@ -26,5 +24,54 @@
     <string name="enter_nickname">Enter Nickname</string>
     <string name="registration">Registration</string>
     <string name="register">Register</string>
-    <string name="account_with_the_same_username_or_email_exists">Account with the same username or email exists</string>
+    <string name="account_with_the_same_username_or_email_exists">Account with the same username or email exists
+    </string>
+    <string name="Signup">SIGN UP</string>
+    <string name="gs">Get start</string>
+    <string name="wy">with your</string>
+    <string name="uoftemail">uoft email</string>
+    <string name="email_input">name@mail.utoronto.ca</string>
+    <string name="email">E-mail</string>
+    <string name="Username">Username</string>
+    <string name="uname">username</string>
+    <string name="pwnc">password</string>
+    <string name="signupcomp">Sign up complete!</string>
+    <string name="ready">ready to be in UTinder?</string>
+    <string name="backto">BACK TO LOGIN</string>
+    <string name="greeting">Good Morning,</string>
+    <string name="task">Your task for today</string>
+    <string name="task1">Task 1</string>
+    <string name="task2">Task 2</string>
+    <string name="task3">Task 3</string>
+    <string name="task4">Task 4</string>
+    <string name="task5">Task 5</string>
+    <string name="task6">Task 6</string>
+    <string name="Title">Title</string>
+    <string name="community">Community</string>
+    <string name="sampletitle">Sample title</string>
+    <string name="samplecontents">blahblahblah blahblahblah</string>
+    <string name="Post1">post1</string>
+    <string name="Post2">post2</string>
+    <string name="Post3">post3</string>
+    <string name="Post4">post4</string>
+    <string name="Post5">post5</string>
+    <string name="myaccount">My Account</string>
+    <string name="following">Followings</string>
+    <string name="user">user</string>
+    <string name="follower">Followers</string>
+    <string name="addingevent">Create Event</string>
+    <string name="eventname">Name of Event *</string>
+    <string name="description">Description</string>
+    <string name="eventdate">Date *</string>
+    <string name="eventtime">Time *</string>
+    <string name="category">Category *</string>
+    <string name="code">Course Code</string>
+    <string name="location">Loacation</string>
+    <string name="createevent">Create Event</string>
+    <string name="create_event_failed">failed(</string>
+    <string name="create_event_success">success</string>
+    <string name="date">(YYYY-MM-DD)</string>
+    <string name="yourcalendar">Your Calendar</string>
+
+
 </resources>
