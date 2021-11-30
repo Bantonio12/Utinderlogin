@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.myapplication.R;
+import com.example.myapplication.databinding.ActivityCommunityBinding;
 import com.example.myapplication.event.ActivityEvent;
 import com.example.myapplication.homepage.Homepage;
 import com.example.myapplication.me.MePage;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 public class CommunityActivity extends AppCompatActivity {
 
     PostManager postManager = new PostManager();
-    ListView listView;
+    ActivityCommunityBinding binding;
 
 
     @Override
@@ -27,6 +28,9 @@ public class CommunityActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
+
+        binding = ActivityCommunityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         Bundle extras = getIntent().getExtras();
 
@@ -40,12 +44,31 @@ public class CommunityActivity extends AppCompatActivity {
             postManager.makePost(extras.get("text").toString(), extras.get("title").toString());
         }
 
-        listView = findViewById(R.id.post_list);
+        ListAdapter listAdapter = new ListAdapter(CommunityActivity.this, postManager.getPostList());
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
-                postManager.getPostList());
+        binding.postList.setAdapter(listAdapter);
+        binding.postList.setClickable(true);
 
-        listView.setAdapter(arrayAdapter);
+//        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
+//                postManager.getPostList());
+//        binding.listView.setAdapter(listAdapter);
+//        listView.setClickable(true);
+
+        //ListView onclick methods:
+        binding.postList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent intent = new Intent(CommunityActivity.this, ViewPostActivity.class);
+                intent.putExtra("postTitle", postManager.getPostList().get(i).getTitle());
+                intent.putExtra("postText", postManager.getPostList().get(i).getText());
+                startActivity(intent);
+
+            }
+        });
+
+
+        //Navigation buttons onclick methods:
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

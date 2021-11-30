@@ -1,5 +1,7 @@
 package com.example.myapplication.community;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 
 public class PostManager {
