@@ -9,15 +9,21 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.UTindergui">
+        <activity android:name=".community.MakingPostActivity">
+        </activity>
+        <activity android:name=".community.CommunityActivity">
+        </activity>
         <activity
                 android:name=".event.CreatingEvent"
                 android:exported="true"
                 android:theme="@style/Theme.Design.NoActionBar">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN"/>-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN"/> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
                 android:name=".event.ActivityEvent"
@@ -77,30 +83,6 @@
 
         </activity>
         <activity
-                android:name=".community.Community"
-                android:exported="true"
-                android:theme="@style/Theme.Design.NoActionBar">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN"/> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity
-                android:name=".community.ActivityPost"
-                android:exported="true"
-                android:theme="@style/Theme.Design.NoActionBar">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN"/> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity
                 android:name=".login.MainActivity"
                 android:exported="true"
                 android:theme="@style/Theme.Design.NoActionBar">
@@ -116,13 +98,11 @@
                 android:name=".login.Welcomescreen"
                 android:exported="true"
                 android:theme="@style/Theme.Design.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN"/>
-
-
-             <category android:name="android.intent.category.LAUNCHER"/>
-             </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <meta-data
