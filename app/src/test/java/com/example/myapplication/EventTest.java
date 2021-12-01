@@ -151,5 +151,9 @@ public class EventTest {
         assertFalse(actual_result);
     }
 
+    //TODO: Add the test for finding event
+    @Test
+    public void FindEventSuccess() {
 
+    }
 }

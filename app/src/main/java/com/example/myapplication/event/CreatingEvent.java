@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +28,7 @@ public class CreatingEvent extends AppCompatActivity {
     private ArrayList courseEvents = new ArrayList<>();
     private ArrayList generalEvents = new ArrayList<>();
 
+    // TODO: add the javadoc
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +54,6 @@ public class CreatingEvent extends AppCompatActivity {
                 String location = eventLocation.getText().toString();
                 String code = courseCode.getText().toString();
 
-                System.out.println(name + date + time + type + location + code);
-
                 Map<String, String> newEvent = new HashMap<>();
                 newEvent.put("name", name);
                 newEvent.put("date", date);
@@ -74,28 +74,35 @@ public class CreatingEvent extends AppCompatActivity {
                             generalEvents = (ArrayList) events.get("GeneralEvents");
 
                             HashMap<String, HashMap> newData = new HashMap<>();
+                            HashMap<String, ArrayList> prevAdminData = new HashMap<>();
                             HashMap<String, ArrayList> newAdminData = new HashMap<>();
 
-                            boolean result = checkAddingData(newAdminData, name, date, time, location, code, type);
+                            prevAdminData.put("CourseEvents", courseEvents);
+                            prevAdminData.put("GeneralEvents", generalEvents);
 
-                            // When the event is general event (e.g. meeting, extracurricular event)
-                            if (code.equals("")) {
-                                newEvent.put("location", location);
-                                generalEvents.add(newEvent);
-                            } else { // when the event is assignment/exam/other homeworks
-                                newEvent.put("code", code);
-                                courseEvents.add(newEvent);
-                            }
-
-                            newAdminData.put("GeneralEvents", generalEvents);
-                            newAdminData.put("CourseEvents", courseEvents);
-                            // We are currently dealing with the data under the User "admin"
-                            newData.put("admin", newAdminData);
+                            // System.out.println(prevAdminData.toString());
 
                             // Check whether the data is duplicated or not
+                            boolean result = checkAddingData(prevAdminData, name, date, time, location, code, type);
 
                             if (result) {
+                                // When the event is general event (e.g. meeting, extracurricular event)
+                                if (code.equals("")) {
+                                    newEvent.put("location", location);
+                                    generalEvents.add(newEvent);
+                                } else {
+                                    // when the event is assignment/exam/other homeworks
+                                    newEvent.put("code", code);
+                                    courseEvents.add(newEvent);
+                                }
+
+                                newAdminData.put("GeneralEvents", generalEvents);
+                                newAdminData.put("CourseEvents", courseEvents);
+                                // We are currently dealing with the data under the User "admin"
+                                newData.put("admin", newAdminData);
+                                System.out.println(newAdminData.toString());
                                 userEvents.set(newData);
+                                // TODO: Update on the CalendarView
                                 Log.d("Creating Event", "Successfully added new data");
                                 Intent back_to_event = new Intent(CreatingEvent.this,
                                         ActivityEvent.class);
@@ -115,6 +122,7 @@ public class CreatingEvent extends AppCompatActivity {
         });
     }
 
+    // TODO: add the javadoc
     /*
         Check whether new data is duplicated in the database or not.
         If it is a new data, then return true. Otherwise, return false.

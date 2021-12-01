@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/main"
+                tools:context=".event.EventPopUp" android:background="@color/white">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/eventname"
+            android:text="@string/itemname"
+            android:textColor="@color/uoftcoloourr"
+            android:textSize="20sp"
+            android:fontFamily="@font/catamaran_semibold"
+            android:paddingLeft="15dp"
+            android:textColorHint="@color/uoftcoloourr">
+    </TextView>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/eventtime"
+            android:text="@string/itemtime"
+            android:textColor="@color/uoftcoloourr"
+            android:textSize="15sp"
+            android:fontFamily="@font/catamaran_semibold"
+            android:textColorHint="@color/uoftcoloourr"
+            android:paddingLeft="15dp"
+            android:layout_below="@id/eventname">
+    </TextView>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/eventlocation"
+            android:text="@string/itemlocation"
+            android:textColor="@color/uoftcoloourr"
+            android:textSize="15sp"
+            android:fontFamily="@font/catamaran_semibold"
+            android:textColorHint="@color/uoftcoloourr"
+            android:paddingLeft="15dp"
+            android:layout_toRightOf="@id/eventtime"
+            android:layout_below="@id/eventname">
+    </TextView>
+
+</RelativeLayout>
