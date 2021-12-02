@@ -31,13 +31,13 @@
                 android:layout_width="50dp"
                 android:layout_height="60dp" android:id="@+id/eventbutton"
                 android:layout_marginStart="140dp" android:layout_marginBottom="20dp"
-                app:backgroundTint="@color/uoftcoloourr"/>
+                app:backgroundTint="@color/greyy"/>
         <Button
                 android:text="@string/nothing"
                 android:layout_width="50dp"
                 android:layout_height="60dp" android:id="@+id/communitybutton"
                 android:layout_marginStart="230dp" android:layout_marginBottom="20dp"
-                app:backgroundTint="@color/greyy"/>
+                app:backgroundTint="@color/uoftcoloourr"/>
         <Button
                 android:text="@string/nothing"
                 android:layout_width="50dp"
