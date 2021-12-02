@@ -47,15 +47,11 @@
     </com.google.android.material.bottomnavigation.BottomNavigationView>
     <LinearLayout
             android:orientation="vertical"
-            android:layout_width="406dp"
-            android:layout_height="526dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/make_post" android:layout_marginTop="8dp"
-            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <ListView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/post_list"/>
+                android:layout_height="621dp" android:id="@+id/posts"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

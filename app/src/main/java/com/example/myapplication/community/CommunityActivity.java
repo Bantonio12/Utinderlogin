@@ -1,36 +1,36 @@
 package com.example.myapplication.community;
 
-import android.content.Context;
 import android.content.Intent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.myapplication.R;
-import com.example.myapplication.databinding.ActivityCommunityBinding;
 import com.example.myapplication.event.ActivityEvent;
 import com.example.myapplication.homepage.Homepage;
 import com.example.myapplication.me.MePage;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 
 public class CommunityActivity extends AppCompatActivity {
 
     PostManager postManager = new PostManager();
-    ActivityCommunityBinding binding;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference postsRef = db.collection("community");
 
+    ListView posts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
-
-        binding = ActivityCommunityBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
 
         Bundle extras = getIntent().getExtras();
 
@@ -39,33 +39,32 @@ public class CommunityActivity extends AppCompatActivity {
         final Button communitybutton = findViewById(R.id.communitybutton);
         final Button mebutton = findViewById(R.id.mebutton);
 
+        posts = findViewById(R.id.posts);
+
 
         if (extras != null) {
             postManager.makePost(extras.get("text").toString(), extras.get("title").toString());
         }
 
-        ListAdapter listAdapter = new ListAdapter(CommunityActivity.this, postManager.getPostList());
+        ArrayList<String> title_list = new ArrayList<>();
 
-        binding.postList.setAdapter(listAdapter);
-        binding.postList.setClickable(true);
-
-//        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,
-//                postManager.getPostList());
-//        binding.listView.setAdapter(listAdapter);
-//        listView.setClickable(true);
-
-        //ListView onclick methods:
-        binding.postList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        postsRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-                Intent intent = new Intent(CommunityActivity.this, ViewPostActivity.class);
-                intent.putExtra("postTitle", postManager.getPostList().get(i).getTitle());
-                intent.putExtra("postText", postManager.getPostList().get(i).getText());
-                startActivity(intent);
+                for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
+                    Post post = documentSnapshot.toObject(Post.class);
 
+                    title_list.add(post.getTitle());
+                }
             }
         });
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, title_list);
+
+        posts.setAdapter(arrayAdapter);
+
+
 
 
         //Navigation buttons onclick methods:
@@ -102,7 +101,6 @@ public class CommunityActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
     public void makePost(View btn){

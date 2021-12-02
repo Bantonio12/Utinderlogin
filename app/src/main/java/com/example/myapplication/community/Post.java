@@ -9,6 +9,10 @@ public class Post {
     private int likes;
     //private User postMaker;//not include user for now!!
 
+    public Post(){
+        //public no-arg constructor needed
+    }
+
     public Post(String text, /*User postmaker,*/ String title){//Constructor for a post //not include user for now!!
         this.title = title;
         this.text = text;
@@ -25,17 +29,11 @@ public class Post {
         //this.postMaker = postmaker;
     }
 
-    public Post getPost(PostManager manager, int postIndex){
-        return manager.getPostList().get(postIndex);
-    }
-
     public String getTitle() { return  this.title; }
 
     public String getText(){
         return this.text;
     }
-
-    public void editText(String newText) { this.text = newText;}
 
     public void addComment(Post comment) {
         this.comments.add(comment);
