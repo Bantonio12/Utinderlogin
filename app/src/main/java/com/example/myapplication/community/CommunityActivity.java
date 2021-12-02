@@ -46,8 +46,6 @@ public class CommunityActivity extends AppCompatActivity {
             postManager.makePost(extras.get("text").toString(), extras.get("title").toString());
         }
 
-        ArrayList<String> title_list = new ArrayList<>();
-
         postsRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -55,14 +53,9 @@ public class CommunityActivity extends AppCompatActivity {
                 for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
                     Post post = documentSnapshot.toObject(Post.class);
 
-                    title_list.add(post.getTitle());
                 }
             }
         });
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, title_list);
-
-        posts.setAdapter(arrayAdapter);
 
 
 
