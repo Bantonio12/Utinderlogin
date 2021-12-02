@@ -97,7 +97,7 @@ public class CommunityActivity extends AppCompatActivity {
 
 
     public void makePost(View btn){
-        Intent intent = new Intent(this, MakingPostActivity.class);
+        Intent intent = new Intent(this, CommentActivity.class);
         startActivity(intent);
     }
 }
