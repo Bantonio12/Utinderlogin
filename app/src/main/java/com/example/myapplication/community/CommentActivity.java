@@ -19,7 +19,6 @@ public class CommentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
 
-
         ListView listView = findViewById(R.id.listview);
 
         List<String> list = new ArrayList<>();
@@ -47,7 +46,7 @@ public class CommentActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position==0) {
-                    startActivity(new Intent(CommentActivity.this, MakingPostActivity.class));
+                    startActivity(new Intent(CommentActivity.this, CommentActivity.class));
                 } else if(position==1) {
                     startActivity(new Intent(CommentActivity.this, MakingPostActivity.class));
                 } else {
