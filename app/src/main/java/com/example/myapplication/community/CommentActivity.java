@@ -19,7 +19,7 @@ public class CommentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
 
-        ListView listView = findViewById(R.id.listview);
+        ListView comments = findViewById(R.id.listview);
 
         List<String> list = new ArrayList<>();
         list.add("Fuk");
@@ -39,10 +39,10 @@ public class CommentActivity extends AppCompatActivity {
         list.add("ahsdajhdal");
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, list);
-        listView.setAdapter(arrayAdapter);
+        comments.setAdapter(arrayAdapter);
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        comments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position==0) {

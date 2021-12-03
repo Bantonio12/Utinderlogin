@@ -6,23 +6,47 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".community.CommentActivity">
+    <Button
+            android:text="Back"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/back_button"/>
+
+    <Button
+            android:text="Reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:id="@+id/reply_button"
+            android:layout_alignParentRight="true"/>
+
     <TextView android:layout_width="match_parent"
-              android:layout_height="300dp"
+              android:layout_height="wrap_content"
               android:id="@+id/commentText"
-              android:text="insert text here"/>
+              android:text="Hello"
+              android:layout_marginLeft="5dp"
+              android:layout_marginRight="5dp"
+              android:layout_marginTop="5dp"
+              android:layout_below="@id/back_button" android:textSize="18sp"/>
 
     <TextView android:layout_width="match_parent"
               android:layout_height="25dp"
               android:id="@+id/commentLabel"
               android:layout_below="@id/commentText"
-              android:layout_marginTop="0dp"
-              android:text="  Comments:"
+              android:layout_marginLeft="5dp"
+              android:layout_marginRight="5dp"
+              android:layout_marginTop="5dp"
+              android:text="Comments:"
               android:textSize="16sp"
               android:textStyle="bold"/>
 
     <ListView android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:layout_below="@id/commentLabel"
+              android:layout_marginLeft="5dp"
+              android:layout_marginRight="5dp"
+              android:layout_marginBottom="5dp"
               android:id="@+id/listview"/>
 
 
