@@ -51,7 +51,13 @@
             android:layout_height="match_parent">
         <ListView
                 android:layout_width="match_parent"
-                android:layout_height="621dp" android:id="@+id/posts"/>
+                android:layout_height="621dp" android:id="@+id/posts">
+        </ListView>
     </LinearLayout>
+    <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/testing_text"
+            app:layout_constraintTop_toBottomOf="@+id/make_post"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

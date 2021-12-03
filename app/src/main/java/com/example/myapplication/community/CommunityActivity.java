@@ -3,28 +3,24 @@ package com.example.myapplication.community;
 import android.content.Intent;
 import android.view.View;
 import android.widget.*;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.myapplication.R;
 import com.example.myapplication.event.ActivityEvent;
 import com.example.myapplication.homepage.Homepage;
 import com.example.myapplication.me.MePage;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.*;
 
-import java.text.DateFormatSymbols;
-import java.util.ArrayList;
+import java.util.*;
 
 public class CommunityActivity extends AppCompatActivity {
 
-    PostManager postManager = new PostManager();
+    // Firestore cloud database reference
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    CollectionReference postsRef = db.collection("community");
-
-    ListView posts;
+    DocumentReference postsRef = db.document("community/Posts");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,35 +28,47 @@ public class CommunityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
 
-        Bundle extras = getIntent().getExtras();
-
         final Button homebutton = findViewById(R.id.homebutton);
         final Button eventbutton = findViewById(R.id.eventbutton);
         final Button communitybutton = findViewById(R.id.communitybutton);
         final Button mebutton = findViewById(R.id.mebutton);
 
-        posts = findViewById(R.id.posts);
+        ListView posts = findViewById(R.id.posts);
 
 
-        if (extras != null) {
-            postManager.makePost(extras.get("text").toString(), extras.get("title").toString());
-        }
-
-        postsRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        // Posts retrieve and presenting on Community page
+        postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot document = task.getResult();
+                    HashMap postMap = (HashMap) document.get("Posts");
+                    ArrayList titles = new ArrayList();
 
-                for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
-                    Post post = documentSnapshot.toObject(Post.class);
+                    for(Object key: postMap.keySet()){
+                        titles.add(key.toString());
+                    }
 
+                    ArrayAdapter arrayAdapter = new ArrayAdapter
+                            (CommunityActivity.this, android.R.layout.simple_list_item_1, titles);
+
+                    posts.setAdapter(arrayAdapter);
                 }
+            }
+        });
+
+        //Open individual post call:
+        posts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(CommunityActivity.this, ViewPostActivity.class);
+                startActivity(intent);
             }
         });
 
 
 
-
-        //Navigation buttons onclick methods:
+        //Navigation buttons onclick call:
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,9 +103,12 @@ public class CommunityActivity extends AppCompatActivity {
         });
     }
 
-
+    //Make new post button click method:
     public void makePost(View btn){
         Intent intent = new Intent(this, ViewPostActivity.class);
         startActivity(intent);
     }
+
 }
+
+

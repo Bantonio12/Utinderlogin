@@ -1,5 +1,8 @@
 package com.example.myapplication.community;
 
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.auth.User;
+
 import java.util.ArrayList;
 
 public class Post {
@@ -7,13 +10,14 @@ public class Post {
     private String text;
     private ArrayList<Post> comments; //a sub post can only be a comment.
     private int likes;
-    //private User postMaker;//not include user for now!!
+    private String username;
+//    private User postMaker;//not include user for now!!
 
     public Post(){
         //public no-arg constructor needed
     }
 
-    public Post(String text, /*User postmaker,*/ String title){//Constructor for a post //not include user for now!!
+    public Post(String text, String username, String title){//Constructor for a post //not include user for now!!
         this.title = title;
         this.text = text;
         this.comments = new ArrayList<>();
