@@ -40,10 +40,19 @@ public class CreatingEvent extends AppCompatActivity {
         final EditText eventType = findViewById(R.id.categorizing);
         final EditText eventLocation = findViewById(R.id.puttinglocation);
         final EditText courseCode = findViewById(R.id.puttingcoursecode);
-        final Button BackToEventView = findViewById(R.id.createingeventbutton);
+        final Button backToEventView = findViewById(R.id.createingeventbutton);
         final TextView failed = findViewById(R.id.fail_message);
+        final Button cancelButton = findViewById(R.id.cancel_button);
 
-        BackToEventView.setOnClickListener(new View.OnClickListener() {
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back_to_event = new Intent(CreatingEvent.this, ActivityEvent.class);
+                startActivity(back_to_event);
+            }
+        });
+
+        backToEventView.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {

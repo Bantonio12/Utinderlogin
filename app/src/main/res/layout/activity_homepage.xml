@@ -12,7 +12,7 @@
             android:text="@string/greeting" android:id="@+id/greeting_homepageview"
             android:fontFamily="@font/catamaran_semibold" android:textSize="28sp"
             android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
-            android:layout_marginLeft="45dp" android:layout_marginTop="35dp">
+            android:layout_marginLeft="40dp" android:layout_marginTop="35dp">
     </TextView>
 
     <View
@@ -23,113 +23,206 @@
             android:layout_centerInParent="true">
     </View>
 
+<!--    <EditText -->
+<!--            android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+<!--            android:id="@+id/addingtask" >-->
+<!--        -->
+<!--    </EditText>-->
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="32dp"
+            android:padding="0dp"
+            android:layout_alignBottom="@+id/tasks_layout" android:layout_marginBottom="-40dp"
+            android:background="@drawable/round_shape_tedurikk">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_margin="0dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:textAlignment="center"
+                android:id="@+id/addingtask"
+                android:text="@string/addingtask"
+                android:textSize="15dp"
+                android:fontFamily="@font/catamaran_light"
+                android:textColorHint="@color/uoftcoloourr" android:textColor="@color/uoftcoloourr"
+                android:inputType="text"
+                android:layout_centerInParent="true"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+            android:layout_width="60dp" android:layout_height="40dp"
+            android:id="@+id/addtaskbutton" android:text="@string/ADD" android:textSize="12sp"
+            android:fontFamily="@font/catamaran_medium" android:background="@color/white"
+            android:textColor="@color/uoftcoloourr"
+            android:layout_alignBottom="@+id/tasks_layout" android:layout_alignParentEnd="true"
+            android:layout_marginBottom="-45dp" android:layout_marginEnd="18dp">
+
+    </Button>
+
+    <LinearLayout
+            android:id="@+id/tasks_layout"
+            android:orientation="vertical"
+            android:layout_width="350dp" android:layout_height="250dp"
+            android:layout_alignTop="@+id/taskthing" android:layout_marginTop="45dp"
+            android:layout_centerHorizontal="true" android:background="@drawable/round_shape_tedurikk">
+        <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tasks_list">
+
+        </ListView>
+    </LinearLayout>
+
 
     <TextView
             android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:text="@string/task" android:id="@+id/taskthing"
-            android:fontFamily="@font/catamaran_semibold" android:textSize="20sp"
+            android:fontFamily="@font/catamaran_light" android:textSize="18sp"
             android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
-            android:layout_alignBottom="@+id/horizontalline" android:layout_marginBottom="-50dp"
-            android:layout_marginLeft="50dp"
-    >        </TextView>
+            android:layout_alignBottom="@+id/horizontalline" android:layout_marginBottom="-43dp"
+            android:layout_marginStart="40dp">
+    </TextView>
 
-    <ScrollView
-            android:layout_height="200dp" android:layout_width="350dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="167dp"
-            android:fillViewport="false" android:layout_centerVertical="true">
+<!--    <TextView-->
+<!--            android:layout_height="0dp" android:layout_width="wrap_content"-->
+<!--            android:id="@+id/date_txt" android:text="@string/Title"-->
+<!--            android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"-->
+<!--            android:fontFamily="@font/catamaran_light">-->
+<!--    </TextView>-->
 
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent" android:layout_height="match_parent">
 
-            <TextView
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="@string/task1"
-                    android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"
-                    android:textSize="20sp" android:fontFamily="@font/catamaran_light"
-                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView14"
-                    android:layout_marginLeft="70dp" android:layout_marginStart="70dp" android:layout_marginTop="8dp"
-                    android:id="@+id/textView16"/>
-            <TextView
-                    android:text="@string/task2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/textView15"
-                    android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/catamaran_light"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginLeft="70dp" android:layout_marginStart="70dp" android:layout_marginTop="3dp"/>
-            <TextView
-                    android:text="@string/task3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/textView17"
-                    android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/catamaran_light"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginLeft="70dp" android:layout_marginStart="70dp" android:layout_marginTop="3dp"/>
+<!--        <LinearLayout-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_width="match_parent" android:layout_height="match_parent">-->
 
-            <TextView
-                    android:text="@string/task4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/textView18"
-                    android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/catamaran_light"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginLeft="70dp" android:layout_marginStart="70dp" android:layout_marginTop="3dp"/>
+<!--            <TextView-->
+<!--                    android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+<!--                    android:text="@string/task1"-->
+<!--                    android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"-->
+<!--                    android:textSize="20sp" android:fontFamily="@font/catamaran_light"-->
+<!--                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView14"-->
+<!--                    android:layout_marginLeft="70dp" android:layout_marginStart="70dp" android:layout_marginTop="8dp"-->
+<!--                    android:id="@+id/task1"/>-->
+<!--            <TextView-->
+<!--                    android:text="@string/task2"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" android:id="@+id/task2"-->
+<!--                    android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:fontFamily="@font/catamaran_light"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/textView16" app:layout_constraintStart_toStartOf="parent"-->
+<!--                    android:layout_marginLeft="70dp" android:layout_marginStart="70dp" android:layout_marginTop="3dp"/>-->
+<!--            <TextView-->
+<!--                    android:text="@string/task3"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" android:id="@+id/textView17"-->
+<!--                    android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:fontFamily="@font/catamaran_light"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/textView16" app:layout_constraintStart_toStartOf="parent"-->
+<!--                    android:layout_marginLeft="70dp" android:layout_marginStart="70dp" android:layout_marginTop="3dp"/>-->
 
-            <TextView
-                    android:text="@string/task5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/textView19"
-                    android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/catamaran_light"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginLeft="70dp" android:layout_marginStart="70dp" android:layout_marginTop="3dp"/>
-            <TextView
-                    android:text="@string/task6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/textView20"
-                    android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/catamaran_light"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginLeft="70dp" android:layout_marginStart="70dp" android:layout_marginTop="3dp"/>
-        </LinearLayout>
-    </ScrollView>
+<!--            <TextView-->
+<!--                    android:text="@string/task4"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" android:id="@+id/textView18"-->
+<!--                    android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:fontFamily="@font/catamaran_light"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/textView16" app:layout_constraintStart_toStartOf="parent"-->
+<!--                    android:layout_marginLeft="70dp" android:layout_marginStart="70dp" android:layout_marginTop="3dp"/>-->
+<!--            <TextView-->
+<!--                    android:text="@string/task5"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" android:id="@+id/textView19"-->
+<!--                    android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:fontFamily="@font/catamaran_light"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/textView16" app:layout_constraintStart_toStartOf="parent"-->
+<!--                    android:layout_marginLeft="70dp" android:layout_marginStart="70dp" android:layout_marginTop="3dp"/>-->
+<!--            <TextView-->
+<!--                    android:text="@string/task6"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" android:id="@+id/textView20"-->
+<!--                    android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:fontFamily="@font/catamaran_light"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/textView16" app:layout_constraintStart_toStartOf="parent"-->
+<!--                    android:layout_marginLeft="70dp" android:layout_marginStart="70dp" android:layout_marginTop="3dp"/>-->
+<!--        </LinearLayout>-->
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="420dp" android:layout_height="100dp"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
             app:backgroundTint="@color/white" android:layout_alignParentBottom="true"
-            android:layout_marginBottom="-20dp">
-        <Button
-                android:text="@string/nothing"
-                android:layout_width="50dp"
-                android:layout_height="60dp" android:id="@+id/homebutton"
-                android:layout_marginLeft="30dp" android:layout_marginStart="50dp" android:layout_marginBottom="20dp"
-                app:backgroundTint="@color/uoftcoloourr"/>
-        <Button
-                android:text="@string/nothing"
-                android:layout_width="50dp"
-                android:layout_height="60dp" android:id="@+id/eventbutton"
-                android:layout_marginLeft="30dp" android:layout_marginStart="140dp" android:layout_marginBottom="20dp"
-                app:backgroundTint="@color/greyy"/>
-        <Button
-                android:text="@string/nothing"
-                android:layout_width="50dp"
-                android:layout_height="60dp" android:id="@+id/communitybutton"
-                android:layout_marginLeft="30dp" android:layout_marginStart="230dp" android:layout_marginBottom="20dp"
-                app:backgroundTint="@color/greyy"/>
-        <Button
-                android:text="@string/nothing"
-                android:layout_width="50dp"
-                android:layout_height="60dp" android:id="@+id/mebutton"
-                android:layout_marginLeft="30dp" android:layout_marginStart="320dp" android:layout_marginBottom="20dp"
-                app:backgroundTint="@color/greyy"/>
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+            android:layout_marginBottom="10dp">
 
+        <Button
+                android:text="@string/nothing" android:background="@drawable/icons8_home_50"
+                android:layout_width="35dp" android:layout_height="35dp" android:id="@+id/homebutton"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="20dp" app:backgroundTint="@color/uoftcoloourr"/>
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:text="@string/home" android:textSize="12sp"
+                android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
+                android:layout_marginTop="35dp" android:layout_marginStart="31dp">
+        </TextView>
+
+        <Button
+                android:text="@string/nothing" android:background="@drawable/icons8_calendar_50"
+                android:layout_width="35dp" android:layout_height="35dp" android:id="@+id/eventbutton"
+                android:layout_marginStart="105dp" android:layout_marginBottom="20dp"
+                app:backgroundTint="@color/uoftcoloourr"/>
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:text="@string/eventt" android:textSize="12sp"
+                android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
+                android:layout_marginTop="35dp" android:layout_marginStart="107dp"
+        >
+        </TextView>
+
+        <Button
+                android:text="@string/nothing" android:background="@drawable/icons8_community_grants_64"
+                android:layout_width="35dp" android:layout_height="35dp" android:id="@+id/communitybutton"
+                android:layout_marginStart="185dp" android:layout_marginBottom="20dp"
+                app:backgroundTint="@color/uoftcoloourr"/>
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:text="@string/community" android:textSize="12sp"
+                android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
+                android:layout_marginTop="35dp"
+                android:layout_marginStart="175dp">
+        </TextView>
+
+        <Button
+                android:text="@string/nothing" android:background="@drawable/icons8_account_50"
+                android:layout_width="35dp" android:layout_height="35dp" android:id="@+id/mebutton"
+                android:layout_marginStart="340dp" android:layout_marginBottom="20dp"
+                app:backgroundTint="@color/uoftcoloourr"/>
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:text="@string/accountt" android:textSize="12sp"
+                android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
+                android:layout_marginTop="35dp" android:layout_marginStart="338dp">
+        </TextView>
+
+        <Button
+                android:text="@string/nothing" android:background="@drawable/clock__1_"
+                android:layout_width="35dp" android:layout_height="35dp" android:id="@+id/podomorobutton"
+                android:layout_marginStart="267dp" android:layout_marginBottom="20dp"
+                app:backgroundTint="@color/uoftcoloourr"/>
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:text="@string/pomodoro" android:textSize="12sp"
+                android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
+                android:layout_marginTop="35dp" android:layout_marginStart="260dp">
+        </TextView>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </RelativeLayout>

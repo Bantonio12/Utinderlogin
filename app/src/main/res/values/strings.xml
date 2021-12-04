@@ -77,6 +77,15 @@
     <string name="itemname">Event</string>
     <string name="itemtime">HH:MM PM</string>
     <string name="itemlocation">Location</string>
+    <string name="cancel">Cancel</string>
+    <string name="otheruser">User Name</string>
+    <string name="accountt">Account</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="home">Home</string>
+    <string name="eventt">Event</string>
+    <string name="ADD">Add</string>
+    <string name="addingtask">Add your task!</string>
+    <string name="taskname"></string>
 
 
 </resources>

@@ -18,7 +18,7 @@ import java.util.*;
 
 import com.example.myapplication.homepage.Homepage;
 import com.example.myapplication.community.Community;
-import com.example.myapplication.me.MePage;
+import com.example.myapplication.me.MyAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
@@ -59,6 +59,9 @@ public class ActivityEvent extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int dayOfMonth) {
                 String currDate = String.valueOf(dayOfMonth);
+                if (currDate.length() == 1) {
+                    currDate = "0" + currDate;
+                }
                 String currMonth = String.valueOf(month + 1);
                 String currYear = String.valueOf(year);
                 String selectedDate = currYear + "-" + currMonth + "-" + currDate;
@@ -96,7 +99,7 @@ public class ActivityEvent extends AppCompatActivity {
         mebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mebutton_intent = new Intent(ActivityEvent.this, MePage.class);
+                Intent mebutton_intent = new Intent(ActivityEvent.this, MyAccount.class);
                 startActivity(mebutton_intent);
                 finish();
             }

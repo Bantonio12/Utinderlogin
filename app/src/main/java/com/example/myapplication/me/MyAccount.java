@@ -11,7 +11,7 @@ import com.example.myapplication.homepage.Homepage;
 import com.example.myapplication.event.ActivityEvent;
 import com.example.myapplication.community.Community;
 
-public class MePage extends AppCompatActivity {
+public class MyAccount extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class MePage extends AppCompatActivity {
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent homebutton_intent = new Intent(MePage.this, Homepage.class);
+                Intent homebutton_intent = new Intent(MyAccount.this, Homepage.class);
                 startActivity(homebutton_intent);
                 finish();
             }
@@ -33,7 +33,7 @@ public class MePage extends AppCompatActivity {
         eventbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent eventbutton_intent = new Intent(MePage.this, ActivityEvent.class);
+                Intent eventbutton_intent = new Intent(MyAccount.this, ActivityEvent.class);
                 startActivity(eventbutton_intent);
                 finish();
             }
@@ -41,7 +41,7 @@ public class MePage extends AppCompatActivity {
         communitybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent communitybutton_intent = new Intent(MePage.this, Community.class);
+                Intent communitybutton_intent = new Intent(MyAccount.this, Community.class);
                 startActivity(communitybutton_intent);
                 finish();
             }
@@ -49,7 +49,7 @@ public class MePage extends AppCompatActivity {
         mebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mebutton_intent = new Intent(MePage.this, MePage.class);
+                Intent mebutton_intent = new Intent(MyAccount.this, MyAccount.class);
                 startActivity(mebutton_intent);
                 finish();
             }

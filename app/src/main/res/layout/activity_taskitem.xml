@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 xmlns:tools="http://schemas.android.com/tools"
+                 android:orientation="vertical"
+                 android:padding="10dp"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:id="@+id/main"
+                 tools:context=".homepage.TaskItem" android:background="@color/white">
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/taskname"
+        android:text="@string/itemname"
+        android:textColor="@color/uoftcoloourr"
+        android:textSize="15sp"
+        android:fontFamily="@font/catamaran_medium"
+        android:paddingLeft="15dp"
+        android:textColorHint="@color/uoftcoloourr">
+</TextView>
+
+</RelativeLayout>
