@@ -1,10 +1,7 @@
 package com.example.myapplication.community;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,15 +39,17 @@ public class ViewPostActivity extends AppCompatActivity {
 
         backButton = findViewById(R.id.Back);
         followButton = findViewById(R.id.followButton);
-        replyButton = findViewById(R.id.reply_button);
+        replyButton = findViewById(R.id.replyCommentButton);
         postTitle = findViewById(R.id.postTitle);
         postText = findViewById(R.id.postText);
         comments = findViewById(R.id.listview);
         userName = findViewById(R.id.userName);
 
+        // reference to firestore database
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference postsRef = db.document("community/Posts");
 
+        // obtain current post info from firebase and visualize in current page
         postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -78,6 +77,7 @@ public class ViewPostActivity extends AppCompatActivity {
             }
         });
 
+        // Command to enter creating comment page
         replyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,6 +87,7 @@ public class ViewPostActivity extends AppCompatActivity {
             }
         });
 
+        // Command to follow the current user
         followButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,9 +97,11 @@ public class ViewPostActivity extends AppCompatActivity {
         });
 
 
+        // Visualizing the scrollable list view
         ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, comment_text);
         comments.setAdapter(arrayAdapter);
 
+        // Command to enter individual comment page
         comments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

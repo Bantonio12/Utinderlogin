@@ -18,7 +18,7 @@ import java.util.*;
 
 public class CommunityActivity extends AppCompatActivity {
 
-    // Firestore cloud database reference
+    // Firestore database reference
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference postsRef = db.document("community/Posts");
 
@@ -57,7 +57,7 @@ public class CommunityActivity extends AppCompatActivity {
             }
         });
 
-        //Open individual post call:
+        // Command to enter individual post:
         posts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -74,7 +74,7 @@ public class CommunityActivity extends AppCompatActivity {
 
 
 
-        //Navigation buttons onclick call:
+        //Navigation buttons onclick calls:
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,7 +109,7 @@ public class CommunityActivity extends AppCompatActivity {
         });
     }
 
-    //Make new post button click method:
+    //Command to enter making new post page:
     public void makePost(View btn){
         Intent intent = new Intent(this, MakingPostActivity.class);
         startActivity(intent);

@@ -13,8 +13,6 @@
         </activity>
         <activity android:name=".community.MakingComment1Activity">
         </activity>
-        <activity android:name=".community.MakingCommentActivity">
-        </activity>
         <activity
                 android:name=".community.CommentActivity"
                 android:exported="true">

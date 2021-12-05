@@ -8,20 +8,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.myapplication.R;
-import com.example.myapplication.login.user.User;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class MakingPostActivity extends AppCompatActivity {
 
@@ -46,9 +42,9 @@ public class MakingPostActivity extends AppCompatActivity {
         textInput = findViewById(R.id.post_text);
 
         post_button = findViewById(R.id.post_button);
-        back_button = findViewById(R.id.back_button);
+        back_button = findViewById(R.id.backToPostButton);
 
-        //Confirm making post call (update firestore database simultaneously)
+        // Command to create new post and update database
         post_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,7 +60,7 @@ public class MakingPostActivity extends AppCompatActivity {
                 Post newPost = new Post(text, postMaker, title);
 
 
-                //write post into firestore Posts document call:
+                // update Posts document in database:
                 postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -86,7 +82,7 @@ public class MakingPostActivity extends AppCompatActivity {
                     }
                 });
 
-                //write post into firestore UserPosts document call:
+                // update UserPosts document in database:
                 userPostsTestRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -119,7 +115,7 @@ public class MakingPostActivity extends AppCompatActivity {
             }
         });
 
-        //Back to community call:
+        // Command to go back to community page:
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,7 +125,7 @@ public class MakingPostActivity extends AppCompatActivity {
         });
 
     }
-
+    // message when making post successfully
     private void showToast(String text){
         Toast.makeText(MakingPostActivity.this, text, Toast.LENGTH_SHORT).show();
     }

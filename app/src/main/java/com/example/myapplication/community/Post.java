@@ -19,7 +19,8 @@ public class Post implements Parcelable {
         //public no-arg constructor needed
     }
 
-    public Post(String text, FirebaseUser postMaker, String title){//Constructor for a post //not include user for now!!
+    //Constructor for a post
+    public Post(String text, FirebaseUser postMaker, String title){
         this.title = title;
         this.text = text;
         this.comments = new ArrayList<>();
@@ -27,7 +28,8 @@ public class Post implements Parcelable {
         this.postMaker = postMaker;
     }
 
-    public Post(String text, FirebaseUser postMaker){//Constructor for a comment //not include user for now!!
+    //Constructor for a comment
+    public Post(String text, FirebaseUser postMaker){//Constructor for a comment
         this.title = null;
         this.text = text;
         this.comments = new ArrayList<>();

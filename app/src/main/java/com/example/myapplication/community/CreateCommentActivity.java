@@ -22,6 +22,7 @@ import java.util.HashMap;
 public class CreateCommentActivity extends AppCompatActivity {
 
     Button postComment;
+    Button backToPost;
     TextView commentInput;
 
     @Override
@@ -30,8 +31,10 @@ public class CreateCommentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_comment);
 
         postComment = findViewById(R.id.postComment);
+        backToPost = findViewById(R.id.backToPost);
         commentInput = findViewById(R.id.makingCommentText);
 
+        //reference to firestore database
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference postsRef = db.document("community/Posts");
         FirebaseUser postMaker = FirebaseAuth.getInstance().getCurrentUser();
@@ -40,6 +43,7 @@ public class CreateCommentActivity extends AppCompatActivity {
 
         String title = intent.getExtras().getString("title");
 
+        //Command to create the comment and update database
         postComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,6 +78,16 @@ public class CreateCommentActivity extends AppCompatActivity {
                     }
                 });
 
+                intent.putExtra("title", title);
+                startActivity(intent);
+            }
+        });
+
+        // Command to go back to main post
+        backToPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CreateCommentActivity.this, ViewPostActivity.class);
                 intent.putExtra("title", title);
                 startActivity(intent);
             }
