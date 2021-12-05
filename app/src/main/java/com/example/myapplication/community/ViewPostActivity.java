@@ -57,12 +57,11 @@ public class ViewPostActivity extends AppCompatActivity {
                 if ((task.isSuccessful())){
                     DocumentSnapshot document = task.getResult();
                     postList = (HashMap) document.get("PostList");
-                    Post currPost = (Post) postList.get(title);
+                    HashMap currPost = (HashMap) (postList.get(title));
+                    postTitle.setText(currPost.get("title").toString());
+                    postText.setText(currPost.get("text").toString());
+                    userName.setText("admin");
 
-                    postTitle.setText(currPost.getTitle());
-//                    postText.setText(currPost.getText());
-//                    userName.setText("admin");
-//
 //                    for(Post comment: currPost.getComments()){
 //                        comment_text.add(comment.getText());
 //                    }
