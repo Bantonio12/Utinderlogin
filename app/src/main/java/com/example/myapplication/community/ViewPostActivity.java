@@ -1,5 +1,6 @@
 package com.example.myapplication.community;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.View;
@@ -13,10 +14,11 @@ import java.util.ArrayList;
 
 public class ViewPostActivity extends AppCompatActivity {
 
-    Button back_button;
-    Button reply_button;
-    TextView post_title;
-    TextView post_text;
+    Button backButton;
+    Button replyButton;
+    Button followButton;
+    TextView postText;
+    TextView postTitle;
     ListView comments;
     ArrayList<String> comment_text = new ArrayList<>();
 
@@ -25,14 +27,42 @@ public class ViewPostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_post);
 
-        comment_text.add("hello");
+        Intent intent = getIntent();
+        Bundle b = intent.getExtras();
+        String title = b.getString("title");
+        String text = b.getString("text");
 
-
-        back_button = findViewById(R.id.back_button);
-        reply_button = findViewById(R.id.reply_button);
-        post_title = findViewById(R.id.post_title);
-        post_text = findViewById(R.id.post_text);
+        backButton = findViewById(R.id.Back);
+        followButton = findViewById(R.id.followButton);
+        replyButton = findViewById(R.id.reply_button);
+        postTitle = (TextView) findViewById(R.id.postTitle);
+        postText = (TextView) findViewById(R.id.postText);
         comments = findViewById(R.id.listview);
+        postTitle.setText(title);
+        postText.setText(text);
+
+        //Back to community call:
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewPostActivity.this, CommunityActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        followButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewPostActivity.this, CommunityActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+        //comment_text.add(title);
+
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, comment_text);
         comments.setAdapter(arrayAdapter);

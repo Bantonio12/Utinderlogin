@@ -9,47 +9,70 @@
     <Button
             android:text="Back"
             android:layout_width="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
             android:layout_height="wrap_content"
-            android:id="@+id/back_button"/>
+            android:id="@+id/Back"/>
 
     <Button
             android:text="Reply"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/reply_button"
             android:layout_alignParentRight="true"/>
 
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/userName"
+              android:text="userName"
+              android:textSize="18sp"
+              android:textColor="@color/uoftcoloourr"
+              android:layout_below="@id/Back"
+              android:layout_marginTop="7dp"
+              android:layout_marginStart="7dp"/>
+
+
+    <Button android:layout_width="69dp"
+            android:layout_height="30dp"
+            android:id="@+id/followButton"
+            android:layout_toRightOf="@+id/userName"
+            android:layout_below="@id/Back"
+            android:layout_marginLeft="12dp"
+            android:textSize="8sp"
+            android:text="follow"
+            android:layout_marginTop="6dp"/>
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:id="@+id/postTitle"
-              android:text="Post Title"
+              android:text="title here"
               android:layout_marginLeft="7dp"
               android:layout_marginRight="7dp"
-              android:layout_marginTop="7dp"
-              android:layout_below="@id/back_button"
+              android:layout_marginTop="3dp"
+              android:layout_below="@id/userName"
               android:textSize="20sp"
-              android:textStyle="bold"/>
+              android:textStyle="bold" android:textColor="@color/uoftcoloourr"/>
 
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:id="@+id/postText"
-              android:text="So, my fiancé worked at a bridal shop. She had an appointment set up at the end of the day and the person ended up not showing up. She jokingly said “I said I doubt she shows up so I must’ve manifested this” Her co-worker ran off to tell the boss, boss pulled her aside and said “you can go home” called her later and fired her with the reasoning being “You’re manifesting my businesses failure and I can’t have that, I need to let you go”I am absolutely dumbfounded at this reasoning. She was a shit boss, best for my fiancé in the end."
-              android:layout_marginLeft="10dp"
-              android:layout_marginRight="10dp"
+              android:text="text here"
+              android:layout_marginLeft="7dp"
+              android:layout_marginRight="7dp"
               android:layout_marginTop="3dp"
               android:layout_below="@id/postTitle"
-              android:textSize="18sp"/>
+              android:textSize="18sp" android:textColor="@color/uoftcoloourr"/>
 
     <TextView android:layout_width="match_parent"
               android:layout_height="25dp"
               android:id="@+id/commentLabel"
               android:layout_below="@id/postText"
-              android:layout_marginLeft="10dp"
-              android:layout_marginRight="10dp"
+              android:layout_marginLeft="7dp"
+              android:layout_marginRight="7dp"
               android:layout_marginTop="5dp"
               android:text="Comments:"
+              android:textColor="@color/uoftcoloourr"
               android:textSize="18sp"
               android:textStyle="bold"/>
 
@@ -59,6 +82,7 @@
               android:layout_marginLeft="5dp"
               android:layout_marginRight="5dp"
               android:layout_marginBottom="5dp"
+              android:layout_alignParentBottom="true"
               android:id="@+id/listview"/>
 
 

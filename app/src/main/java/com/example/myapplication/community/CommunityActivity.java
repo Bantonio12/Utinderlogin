@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.*;
 
+import java.lang.reflect.Type;
 import java.util.*;
 
 public class CommunityActivity extends AppCompatActivity {
@@ -32,6 +33,8 @@ public class CommunityActivity extends AppCompatActivity {
         final Button eventbutton = findViewById(R.id.eventbutton);
         final Button communitybutton = findViewById(R.id.communitybutton);
         final Button mebutton = findViewById(R.id.mebutton);
+        ArrayList<String> titles = new ArrayList<>();
+        ArrayList<String> texts = new ArrayList<>();
 
         ListView posts = findViewById(R.id.posts);
 
@@ -43,10 +46,11 @@ public class CommunityActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     DocumentSnapshot document = task.getResult();
                     HashMap postMap = (HashMap) document.get("Posts");
-                    ArrayList titles = new ArrayList();
+                    //ArrayList titles = new ArrayList();
 
                     for(Object key: postMap.keySet()){
                         titles.add(key.toString());
+                        texts.add(postMap.get(key.toString()).toString());
                     }
 
                     ArrayAdapter arrayAdapter = new ArrayAdapter
@@ -62,6 +66,10 @@ public class CommunityActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(CommunityActivity.this, ViewPostActivity.class);
+                String title = titles.get(i);
+                String text = texts.get(i);
+                intent.putExtra("title", title);
+                intent.putExtra("text", text);
                 startActivity(intent);
             }
         });
@@ -105,7 +113,7 @@ public class CommunityActivity extends AppCompatActivity {
 
     //Make new post button click method:
     public void makePost(View btn){
-        Intent intent = new Intent(this, ViewPostActivity.class);
+        Intent intent = new Intent(this, MakingPostActivity.class);
         startActivity(intent);
     }
 
