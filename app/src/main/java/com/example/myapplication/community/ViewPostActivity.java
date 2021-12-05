@@ -16,7 +16,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -63,9 +62,9 @@ public class ViewPostActivity extends AppCompatActivity {
                     postText.setText(currPost.get("text").toString());
                     userName.setText("admin");
 
-                    for(HashMap comment: (ArrayList<HashMap>) currPost.get("comments")){
-                        comment_text.add(comment.get("text").toString());
-                    }
+//                    for(Post comment: currPost.getComments()){
+//                        comment_text.add(comment.getText());
+//                    }
                 }
             }
         });
@@ -75,6 +74,15 @@ public class ViewPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ViewPostActivity.this, CommunityActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        replyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewPostActivity.this, CreateCommentActivity.class);
+                intent.putExtra("title", title);
                 startActivity(intent);
             }
         });
@@ -90,6 +98,9 @@ public class ViewPostActivity extends AppCompatActivity {
 
 
 
+        //comment_text.add(title);
+
+
         ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, comment_text);
         comments.setAdapter(arrayAdapter);
 
@@ -97,14 +108,29 @@ public class ViewPostActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                ArrayList<String> commentPath = new ArrayList<>();
-                commentPath.add(comment_text.get(position));
-                Intent intent = new Intent(ViewPostActivity.this, CommentActivity.class);
-//                intent.putExtra("parent", findViewById(R.id.postTitle).get);
-//                intent.putExtra("comment_path", currCommentPost);
+                postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        DocumentSnapshot document = task.getResult();
+                        postList = (HashMap) document.get("PostList");
+                        Post currPost = (Post) postList.get(title);
+                        ArrayList comments = currPost.getComments();
 
-                startActivity(intent);
+                        String currComment = comment_text.get(position);
 
+                        Post currCommentPost = new Post();
+
+                        for(Object commentPost: comments){
+                            if(((Post)commentPost).getText() == currComment){
+                                currCommentPost = (Post) commentPost;
+                            }
+                        }
+                        Intent intent = new Intent(ViewPostActivity.this, CommentActivity.class);
+
+                        intent.putExtra("comment", currCommentPost);
+
+                        startActivity(intent);
+                    }
                 });
             }
         });
