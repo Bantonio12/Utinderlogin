@@ -35,6 +35,7 @@ public class CommunityActivity extends AppCompatActivity {
 
         ListView posts = findViewById(R.id.posts);
 
+        ArrayList titles = new ArrayList();
 
         // Posts retrieve and presenting on Community page
         postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -43,7 +44,6 @@ public class CommunityActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     DocumentSnapshot document = task.getResult();
                     HashMap postMap = (HashMap) document.get("PostList");
-                    ArrayList titles = new ArrayList();
 
                     for(Object key: postMap.keySet()){
                         titles.add(key.toString());
@@ -61,7 +61,13 @@ public class CommunityActivity extends AppCompatActivity {
         posts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                String title = (String) titles.get(i);
+
                 Intent intent = new Intent(CommunityActivity.this, ViewPostActivity.class);
+
+                intent.putExtra("title", title);
+
                 startActivity(intent);
             }
         });

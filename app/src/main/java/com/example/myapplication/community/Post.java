@@ -1,12 +1,14 @@
 package com.example.myapplication.community;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.auth.User;
 
 import java.util.ArrayList;
 
-public class Post {
+public class Post implements Parcelable {
     private String title;
     private String text;
     private ArrayList<Post> comments; //a sub post can only be a comment.
@@ -33,6 +35,26 @@ public class Post {
         this.postMaker = postMaker;
     }
 
+    protected Post(Parcel in) {
+        title = in.readString();
+        text = in.readString();
+        comments = in.createTypedArrayList(Post.CREATOR);
+        likes = in.readInt();
+        postMaker = in.readParcelable(FirebaseUser.class.getClassLoader());
+    }
+
+    public static final Creator<Post> CREATOR = new Creator<Post>() {
+        @Override
+        public Post createFromParcel(Parcel in) {
+            return new Post(in);
+        }
+
+        @Override
+        public Post[] newArray(int size) {
+            return new Post[size];
+        }
+    };
+
     public String getTitle() { return  this.title; }
 
     public String getText(){ return this.text; }
@@ -55,4 +77,17 @@ public class Post {
         }
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(title);
+        parcel.writeString(text);
+        parcel.writeTypedList(comments);
+        parcel.writeInt(likes);
+        parcel.writeParcelable(postMaker, i);
+    }
 }
