@@ -42,7 +42,7 @@ public class CommunityActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
                     DocumentSnapshot document = task.getResult();
-                    HashMap postMap = (HashMap) document.get("Posts");
+                    HashMap postMap = (HashMap) document.get("PostList");
                     ArrayList titles = new ArrayList();
 
                     for(Object key: postMap.keySet()){

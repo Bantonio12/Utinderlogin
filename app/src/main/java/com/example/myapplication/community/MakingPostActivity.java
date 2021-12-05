@@ -33,7 +33,7 @@ public class MakingPostActivity extends AppCompatActivity {
 
 
     private HashMap posts = new HashMap<>();
-    private ArrayList userPosts = new ArrayList<>();
+    private HashMap userPosts = new HashMap();
 
 
     @Override
@@ -53,15 +53,16 @@ public class MakingPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                // Get firestore database reference:
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                DocumentReference postsRef = db.collection("community")
-                        .document("Posts");
-                DocumentReference userPostsRef = db.collection("community")
-                        .document("UserPosts");
+                DocumentReference postsRef = db.document("community/Posts");
+                DocumentReference userPostsTestRef = db.document("community/UserPosts");
 
+                FirebaseUser postMaker = FirebaseAuth.getInstance().getCurrentUser();
                 String title = titleInput.getText().toString();
                 String text = textInput.getText().toString();
+
+                Post newPost = new Post(text, postMaker, title);
+
 
                 //write post into firestore Posts document call:
                 postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -70,11 +71,12 @@ public class MakingPostActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
 
                             DocumentSnapshot document = task.getResult();
-                            posts = (HashMap) document.get("Posts");
+                            posts = (HashMap) document.get("PostList");
 
+                            posts.put(title, newPost);
                             HashMap newData = new HashMap<>();
-                            posts.put(title, text);
-                            newData.put("Posts", posts);
+
+                            newData.put("PostList", posts);
                             postsRef.set(newData);
 
                         }
@@ -85,20 +87,25 @@ public class MakingPostActivity extends AppCompatActivity {
                 });
 
                 //write post into firestore UserPosts document call:
-                userPostsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                userPostsTestRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()){
 
                             DocumentSnapshot document = task.getResult();
-                            userPosts = (ArrayList) document.get("admin");
+                            userPosts = (HashMap) document.get("UserPostsList");
 
-                            userPosts.add(title);
+                            ArrayList currPostsList = (ArrayList) userPosts.get("admin");
+
+                            currPostsList.add(newPost);
+
+                            userPosts.put("admin", currPostsList);
+
                             HashMap newData = new HashMap();
 
-                            newData.put("admin", userPosts);
+                            newData.put("UserPostsList", userPosts);
 
-                            userPostsRef.set(newData);
+                            userPostsTestRef.set(newData);
                         }
                         else {
                             Log.d("Making User Post", "failed to obtain user posts", task.getException());
