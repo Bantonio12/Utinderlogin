@@ -9,6 +9,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.UTindergui">
+        <activity
+                android:name=".community.CommentActivity"
+                android:exported="true">
+        </activity>
         <activity android:name=".community.ViewPostActivity">
         </activity>
         <activity android:name=".community.MakingPostActivity">
