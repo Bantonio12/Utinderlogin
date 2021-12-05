@@ -21,7 +21,6 @@ import java.util.HashMap;
 
 public class CreateCommentActivity extends AppCompatActivity {
 
-
     Button postComment;
     TextView commentInput;
 
@@ -44,7 +43,9 @@ public class CreateCommentActivity extends AppCompatActivity {
         postComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(CreateCommentActivity.this, ViewPostActivity.class);
+
                 String comment = commentInput.getText().toString();
 
                 Post newComment = new Post(comment, postMaker);
