@@ -65,7 +65,11 @@ public class CreateCommentActivity extends AppCompatActivity {
 
                             postList.put(title, currPost);
 
-                            postsRef.set(postList);
+                            HashMap newData = new HashMap<>();
+
+                            newData.put("PostList", postList);
+
+                            postsRef.set(newData);
                         }
                     }
                 });

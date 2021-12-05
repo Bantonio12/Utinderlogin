@@ -56,15 +56,15 @@ public class ViewPostActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if ((task.isSuccessful())){
                     DocumentSnapshot document = task.getResult();
-                    postList = (HashMap) document.get("PostList");
-                    HashMap currPost = (HashMap) (postList.get(title));
+                    postList = (HashMap) document.get("PostList"); // gets the post list
+                    HashMap currPost = (HashMap) (postList.get(title)); // currPost is in the dictionary for the current post
                     postTitle.setText(currPost.get("title").toString());
                     postText.setText(currPost.get("text").toString());
                     userName.setText("admin");
 
-//                    for(Post comment: currPost.getComments()){
-//                        comment_text.add(comment.getText());
-//                    }
+                    for(HashMap comment: (ArrayList<HashMap>) currPost.get("comments")){ // currPost.get("comments") is an array list of dictionarys (which are comments)
+                        comment_text.add(comment.get("text").toString());
+                    }
                 }
             }
         });
@@ -96,11 +96,6 @@ public class ViewPostActivity extends AppCompatActivity {
         });
 
 
-
-
-        //comment_text.add(title);
-
-
         ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, comment_text);
         comments.setAdapter(arrayAdapter);
 
@@ -108,31 +103,13 @@ public class ViewPostActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        DocumentSnapshot document = task.getResult();
-                        postList = (HashMap) document.get("PostList");
-                        Post currPost = (Post) postList.get(title);
-                        ArrayList comments = currPost.getComments();
-
-                        String currComment = comment_text.get(position);
-
-                        Post currCommentPost = new Post();
-
-                        for(Object commentPost: comments){
-                            if(((Post)commentPost).getText() == currComment){
-                                currCommentPost = (Post) commentPost;
-                            }
-                        }
-                        Intent intent = new Intent(ViewPostActivity.this, CommentActivity.class);
-
-                        intent.putExtra("comment", currCommentPost);
-
-                        startActivity(intent);
-                    }
-                });
+                ArrayList<String> commentPath = new ArrayList<>();
+                commentPath.add(comment_text.get(position));
+                Intent intent = new Intent(ViewPostActivity.this, CommentActivity.class);
+                intent.putExtra("parent", postTitle.getText());
+                intent.putExtra("comment_path", comment_text.get(position));
+                startActivity(intent);
             }
         });
     }
-    }
+}
