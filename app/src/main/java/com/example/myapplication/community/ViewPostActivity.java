@@ -21,7 +21,6 @@ public class ViewPostActivity extends AppCompatActivity {
 
     Button backButton;
     Button replyButton;
-    Button followButton;
     TextView postText;
     TextView postTitle;
     TextView userName;
@@ -39,7 +38,6 @@ public class ViewPostActivity extends AppCompatActivity {
         String title = intent.getExtras().getString("title");
 
         backButton = findViewById(R.id.Back);
-        followButton = findViewById(R.id.followButton);
         replyButton = findViewById(R.id.replyCommentButton);
         postTitle = findViewById(R.id.postTitle);
         postText = findViewById(R.id.postText);
@@ -110,7 +108,7 @@ public class ViewPostActivity extends AppCompatActivity {
 
                 ArrayList<String> commentPath = new ArrayList<>();
                 commentPath.add(comment_text.get(position));
-                Intent intent = new Intent(ViewPostActivity.this, CommentActivity.class);
+                Intent intent = new Intent(ViewPostActivity.this, CreateCommentActivity.class);
                 intent.putExtra("parent", postTitle.getText());
                 intent.putExtra("comment_path", comment_text.get(position));
                 startActivity(intent);

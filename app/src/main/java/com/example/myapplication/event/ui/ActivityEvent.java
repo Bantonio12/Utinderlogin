@@ -18,6 +18,7 @@ import com.example.myapplication.community.CommunityActivity;
 import com.example.myapplication.event.converter.EventDataConverter;
 import com.example.myapplication.homepage.Homepage;
 import com.example.myapplication.me.MyAccount;
+import com.example.myapplication.me.Pomodoro;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -49,6 +50,7 @@ public class ActivityEvent extends AppCompatActivity {
         final Button eventButton = findViewById(R.id.eventbutton);
         final Button communityButton = findViewById(R.id.communitybutton);
         final Button myAccountButton = findViewById(R.id.mebutton);
+        final Button pomodoroButton = findViewById(R.id.podomorobutton);
         final CalendarView calendarView = findViewById(R.id.Calendar_in_eventview);
 
         AddEventB.setOnClickListener(v -> {
@@ -89,6 +91,14 @@ public class ActivityEvent extends AppCompatActivity {
             Intent goToMyAccountPage = new Intent(ActivityEvent.this, MyAccount.class);
             startActivity(goToMyAccountPage);
             finish();
+        });
+        pomodoroButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mebutton_intent = new Intent(ActivityEvent.this, Pomodoro.class);
+                startActivity(mebutton_intent);
+                finish();
+            }
         });
     }
 

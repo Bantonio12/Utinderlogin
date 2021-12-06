@@ -10,6 +10,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.event.ui.ActivityEvent;
 import com.example.myapplication.homepage.Homepage;
 import com.example.myapplication.me.MyAccount;
+import com.example.myapplication.me.Pomodoro;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.*;
@@ -28,9 +29,11 @@ public class CommunityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
 
+        final Button makePostButton = findViewById(R.id.make_post);
         final Button homebutton = findViewById(R.id.homebutton);
         final Button eventbutton = findViewById(R.id.eventbutton);
         final Button communitybutton = findViewById(R.id.communitybutton);
+        final Button pomodorobutton = findViewById(R.id.podomorobutton);
         final Button mebutton = findViewById(R.id.mebutton);
 
         ListView posts = findViewById(R.id.posts);
@@ -49,8 +52,7 @@ public class CommunityActivity extends AppCompatActivity {
                         titles.add(key.toString());
                     }
 
-                    ArrayAdapter arrayAdapter = new ArrayAdapter
-                            (CommunityActivity.this, android.R.layout.simple_list_item_1, titles);
+                    ArrayAdapter arrayAdapter = new PostAdapter(CommunityActivity.this, R.layout.activity_post_item, titles);
 
                     posts.setAdapter(arrayAdapter);
                 }
@@ -99,6 +101,16 @@ public class CommunityActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        pomodorobutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mebutton_intent = new Intent(CommunityActivity.this, Pomodoro.class);
+                startActivity(mebutton_intent);
+                finish();
+            }
+        });
+
         mebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,13 +119,21 @@ public class CommunityActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        makePostButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CommunityActivity.this, MakingPostActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    //Command to enter making new post page:
-    public void makePost(View btn){
-        Intent intent = new Intent(this, MakingPostActivity.class);
-        startActivity(intent);
-    }
+//    //Command to enter making new post page:
+//    public void makePost(View btn){
+//        Intent intent = new Intent(this, MakingPostActivity.class);
+//        startActivity(intent);
+//    }
 
 }
 
