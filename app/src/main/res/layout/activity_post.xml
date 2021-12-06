@@ -21,7 +21,7 @@
     <EditText
             android:text="@string/samplecontents"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/following"
+            android:layout_height="wrap_content" android:id="@+id/textView21"
             android:textSize="15sp" android:fontFamily="@font/catamaran_light"
             android:textColorHint="@color/uoftcoloourr" android:textColor="@color/uoftcoloourr"
             android:layout_marginTop="30dp"

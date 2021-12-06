@@ -13,7 +13,7 @@ public class OtherAccount extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_otheraccount);
         TextView userName = findViewById(R.id.username);
         final Button backButton = findViewById(R.id.backbutton);
         final Button followingButton = findViewById(R.id.followingbutton);

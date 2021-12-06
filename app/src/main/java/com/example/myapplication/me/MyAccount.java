@@ -16,7 +16,7 @@ public class MyAccount extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_me_page);
+        setContentView(R.layout.activity_myaccount);
 
         final Button homebutton = findViewById(R.id.homebutton);
         final Button eventbutton = findViewById(R.id.eventbutton);

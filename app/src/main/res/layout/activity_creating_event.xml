@@ -63,26 +63,26 @@
             android:layout_centerInParent="true" tools:ignore="LabelFor">
     </EditText>
 
-<!--    <TextView-->
-<!--            android:layout_width="wrap_content" android:layout_height="wrap_content"-->
-<!--            android:id="@+id/eventdescription"-->
-<!--            android:text="@string/description" android:textColor="@color/uoftcoloourr"-->
-<!--            android:textColorHint="@color/uoftcoloourr"-->
-<!--            android:fontFamily="@font/catamaran_light" android:textSize="20sp"-->
-<!--            android:layout_alignTop="@id/puttingevent" android:layout_marginTop="45dp"-->
-<!--            android:layout_marginLeft="50dp" android:layout_marginStart="50dp">-->
-<!--    </TextView>-->
+    <!--    <TextView-->
+    <!--            android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+    <!--            android:id="@+id/eventdescription"-->
+    <!--            android:text="@string/description" android:textColor="@color/uoftcoloourr"-->
+    <!--            android:textColorHint="@color/uoftcoloourr"-->
+    <!--            android:fontFamily="@font/catamaran_light" android:textSize="20sp"-->
+    <!--            android:layout_alignTop="@id/puttingevent" android:layout_marginTop="45dp"-->
+    <!--            android:layout_marginLeft="50dp" android:layout_marginStart="50dp">-->
+    <!--    </TextView>-->
 
-<!--    <EditText-->
-<!--            android:layout_width="320dp" android:layout_height="30dp"-->
-<!--            android:id="@+id/puttingdescription" android:autofillHints="@string/description"-->
-<!--            android:inputType="textShortMessage" android:background="@drawable/button_border"-->
-<!--            android:text="@string/nothing" android:ems="10"-->
-<!--            android:fontFamily="@font/catamaran_light" android:textSize="15sp"-->
-<!--            android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"-->
-<!--            android:layout_alignTop="@+id/eventdescription" android:layout_marginTop="45dp"-->
-<!--            android:layout_centerInParent="true" tools:ignore="LabelFor">-->
-<!--    </EditText>-->
+    <!--    <EditText-->
+    <!--            android:layout_width="320dp" android:layout_height="30dp"-->
+    <!--            android:id="@+id/puttingdescription" android:autofillHints="@string/description"-->
+    <!--            android:inputType="textShortMessage" android:background="@drawable/button_border"-->
+    <!--            android:text="@string/nothing" android:ems="10"-->
+    <!--            android:fontFamily="@font/catamaran_light" android:textSize="15sp"-->
+    <!--            android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"-->
+    <!--            android:layout_alignTop="@+id/eventdescription" android:layout_marginTop="45dp"-->
+    <!--            android:layout_centerInParent="true" tools:ignore="LabelFor">-->
+    <!--    </EditText>-->
 
     <TextView
             android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/eventdate"

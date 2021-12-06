@@ -91,6 +91,8 @@
     <string name="follow">Follow</string>
     <string name="following">Following</string>
     <string name="fillout">Please fill out the information!</string>
+    <string name="logout">Log out</string>
+    <string name="myacc">My Account</string>
 
 
 </resources>

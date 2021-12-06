@@ -28,7 +28,7 @@
             android:firstDayOfWeek="1" android:selectedDateVerticalBar="@color/uoftcoloourr"
             android:id="@+id/Calendar_in_eventview" android:layout_centerInParent="true"
             android:layout_marginBottom="70dp"
-            android:theme="@style/calendarview" android:background="@color/darkgrey"
+            android:theme="@style/calendarview" android:background="@color/uoftcoloourr"
             android:dateTextAppearance="@style/CalenderViewDateCustomText"
             android:weekDayTextAppearance="@style/CalenderViewWeekCustomText">
     </CalendarView>
