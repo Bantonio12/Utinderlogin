@@ -14,6 +14,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -41,14 +42,18 @@ public class CommentActivity extends AppCompatActivity {
 
         ArrayList commentText = new ArrayList();
 
-        //get reference to firestore database
+        /**
+         * get reference to firestore database
+         */
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference postsRef = db.document("community/Posts");
 
         //update current page's comment content
         commentContent.setText(currText);
 
-        //update current page's comments list
+        /**
+         * update current page's comments list
+         */
         postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -61,25 +66,33 @@ public class CommentActivity extends AppCompatActivity {
                     HashMap currComment = new HashMap();
 
                     for (HashMap comment : parentComments) {
-                        if (comment.get("text").toString() == currText) {
+                        if (comment.get("text").toString().equals(currText)) {
                             currComment = comment;
                         }
                     }
 
-                    //still need to add comment's comments to the list view.
+                    ArrayList<HashMap> currCommentList = (ArrayList<HashMap>) currComment.get("comments");
+
+                    if(currCommentList != null) {
+                        for (HashMap comment : currCommentList) {
+                            commentText.add(comment.get("text").toString());
+                        }
+                    }
+
+                    // visualize the scrollable comments list
+                    ArrayAdapter arrayAdapter = new ArrayAdapter
+                            (getApplicationContext(), android.R.layout.simple_list_item_1, commentText);
+
+                    comments.setAdapter(arrayAdapter);
 
                 }
             }
         });
 
-        // visualize the scrollable comments list
-        ArrayAdapter arrayAdapter = new ArrayAdapter
-                (getApplicationContext(), android.R.layout.simple_list_item_1, commentText);
 
-                    comments.setAdapter(arrayAdapter);
-
-
-        // command to enter individual comment page
+        /**
+         * command to enter individual comment page
+         */
         comments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -93,7 +106,9 @@ public class CommentActivity extends AppCompatActivity {
             }
         });
 
-        // back to the main post page
+        /**
+         * back to the main post page
+         */
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,12 +118,15 @@ public class CommentActivity extends AppCompatActivity {
             }
         });
 
-        // reply to the comment
+        /**
+         * reply to the comment
+         */
         replyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CommentActivity.this, CreateCommentActivity.class);
+                Intent intent = new Intent(CommentActivity.this, CreateCommentCActivity.class);
                 intent.putExtra("title", parentTitle);
+                intent.putExtra("comment_path", currText);
                 startActivity(intent);
                 // still need to add new reply comment page and update database.
             }
