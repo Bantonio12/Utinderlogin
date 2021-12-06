@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -98,5 +99,9 @@ public class CreateCommentActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    // message when making post successfully
+    private void showToast(String text){
+        Toast.makeText(CreateCommentActivity.this, text, Toast.LENGTH_SHORT).show();
     }
 }

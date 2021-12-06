@@ -20,7 +20,6 @@ public class ViewPostActivity extends AppCompatActivity {
 
     Button backButton;
     Button replyButton;
-    Button followButton;
     TextView postText;
     TextView postTitle;
     TextView userName;
@@ -38,7 +37,6 @@ public class ViewPostActivity extends AppCompatActivity {
         String title = intent.getExtras().getString("title");
 
         backButton = findViewById(R.id.Back);
-        followButton = findViewById(R.id.followButton);
         replyButton = findViewById(R.id.replyCommentButton);
         postTitle = findViewById(R.id.postTitle);
         postText = findViewById(R.id.postText);
@@ -77,6 +75,15 @@ public class ViewPostActivity extends AppCompatActivity {
             }
         });
 
+        userName.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewPostActivity.this, CommunityActivity.class);
+                intent.putExtra("userName", userName.getText());
+                startActivity(intent);
+            }
+        });
+
         // Command to enter creating comment page
         replyButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,14 +94,6 @@ public class ViewPostActivity extends AppCompatActivity {
             }
         });
 
-        // Command to follow the current user
-        followButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ViewPostActivity.this, CommunityActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
         // Visualizing the scrollable list view

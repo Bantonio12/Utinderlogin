@@ -33,16 +33,6 @@
               android:layout_marginTop="7dp"
               android:layout_marginStart="7dp"/>
 
-
-    <Button android:layout_width="69dp"
-            android:layout_height="30dp"
-            android:id="@+id/followButton"
-            android:layout_toRightOf="@+id/userName"
-            android:layout_below="@id/Back"
-            android:layout_marginLeft="12dp"
-            android:textSize="8sp"
-            android:text="follow"
-            android:layout_marginTop="6dp"/>
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:id="@+id/postTitle"

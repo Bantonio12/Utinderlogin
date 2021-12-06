@@ -110,8 +110,14 @@ public class MakingPostActivity extends AppCompatActivity {
                 });
 
                 Intent intent = new Intent(MakingPostActivity.this, CommunityActivity.class);
-                startActivity(intent);
-                showToast("Successful post");
+
+                if (!title.isEmpty()) {
+                    startActivity(intent);
+                    showToast("Successful post");
+                } else {
+                    startActivity(intent);
+                    showToast("Post Unsuccessful, Please include a Title");}
+
             }
         });
 
