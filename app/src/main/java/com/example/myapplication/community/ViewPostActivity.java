@@ -25,6 +25,7 @@ public class ViewPostActivity extends AppCompatActivity {
     TextView userName;
     ListView comments;
     ArrayList<String> comment_text = new ArrayList<>();
+    ArrayList<HashMap> allComments = new ArrayList<>();
 
     HashMap postList = new HashMap();
     @Override
@@ -43,11 +44,15 @@ public class ViewPostActivity extends AppCompatActivity {
         comments = findViewById(R.id.listview);
         userName = findViewById(R.id.userName);
 
-        // reference to firestore database
+        /**
+         * reference to firestore database
+         */
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference postsRef = db.document("community/Posts");
 
-        // obtain current post info from firebase and visualize in current page
+        /**
+         * obtain current post info from firebase and visualize in current page
+         */
         postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -57,16 +62,22 @@ public class ViewPostActivity extends AppCompatActivity {
                     HashMap currPost = (HashMap) (postList.get(title)); // currPost is in the dictionary for the current post
                     postTitle.setText(currPost.get("title").toString());
                     postText.setText(currPost.get("text").toString());
+                    allComments = (ArrayList<HashMap>) currPost.get("comments");
                     userName.setText("admin");
 
-                    for(HashMap comment: (ArrayList<HashMap>) currPost.get("comments")){ // currPost.get("comments") is an array list of dictionarys (which are comments)
-                        comment_text.add(comment.get("text").toString());
+                    /** currPost.get("comments") is an array list of dictionarys (which are comments) */
+                    for(HashMap comment: allComments){
+                        if (!comment.equals(null)){
+                        comment_text.add(comment.get("id") + ": @" + comment.get("mention")
+                                + " " + comment.get("text").toString());}
                     }
                 }
             }
         });
 
-        //Back to community call:
+        /**
+         * Back to community call
+         */
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,32 +95,41 @@ public class ViewPostActivity extends AppCompatActivity {
             }
         });
 
-        // Command to enter creating comment page
+        /**
+         * Command to enter creating comment page
+         */
         replyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ViewPostActivity.this, CreateCommentActivity.class);
                 intent.putExtra("title", title);
+                intent.putExtra("id", allComments.size());
+                intent.putExtra("mention", "Main");
                 startActivity(intent);
             }
         });
 
 
-
-        // Visualizing the scrollable list view
+        /**
+         * Visualizing the scrollable list view
+         */
         ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, comment_text);
         comments.setAdapter(arrayAdapter);
 
-        // Command to enter individual comment page
+        /**
+         * Command to enter individual comment page
+         */
         comments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 ArrayList<String> commentPath = new ArrayList<>();
+                int newId = position;
                 commentPath.add(comment_text.get(position));
-                Intent intent = new Intent(ViewPostActivity.this, CommentActivity.class);
-                intent.putExtra("parent", postTitle.getText());
-                intent.putExtra("comment_path", comment_text.get(position));
+                Intent intent = new Intent(ViewPostActivity.this, CreateCommentActivity.class);
+                intent.putExtra("title", postTitle.getText());
+                intent.putExtra("id", allComments.size());
+                intent.putExtra("mention", newId);
                 startActivity(intent);
             }
         });

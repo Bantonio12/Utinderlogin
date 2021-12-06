@@ -44,6 +44,10 @@ public class CreateCommentActivity extends AppCompatActivity {
 
         String title = intent.getExtras().getString("title");
 
+        int id = intent.getExtras().getInt("id");
+
+        Object mention = intent.getExtras().get("mention");
+
         //Command to create the comment and update database
         postComment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +57,11 @@ public class CreateCommentActivity extends AppCompatActivity {
 
                 String comment = commentInput.getText().toString();
 
-                Post newComment = new Post(comment, postMaker);
+                HashMap newComment = new HashMap();
+
+                newComment.put("id", id);
+                newComment.put("text", comment);
+                newComment.put("mention", mention);
 
                 postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
