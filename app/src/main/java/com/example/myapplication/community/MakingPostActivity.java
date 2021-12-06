@@ -44,7 +44,9 @@ public class MakingPostActivity extends AppCompatActivity {
         post_button = findViewById(R.id.post_button);
         back_button = findViewById(R.id.backToPostButton);
 
-        // Command to create new post and update database
+        /**
+         * Command to create the new post and update database
+         */
         post_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +62,9 @@ public class MakingPostActivity extends AppCompatActivity {
                 Post newPost = new Post(text, postMaker, title);
 
 
-                // update Posts document in database:
+                /**
+                 * update Posts document in database
+                 */
                 postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -82,7 +86,9 @@ public class MakingPostActivity extends AppCompatActivity {
                     }
                 });
 
-                // update UserPosts document in database:
+                /**
+                 * update UserPosts document in database
+                 */
                 userPostsTestRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -110,12 +116,20 @@ public class MakingPostActivity extends AppCompatActivity {
                 });
 
                 Intent intent = new Intent(MakingPostActivity.this, CommunityActivity.class);
-                startActivity(intent);
-                showToast("Successful post");
+
+                if (!title.isEmpty()) {
+                    startActivity(intent);
+                    showToast("Successful post");
+                } else {
+                    startActivity(intent);
+                    showToast("Post Unsuccessful, Please include a Title");}
+
             }
         });
 
-        // Command to go back to community page:
+        /**
+         * Command to go back to community page:
+         */
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,9 +139,12 @@ public class MakingPostActivity extends AppCompatActivity {
         });
 
     }
-    // message when making post successfully
+
+    /**
+     * message when making post successfully
+     * @param text the text that is going to be displayed
+     */
     private void showToast(String text){
         Toast.makeText(MakingPostActivity.this, text, Toast.LENGTH_SHORT).show();
     }
 }
-

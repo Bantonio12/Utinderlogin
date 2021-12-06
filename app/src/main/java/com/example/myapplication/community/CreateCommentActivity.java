@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,6 +44,10 @@ public class CreateCommentActivity extends AppCompatActivity {
 
         String title = intent.getExtras().getString("title");
 
+        int id = intent.getExtras().getInt("id");
+
+        Object mention = intent.getExtras().get("mention");
+
         //Command to create the comment and update database
         postComment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +57,11 @@ public class CreateCommentActivity extends AppCompatActivity {
 
                 String comment = commentInput.getText().toString();
 
-                Post newComment = new Post(comment, postMaker);
+                HashMap newComment = new HashMap();
+
+                newComment.put("id", id);
+                newComment.put("text", comment);
+                newComment.put("mention", mention);
 
                 postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -92,5 +101,9 @@ public class CreateCommentActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    // message when making post successfully
+    private void showToast(String text){
+        Toast.makeText(CreateCommentActivity.this, text, Toast.LENGTH_SHORT).show();
     }
 }
