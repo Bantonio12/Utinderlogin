@@ -21,14 +21,24 @@
             android:id="@+id/replyCommentButton"
             android:layout_alignParentRight="true"/>
 
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/userName"
+              android:text="userName"
+              android:textSize="18sp"
+              android:textColor="@color/uoftcoloourr"
+              android:layout_below="@id/backToPostButton"
+              android:layout_marginTop="7dp"
+              android:layout_marginStart="7dp"/>
+
     <TextView android:layout_width="406dp"
               android:layout_height="142dp"
               android:id="@+id/commentText"
               android:text="Hello"
               android:layout_marginLeft="5dp"
               android:layout_marginRight="5dp"
-              android:layout_marginTop="0dp"
-              android:layout_below="@id/backToPostButton" android:textSize="18sp"/>
+              android:layout_marginTop="5dp"
+              android:layout_below="@id/userName" android:textSize="18sp"/>
     <TextView android:layout_width="match_parent"
               android:layout_height="25dp"
               android:id="@+id/commentLabel"
