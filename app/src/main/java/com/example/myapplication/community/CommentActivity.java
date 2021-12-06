@@ -124,7 +124,7 @@ public class CommentActivity extends AppCompatActivity {
         replyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CommentActivity.this, CreateCommentCActivity.class);
+                Intent intent = new Intent(CommentActivity.this, CreateCommentActivity.class);
                 intent.putExtra("title", parentTitle);
                 intent.putExtra("comment_path", currText);
                 startActivity(intent);
