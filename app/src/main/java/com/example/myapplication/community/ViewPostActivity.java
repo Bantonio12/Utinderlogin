@@ -68,8 +68,8 @@ public class ViewPostActivity extends AppCompatActivity {
                     /** currPost.get("comments") is an array list of dictionarys (which are comments) */
                     for(HashMap comment: allComments){
                         if (!comment.equals(null)){
-                        comment_text.add(comment.get("id") + ": @" + comment.get("mention")
-                                + " " + comment.get("text").toString());}
+                        comment_text.add("id" + comment.get("id") + ":" + "\n      @id" + comment.get("mention")
+                                + "   " + comment.get("text").toString());}
                     }
                 }
             }
@@ -104,7 +104,7 @@ public class ViewPostActivity extends AppCompatActivity {
                 Intent intent = new Intent(ViewPostActivity.this, CreateCommentActivity.class);
                 intent.putExtra("title", title);
                 intent.putExtra("id", allComments.size());
-                intent.putExtra("mention", "Main");
+                intent.putExtra("mention", "_Main");
                 startActivity(intent);
             }
         });
