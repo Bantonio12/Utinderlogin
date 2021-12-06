@@ -106,8 +106,6 @@ public class ViewPostActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                ArrayList<String> commentPath = new ArrayList<>();
-                commentPath.add(comment_text.get(position));
                 Intent intent = new Intent(ViewPostActivity.this, CommentActivity.class);
                 intent.putExtra("parent", postTitle.getText());
                 intent.putExtra("comment_path", comment_text.get(position));

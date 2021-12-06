@@ -34,7 +34,9 @@ public class CreateCommentActivity extends AppCompatActivity {
         backToPost = findViewById(R.id.backToPost);
         commentInput = findViewById(R.id.makingCommentText);
 
-        //reference to firestore database
+        /**
+         * reference to firestore database
+         */
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference postsRef = db.document("community/Posts");
         FirebaseUser postMaker = FirebaseAuth.getInstance().getCurrentUser();
@@ -43,7 +45,9 @@ public class CreateCommentActivity extends AppCompatActivity {
 
         String title = intent.getExtras().getString("title");
 
-        //Command to create the comment and update database
+        /**
+         * Command to create the comment and update database
+         */
         postComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +87,9 @@ public class CreateCommentActivity extends AppCompatActivity {
             }
         });
 
-        // Command to go back to main post
+        /**
+         * Command to go back to main post
+         */
         backToPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
