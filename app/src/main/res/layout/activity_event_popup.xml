@@ -7,7 +7,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/main"
-                tools:context=".event.EventPopUp" android:background="@color/white">
+                tools:context=".event.ui.EventPopUp" android:background="@color/white">
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -16,10 +16,8 @@
             android:textColor="@color/uoftcoloourr"
             android:textSize="32sp"
             android:fontFamily="@font/catamaran_semibold"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="5dp"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
             android:layout_marginBottom="2dp"
             android:gravity="center_horizontal|top"
             android:textColorHint="@color/uoftcoloourr">

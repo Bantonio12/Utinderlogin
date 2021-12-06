@@ -56,7 +56,7 @@
     <string name="Post4">post4</string>
     <string name="Post5">post5</string>
     <string name="myaccount">My Account</string>
-    <string name="following">Followings</string>
+    <string name="followings">Followings</string>
     <string name="user">user</string>
     <string name="follower">Followers</string>
     <string name="addingevent">Create Event</string>
@@ -77,6 +77,31 @@
     <string name="itemname">Event</string>
     <string name="itemtime">HH:MM PM</string>
     <string name="itemlocation">Location</string>
-
+    <string name="cancel">Cancel</string>
+    <string name="otheruser">User Name</string>
+    <string name="accountt">Account</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="home">Home</string>
+    <string name="eventt">Event</string>
+    <string name="ADD">Add</string>
+    <string name="addingtask">Add your task!</string>
+    <string name="taskname"></string>
+    <string name="followingnumber">100</string>
+    <string name="followernumber">100</string>
+    <string name="follow">Follow</string>
+    <string name="following">Following</string>
+    <string name="fillout">Please fill out the information!</string>
+    <string name="logout">Log out</string>
+    <string name="myacc">My Account</string>
+    <string name="posttt">Post</string>
+    <string name="Back">Back</string>
+    <string name="saysmth">Say Something!</string>
+    <string name="cmt">Comment</string>
+    <string name="cmtsmth">Comment Something!</string>
+    <string name="cmts">Comments:</string>
+    <string name="reply">Reply</string>
+    <string name="potimer">Pomodoro Timer</string>
+    <string name="makepost">Make Post</string>
+    <string name="posttitle">Post Title</string>
 
 </resources>

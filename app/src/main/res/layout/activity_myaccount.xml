@@ -5,92 +5,131 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".community.CommunityActivity" android:background="@color/white">
+        tools:context=".me.MyAccount" android:background="@color/white">
 
+
+    <TextView
+            android:text="@string/myacc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/username"
+            android:fontFamily="@font/catamaran_semibold" android:textSize="25sp"
+            android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
+            android:layout_marginLeft="40dp" android:layout_marginStart="40dp" android:layout_marginTop="30dp"/>
+
+
+    <TextView
+            android:text="@string/following"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/following"
+            android:fontFamily="@font/catamaran_medium" android:textSize="20sp"
+            android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
+            android:layout_marginLeft="40dp" android:layout_marginStart="40dp" android:layout_marginTop="20dp"
+            android:layout_below="@+id/username"/>
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/community"
-            android:fontFamily="@font/catamaran_semibold" android:textSize="30sp"
-            android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
-            android:gravity="start|top"
-            android:ems="10"
-            android:id="@+id/communitytext" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="40dp"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="80dp"/>
-
-    <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/make_post"
-            android:text="@string/makepost"
-            android:backgroundTint="@color/uoftcoloourr"
-            android:layout_marginTop="80dp"
-            android:layout_alignRight="@id/communitytext">
-
-    </Button>
-
+            android:id="@+id/following_number"
+            android:text="@string/followingnumber"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@+id/following"
+            android:padding="4dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/username">
+    </TextView>
 
     <LinearLayout
+            android:id="@+id/followinglayout"
+            android:layout_width="350dp"
+            android:layout_height="170dp"
+            android:layout_below="@+id/following"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:background="@drawable/round_shape_tedurikk"
+            android:layout_centerHorizontal="true">
+
         <ListView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="150dp"
-                android:layout_marginBottom="130dp"
-                android:id="@+id/posts">
-        </ListView>
-    </LinearLayout>
-<!--    <ScrollView-->
-<!--            android:layout_width="300dp" android:layout_height="100dp"-->
-<!--            android:fillViewport="false"-->
-<!--            android:layout_alignTop="@+id/communitytext" android:layout_marginTop="80dp"-->
-<!--            android:layout_marginStart="50dp"-->
-<!--            >-->
-<!--        <LinearLayout-->
-<!--                android:layout_width="wrap_content" android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical">-->
-<!--            <ListView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:id="@+id/posts">-->
+                android:layout_height="wrap_content"
+                android:id="@+id/followinglist">
 
-<!--            </ListView>-->
-<!--            <TextView-->
-<!--                    android:text="@string/Post1"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content" android:id="@+id/textView22"-->
-<!--                    android:fontFamily="@font/catamaran_medium" android:textSize="20sp"-->
-<!--                    android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"/>-->
-<!--            <TextView-->
-<!--                    android:text="@string/Post2"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content" android:id="@+id/textView23"-->
-<!--                    android:fontFamily="@font/catamaran_medium" android:textSize="20sp"-->
-<!--                    android:textColorHint="@color/uoftcoloourr" android:textColor="@color/uoftcoloourr"/>-->
-<!--            <TextView-->
-<!--                    android:text="@string/Post3"-->
-<!--                    android:layout_width="match_parent" android:layout_height="wrap_content"-->
-<!--                    android:id="@+id/textView24" android:fontFamily="@font/catamaran_medium"-->
-<!--                    android:textSize="20sp" android:textColor="@color/uoftcoloourr"-->
-<!--                    android:textColorHint="@color/uoftcoloourr"/>-->
-<!--            <TextView-->
-<!--                    android:text="@string/Post4"-->
-<!--                    android:layout_width="match_parent" android:layout_height="wrap_content"-->
-<!--                    android:id="@+id/textView25" android:fontFamily="@font/catamaran_medium"-->
-<!--                    android:textSize="20sp" android:textColor="@color/uoftcoloourr"-->
-<!--                    android:textColorHint="@color/uoftcoloourr"/>-->
-<!--            <TextView-->
-<!--                    android:text="@string/Post5"-->
-<!--                    android:layout_width="match_parent" android:layout_height="wrap_content"-->
-<!--                    android:id="@+id/textView26" android:fontFamily="@font/catamaran_medium"-->
-<!--                    android:textSize="20sp" android:textColor="@color/uoftcoloourr"-->
-<!--                    android:textColorHint="@color/uoftcoloourr"/>-->
-<!--        </LinearLayout>-->
-<!--        -->
-<!--    </ScrollView>-->
+        </ListView>
+
+    </LinearLayout>
+
+    <TextView
+            android:text="@string/follower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:fontFamily="@font/catamaran_medium"
+            android:textColorHint="@color/uoftcoloourr" android:textColor="@color/uoftcoloourr"
+            android:textSize="20sp"
+            android:layout_marginLeft="40dp" android:layout_marginStart="40dp"
+            android:layout_below="@+id/followinglayout"
+            android:layout_marginTop="20dp"
+            android:id="@+id/follower"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/follower_number"
+            android:text="@string/followernumber"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@+id/follower"
+            android:padding="4dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/followinglayout">
+    </TextView>
+
+    <LinearLayout
+            android:id="@+id/followerlayout"
+            android:layout_width="350dp"
+            android:layout_height="170dp"
+            android:layout_below="@+id/follower"
+            android:orientation="vertical"
+            android:background="@drawable/round_shape_tedurikk"
+            android:layout_centerHorizontal="true">
+
+        <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/followerlist">
+
+        </ListView>
+
+    </LinearLayout>
+
+    <Button
+            android:text="@string/back"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:id="@+id/backbutton"
+            app:backgroundTint="@color/greyy"
+            android:fontFamily="@font/catamaran_medium"
+            android:textSize="15sp"
+            android:textColor="@color/darkgrey"
+            android:textColorHint="@color/darkgrey"
+            android:layout_marginStart="135dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/followerlayout">
+    </Button>
+
+    <Button
+            android:text="@string/logout"
+            android:layout_width="83dp"
+            android:layout_height="40dp"
+            android:id="@+id/logoutbutton"
+            app:backgroundTint="@color/greyy"
+            android:fontFamily="@font/catamaran_medium"
+            android:textSize="12sp"
+            android:textColor="@color/darkgrey"
+            android:textColorHint="@color/darkgrey"
+            android:layout_marginStart="210dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/followerlayout">
+    </Button>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -160,6 +199,4 @@
                 android:layout_marginTop="35dp" android:layout_marginStart="260dp">
         </TextView>
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-
 </RelativeLayout>

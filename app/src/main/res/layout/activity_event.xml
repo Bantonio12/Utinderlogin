@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".event.ActivityEvent" android:background="@color/white">
+        tools:context=".event.ui.ActivityEvent" android:background="@color/white">
 
     <TextView
             android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:firstDayOfWeek="1" android:selectedDateVerticalBar="@color/uoftcoloourr"
             android:id="@+id/Calendar_in_eventview" android:layout_centerInParent="true"
             android:layout_marginBottom="70dp"
-            android:theme="@style/calendarview" android:background="@color/darkgrey"
+            android:theme="@style/calendarview" android:background="@color/uoftcoloourr"
             android:dateTextAppearance="@style/CalenderViewDateCustomText"
             android:weekDayTextAppearance="@style/CalenderViewWeekCustomText">
     </CalendarView>
@@ -44,33 +44,71 @@
             android:layout_marginRight="35dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="420dp" android:layout_height="100dp"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
             app:backgroundTint="@color/white" android:layout_alignParentBottom="true"
-            android:id="@+id/bottomNavigationView" android:layout_marginBottom="-20dp">
+            android:layout_marginBottom="10dp">
+
         <Button
-                android:text="@string/nothing"
-                android:layout_width="50dp"
-                android:layout_height="60dp" android:id="@+id/homebutton"
-                android:layout_marginLeft="30dp" android:layout_marginStart="50dp" android:layout_marginBottom="20dp"
-                app:backgroundTint="@color/greyy"/>
+                android:text="@string/nothing" android:background="@drawable/icons8_home_50"
+                android:layout_width="35dp" android:layout_height="35dp" android:id="@+id/homebutton"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="20dp" app:backgroundTint="@color/uoftcoloourr"/>
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:text="@string/home" android:textSize="12sp"
+                android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
+                android:layout_marginTop="35dp" android:layout_marginStart="31dp">
+        </TextView>
+
         <Button
-                android:text="@string/nothing"
-                android:layout_width="50dp"
-                android:layout_height="60dp" android:id="@+id/eventbutton"
-                android:layout_marginLeft="30dp" android:layout_marginStart="140dp" android:layout_marginBottom="20dp"
+                android:text="@string/nothing" android:background="@drawable/icons8_calendar_50"
+                android:layout_width="35dp" android:layout_height="35dp" android:id="@+id/eventbutton"
+                android:layout_marginStart="105dp" android:layout_marginBottom="20dp"
                 app:backgroundTint="@color/uoftcoloourr"/>
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:text="@string/eventt" android:textSize="12sp"
+                android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
+                android:layout_marginTop="35dp" android:layout_marginStart="107dp"
+        >
+        </TextView>
+
         <Button
-                android:text="@string/nothing"
-                android:layout_width="50dp"
-                android:layout_height="60dp" android:id="@+id/communitybutton"
-                android:layout_marginLeft="30dp" android:layout_marginStart="230dp" android:layout_marginBottom="20dp"
-                app:backgroundTint="@color/greyy"/>
+                android:text="@string/nothing" android:background="@drawable/icons8_community_grants_64"
+                android:layout_width="35dp" android:layout_height="35dp" android:id="@+id/communitybutton"
+                android:layout_marginStart="185dp" android:layout_marginBottom="20dp"
+                app:backgroundTint="@color/uoftcoloourr"/>
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:text="@string/community" android:textSize="12sp"
+                android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
+                android:layout_marginTop="35dp"
+                android:layout_marginStart="175dp">
+        </TextView>
+
         <Button
-                android:text="@string/nothing"
-                android:layout_width="50dp"
-                android:layout_height="60dp" android:id="@+id/mebutton"
-                android:layout_marginLeft="30dp" android:layout_marginStart="320dp" android:layout_marginBottom="20dp"
-                app:backgroundTint="@color/greyy"/>
+                android:text="@string/nothing" android:background="@drawable/icons8_account_50"
+                android:layout_width="35dp" android:layout_height="35dp" android:id="@+id/mebutton"
+                android:layout_marginStart="340dp" android:layout_marginBottom="20dp"
+                app:backgroundTint="@color/uoftcoloourr"/>
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:text="@string/accountt" android:textSize="12sp"
+                android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
+                android:layout_marginTop="35dp" android:layout_marginStart="338dp">
+        </TextView>
+
+        <Button
+                android:text="@string/nothing" android:background="@drawable/clock__1_"
+                android:layout_width="35dp" android:layout_height="35dp" android:id="@+id/podomorobutton"
+                android:layout_marginStart="267dp" android:layout_marginBottom="20dp"
+                app:backgroundTint="@color/uoftcoloourr"/>
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:text="@string/pomodoro" android:textSize="12sp"
+                android:textColor="@color/uoftcoloourr" android:textColorHint="@color/uoftcoloourr"
+                android:layout_marginTop="35dp" android:layout_marginStart="260dp">
+        </TextView>
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </RelativeLayout>
