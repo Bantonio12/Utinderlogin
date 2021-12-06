@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".event.CreatingEvent" android:background="@color/white">
+        tools:context=".event.ui.CreatingEvent" android:background="@color/white">
 
     <Button
             android:text="@string/createevent"
@@ -201,7 +201,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/fail_message"
             android:textSize="12sp" android:textColor="@color/design_default_color_error"
-            android:layout_alignTop="@+id/createingeventbutton" android:layout_marginTop="40dp"
+            android:layout_alignTop="@+id/cancel_button" android:layout_marginTop="60dp"
+            android:layout_centerInParent="true"
+            android:visibility="invisible">
+    </TextView>
+    <TextView
+            android:text="@string/fillout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/fillout_message"
+            android:textSize="12sp" android:textColor="@color/design_default_color_error"
+            android:layout_alignTop="@+id/cancel_button" android:layout_marginTop="60dp"
             android:layout_centerInParent="true"
             android:visibility="invisible">
     </TextView>

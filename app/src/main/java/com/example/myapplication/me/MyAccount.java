@@ -7,9 +7,9 @@ import android.view.View;
 import android.content.Intent;
 import android.widget.Button;
 
+import com.example.myapplication.community.CommunityActivity;
 import com.example.myapplication.homepage.Homepage;
-import com.example.myapplication.event.ActivityEvent;
-import com.example.myapplication.community.Community;
+import com.example.myapplication.event.ui.ActivityEvent;
 
 public class MyAccount extends AppCompatActivity {
 
@@ -41,7 +41,7 @@ public class MyAccount extends AppCompatActivity {
         communitybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent communitybutton_intent = new Intent(MyAccount.this, Community.class);
+                Intent communitybutton_intent = new Intent(MyAccount.this, CommunityActivity.class);
                 startActivity(communitybutton_intent);
                 finish();
             }
@@ -49,7 +49,7 @@ public class MyAccount extends AppCompatActivity {
         mebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mebutton_intent = new Intent(MyAccount.this, MyAccount.class);
+                Intent mebutton_intent = new Intent(MyAccount.this, OtherAccount.class);
                 startActivity(mebutton_intent);
                 finish();
             }

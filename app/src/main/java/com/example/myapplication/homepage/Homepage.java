@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,9 +17,9 @@ import java.util.ArrayList;
 
 import com.example.myapplication.R;
 
-import com.example.myapplication.event.ActivityEvent;
-import com.example.myapplication.community.Community;
+import com.example.myapplication.event.ui.ActivityEvent;
 import com.example.myapplication.me.MyAccount;
+import com.example.myapplication.community.CommunityActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 
@@ -103,7 +102,7 @@ public class Homepage extends AppCompatActivity {
         communitybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent communitybutton_intent = new Intent(Homepage.this, Community.class);
+                Intent communitybutton_intent = new Intent(Homepage.this, CommunityActivity.class);
                 startActivity(communitybutton_intent);
                 finish();
             }

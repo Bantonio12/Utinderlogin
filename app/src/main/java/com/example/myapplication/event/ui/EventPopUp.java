@@ -1,4 +1,4 @@
-package com.example.myapplication.event;
+package com.example.myapplication.event.ui;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;

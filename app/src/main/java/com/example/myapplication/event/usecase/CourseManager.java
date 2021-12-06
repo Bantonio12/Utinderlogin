@@ -1,4 +1,10 @@
-package com.example.myapplication.event;
+package com.example.myapplication.event.usecase;
+
+import com.example.myapplication.event.entities.Exam;
+import com.example.myapplication.event.entities.Others;
+import com.example.myapplication.event.entities.Assignment;
+import com.example.myapplication.event.entities.Course;
+import com.example.myapplication.event.entities.Event;
 
 import java.util.ArrayList;
 import java.util.HashMap;

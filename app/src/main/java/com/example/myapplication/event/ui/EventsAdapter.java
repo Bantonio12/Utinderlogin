@@ -1,4 +1,4 @@
-package com.example.myapplication.event;
+package com.example.myapplication.event.ui;
 
 import java.util.ArrayList;
 import java.util.HashMap;

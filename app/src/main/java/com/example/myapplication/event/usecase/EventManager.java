@@ -1,6 +1,8 @@
-package com.example.myapplication.event;
+package com.example.myapplication.event.usecase;
 
-import java.lang.reflect.Array;
+import com.example.myapplication.event.entities.EventFactory;
+import com.example.myapplication.event.entities.Event;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
