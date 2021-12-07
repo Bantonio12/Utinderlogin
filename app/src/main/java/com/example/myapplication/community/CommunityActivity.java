@@ -51,7 +51,6 @@ public class CommunityActivity extends AppCompatActivity {
                     for(Object key: postMap.keySet()){
                         titles.add(key.toString());
                     }
-
                     ArrayAdapter arrayAdapter = new PostAdapter(CommunityActivity.this, R.layout.activity_post_item, titles);
 
                     posts.setAdapter(arrayAdapter);
