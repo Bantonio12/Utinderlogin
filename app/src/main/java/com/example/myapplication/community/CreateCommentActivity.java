@@ -55,6 +55,8 @@ public class CreateCommentActivity extends AppCompatActivity {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 DocumentReference postsRef = db.document("community/Posts");
 
+
+                HashMap newPostMap = new HashMap();
                 postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {

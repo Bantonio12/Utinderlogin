@@ -18,13 +18,10 @@ public class PostManager {
     public Post makeComment(String comment, int id, Object mention, String title) {
 
             HashMap currPost = (HashMap) postList.get(title);
-            System.out.println(currPost);
 
             Post newPost = new Post((String) currPost.get("text"),
                     (FirebaseUser) currPost.get("postMaker"), (String) currPost.get("title"));
-            System.out.println(newPost.getComments().toString());
 
-            System.out.println(postList);
             newPost.setComments((ArrayList<HashMap>) currPost.get("comments"));
 
 
