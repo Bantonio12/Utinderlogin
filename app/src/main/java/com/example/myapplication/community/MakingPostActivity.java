@@ -148,5 +148,3 @@ public class MakingPostActivity extends AppCompatActivity {
         Toast.makeText(MakingPostActivity.this, text, Toast.LENGTH_SHORT).show();
     }
 }
-
-

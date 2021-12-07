@@ -1,3 +1,3 @@
 # UTinder
 
-When you work with the android app, in the build.gradle file, please change the dependencies of the android into the version that is appropriate to your local version. However, when you push to the main branch, please change into 7.0.3.
+When you work with the android app, in the build.gradle file, please change the dependencies of the android into the version that is appropriate to your local version. However, when you push to the main branch, please change into 7.0.3. For people who are working in Mac, the android version is 4.2.0. 

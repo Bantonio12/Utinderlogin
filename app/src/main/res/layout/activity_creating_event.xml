@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".event.CreatingEvent" android:background="@color/white">
+        tools:context=".event.ui.CreatingEvent" android:background="@color/white">
 
     <Button
             android:text="@string/createevent"
@@ -13,6 +13,16 @@
             app:backgroundTint="@color/greyy" android:fontFamily="@font/catamaran_medium"
             android:textSize="13sp" android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"
             android:layout_alignTop="@+id/categorizing" android:layout_marginTop="150dp"
+            android:layout_centerInParent="true">
+    </Button>
+    <Button
+            android:text="@string/cancel"
+            android:layout_width="118dp" android:layout_height="45dp"
+            android:id="@+id/cancel_button"
+            app:backgroundTint="@color/greyy" android:fontFamily="@font/catamaran_medium"
+            android:textSize="13sp" android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"
+            android:layout_alignTop="@+id/location" android:layout_marginTop="150dp"
+            android:layout_alignLeft="@+id/createingeventbutton"
             android:layout_centerInParent="true">
     </Button>
 
@@ -53,33 +63,33 @@
             android:layout_centerInParent="true" tools:ignore="LabelFor">
     </EditText>
 
-    <TextView
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:id="@+id/eventdescription"
-            android:text="@string/description" android:textColor="@color/uoftcoloourr"
-            android:textColorHint="@color/uoftcoloourr"
-            android:fontFamily="@font/catamaran_light" android:textSize="20sp"
-            android:layout_alignTop="@id/puttingevent" android:layout_marginTop="45dp"
-            android:layout_marginLeft="50dp" android:layout_marginStart="50dp">
-    </TextView>
+    <!--    <TextView-->
+    <!--            android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+    <!--            android:id="@+id/eventdescription"-->
+    <!--            android:text="@string/description" android:textColor="@color/uoftcoloourr"-->
+    <!--            android:textColorHint="@color/uoftcoloourr"-->
+    <!--            android:fontFamily="@font/catamaran_light" android:textSize="20sp"-->
+    <!--            android:layout_alignTop="@id/puttingevent" android:layout_marginTop="45dp"-->
+    <!--            android:layout_marginLeft="50dp" android:layout_marginStart="50dp">-->
+    <!--    </TextView>-->
 
-    <EditText
-            android:layout_width="320dp" android:layout_height="30dp"
-            android:id="@+id/puttingdescription" android:autofillHints="@string/description"
-            android:inputType="textShortMessage" android:background="@drawable/button_border"
-            android:text="@string/nothing" android:ems="10"
-            android:fontFamily="@font/catamaran_light" android:textSize="15sp"
-            android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"
-            android:layout_alignTop="@+id/eventdescription" android:layout_marginTop="45dp"
-            android:layout_centerInParent="true" tools:ignore="LabelFor">
-    </EditText>
+    <!--    <EditText-->
+    <!--            android:layout_width="320dp" android:layout_height="30dp"-->
+    <!--            android:id="@+id/puttingdescription" android:autofillHints="@string/description"-->
+    <!--            android:inputType="textShortMessage" android:background="@drawable/button_border"-->
+    <!--            android:text="@string/nothing" android:ems="10"-->
+    <!--            android:fontFamily="@font/catamaran_light" android:textSize="15sp"-->
+    <!--            android:textColor="@color/darkgrey" android:textColorHint="@color/darkgrey"-->
+    <!--            android:layout_alignTop="@+id/eventdescription" android:layout_marginTop="45dp"-->
+    <!--            android:layout_centerInParent="true" tools:ignore="LabelFor">-->
+    <!--    </EditText>-->
 
     <TextView
             android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/eventdate"
             android:text="@string/eventdate" android:textColor="@color/uoftcoloourr"
             android:textColorHint="@color/uoftcoloourr"
             android:fontFamily="@font/catamaran_light" android:textSize="20sp"
-            android:layout_alignTop="@id/puttingdescription" android:layout_marginTop="45dp"
+            android:layout_alignTop="@id/puttingevent" android:layout_marginTop="45dp"
             android:layout_marginLeft="50dp" android:layout_marginStart="50dp">
     </TextView>
 
@@ -88,7 +98,7 @@
             android:text="@string/date" android:textColor="@color/uoftcoloourr"
             android:textColorHint="@color/uoftcoloourr"
             android:fontFamily="@font/catamaran_light" android:textSize="15sp"
-            android:layout_alignTop="@id/puttingdescription" android:layout_marginTop="52dp"
+            android:layout_alignTop="@id/puttingevent" android:layout_marginTop="52dp"
             android:layout_marginLeft="103dp" android:layout_marginStart="103dp">
     </TextView>
 
@@ -109,7 +119,7 @@
             android:text="@string/eventtime" android:textColor="@color/uoftcoloourr"
             android:textColorHint="@color/uoftcoloourr"
             android:fontFamily="@font/catamaran_light" android:textSize="20sp"
-            android:layout_alignTop="@id/puttingdescription" android:layout_marginTop="45dp"
+            android:layout_alignTop="@id/puttingevent" android:layout_marginTop="45dp"
             android:layout_marginLeft="215dp" android:layout_marginStart="215dp">
     </TextView>
 
@@ -191,17 +201,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/fail_message"
             android:textSize="12sp" android:textColor="@color/design_default_color_error"
-            android:layout_alignTop="@+id/createingeventbutton" android:layout_marginTop="40dp"
+            android:layout_alignTop="@+id/cancel_button" android:layout_marginTop="60dp"
             android:layout_centerInParent="true"
             android:visibility="invisible">
     </TextView>
-
     <TextView
-            android:text="@string/create_event_success"
+            android:text="@string/fillout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/success_message"
-            android:textSize="12sp" android:textColor="@color/bluee"
-            android:layout_alignTop="@+id/createingeventbutton" android:layout_marginTop="40dp"
+            android:layout_height="wrap_content" android:id="@+id/fillout_message"
+            android:textSize="12sp" android:textColor="@color/design_default_color_error"
+            android:layout_alignTop="@+id/cancel_button" android:layout_marginTop="60dp"
             android:layout_centerInParent="true"
             android:visibility="invisible">
     </TextView>
