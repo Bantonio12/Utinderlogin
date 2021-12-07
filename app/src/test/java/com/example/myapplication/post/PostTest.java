@@ -3,44 +3,122 @@ package com.example.myapplication.post;
 import com.example.myapplication.event.ui.ActivityEvent;
 import com.example.myapplication.login.user.User;
 import com.example.myapplication.community.*;
+import com.google.firebase.auth.FirebaseUser;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static org.junit.Assert.*;
+
 public class PostTest {
+    private HashMap testingPostList;
+    private HashMap post1;
+    private HashMap post2;
+    private ArrayList comments;
+    private HashMap comment;
     private PostManager testManager;
-    private User testUser1;
+    private FirebaseUser testUser1;
     private User testUser2;
 
     @Before
     public void setUp() {
-        ArrayList testingPostList = new ArrayList();
-        HashMap post1 = new HashMap();
-        HashMap post2 = new HashMap();
-        HashMap post3 = new HashMap();
+        testingPostList = new HashMap();
+        post1 = new HashMap();
+        post2 = new HashMap();
 
-        post1.put("title", "")
+        comments = new ArrayList();
+        comment = new HashMap();
+        comment.put("text", "hasda");
+        comment.put("id", 3);
+        comment.put("mention", "id0");
+        comments.add(comment);
 
-        testManager = new PostManager();
-        testUser1 = new User("michael", "123@utoronto.ca", "123abc");
+
+        testUser1 = null;
         testUser2 = new User("kex", "456@utoronto.ca", "456def");
+
+        post1.put("title", "hello_world");
+        post1.put("text", "im aliiiveee");
+        post1.put("comments", comments);
+        post1.put("postMaker", (FirebaseUser) testUser1);
+
+        post2.put("title", "good morning");
+        post2.put("text", "wonderful blue skieesss for daysss");
+        post2.put("comments", comments);
+        post2.put("postMaker", (FirebaseUser) testUser1);
+
+        testingPostList.put("hello_world", post1);
+        testingPostList.put("good morning", post2);
+
+        testManager = new PostManager(testingPostList);
+
     }
 
 
-//    @Test
-//    // Test to see if posts can be created
-//    public void createPostTest() {
-//        String text = "Testing testing testingggg!!";
-//        User user = testUser1;
-//        String title = "Test 1!!!";
-//        testManager.makePost(text,/* user,*/ title);
-//        Post createdPost = testManager.getPostList().get(0);
-//        String actualText = createdPost.getText();
-//        String actualTitle = createdPost.getTitle();
-//        assert text.equals(actualText) && title.equals(actualTitle);
-//    }
+    @Test
+    public void makeCommentTitleTest() {
+        String comment = "Testing testing testingggg!!";
+        int id = 0;
+        Object mention = "_main";;
+        String title = "hello_world";
+        Post createdPost = testManager.makeComment(comment, id, mention, title);
+        String createdTitle = createdPost.getTitle();
+        assertTrue(createdTitle.equals(title));
+    }
+
+
+    @Test
+    public void makeCommentTextTest() {
+        String comment = "Testing testing testingggg!!";
+        int id = 0;
+        Object mention = "_main";;
+        String title = "hello_world";
+        Post createdPost = testManager.makeComment(comment, id, mention, title);
+        String createdText = createdPost.getText();
+        assertTrue(createdText.equals("im aliiiveee"));
+    }
+
+
+
+
+    @Test
+    public void makeCommentCommentTextTest() {
+        String comment = "Testing testing testingggg!!";
+        int id = 0;
+        Object mention = "_main";;
+        String title = "hello_world";
+        Post createdPost = testManager.makeComment(comment, id, mention, title);
+        ArrayList createdCommentList = createdPost.getComments();
+        HashMap createdComment = (HashMap) createdCommentList.get(1);
+        assertTrue(createdComment.get("text") == comment);
+    }
+
+    @Test
+    public void makeCommentCommentIdTest() {
+        String comment = "Testing testing testingggg!!";
+        int id = 0;
+        Object mention = "_main";;
+        String title = "hello_world";
+        Post createdPost = testManager.makeComment(comment, id, mention, title);
+        ArrayList createdCommentList = createdPost.getComments();
+        HashMap createdComment = (HashMap) createdCommentList.get(1);
+        assertTrue(createdComment.get("id").equals(id));
+    }
+
+    @Test
+    public void makeCommentCommentMentionTest() {
+        String comment = "Testing testing testingggg!!";
+        int id = 0;
+        Object mention = "_main";;
+        String title = "hello_world";
+        Post createdPost = testManager.makeComment(comment, id, mention, title);
+        ArrayList createdCommentList = createdPost.getComments();
+        HashMap createdComment = (HashMap) createdCommentList.get(1);
+        assertTrue(createdComment.get("mention").equals(mention));
+    }
+
 //
 //    @Test
 //    // Test to see if posts can be deleted

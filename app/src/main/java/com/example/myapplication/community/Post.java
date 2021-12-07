@@ -98,17 +98,4 @@ public class Post {
      */
     public void removeComment(Post current_comment){ this.comments.remove(current_comment); }
 
-    /**
-     * add a like to the post
-     */
-    public void addLike(){ this.likes += 1; }
-
-    /**
-     * Remove a like from the post
-     */
-    public void removeLike() {
-        if (this.likes > 0) {
-            this.likes -= 1;
-        }
-    }
 }
