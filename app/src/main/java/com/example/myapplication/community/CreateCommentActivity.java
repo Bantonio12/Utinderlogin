@@ -57,35 +57,47 @@ public class CreateCommentActivity extends AppCompatActivity {
 
                 String comment = commentInput.getText().toString();
 
-                HashMap newComment = new HashMap();
+//                HashMap newComment = new HashMap();
+//
+//                newComment.put("id", id);
+//                newComment.put("text", comment);
+//                newComment.put("mention", mention);
 
-                newComment.put("id", id);
-                newComment.put("text", comment);
-                newComment.put("mention", mention);
+                DataAccess rawData = new DataAccess();
+                PostDataConverter converter = new PostDataConverter(rawData);
+                HashMap newPost = converter.makeComment(comment, id, mention, title);
+                rawData.updateData(newPost);
 
-                postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if(task.isSuccessful()){
-                            DocumentSnapshot document = task.getResult();
-                            HashMap postList = (HashMap) document.get("PostList");
-                            HashMap currPost = (HashMap) postList.get(title);
 
-                            ArrayList currComments = (ArrayList) currPost.get("comments");
-                            currComments.add(newComment);
 
-                            currPost.put("comments", currComments);
+//                postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                        if(task.isSuccessful()){
+//                            DocumentSnapshot document = task.getResult();
+//                            HashMap postList = (HashMap) document.get("PostList");
+//                            HashMap currPost = (HashMap) postList.get(title);
 
-                            postList.put(title, currPost);
+//                            PostDataConverter converter = new PostDataConverter(postList);
+//                            converter.makeComment(id, comment, mention, title);
 
-                            HashMap newData = new HashMap<>();
 
-                            newData.put("PostList", postList);
 
-                            postsRef.set(newData);
-                        }
-                    }
-                });
+//                            ArrayList currComments = (ArrayList) currPost.get("comments");
+//                            currComments.add(newComment);
+//
+//                            currPost.put("comments", currComments);
+//
+//                            postList.put(title, currPost);
+//
+//                            HashMap newData = new HashMap<>();
+//
+//                            newData.put("PostList", postList);
+//
+//                            postsRef.set(newData);
+//                        }
+//                    }
+//                });
 
                 intent.putExtra("title", title);
                 startActivity(intent);

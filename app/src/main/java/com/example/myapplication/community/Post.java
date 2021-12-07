@@ -81,10 +81,16 @@ public class Post {
     public FirebaseUser getPostMaker(){return this.postMaker; }
 
     /**
-     * Setter method for the comments of post
+     * Adder method for the comments of post
      * @param comment the comment that should be added into the post
      */
     public void addComment(HashMap comment) { this.comments.add(comment); }
+
+    /**
+     * Settter method for the comments of a post
+     * @param comments array list of hashmaps (comments)
+     */
+    public void setComments(ArrayList<HashMap> comments) {this.comments = comments; }
 
     /**
      * Remove the comment from the post
