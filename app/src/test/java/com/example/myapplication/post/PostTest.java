@@ -20,6 +20,7 @@ public class PostTest {
         testUser2 = new User("kex", "456@utoronto.ca", "456def");
     }
 
+
 //    @Test
 //    // Test to see if posts can be created
 //    public void createPostTest() {
