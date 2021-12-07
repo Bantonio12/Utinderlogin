@@ -69,7 +69,7 @@ public class ViewPostActivity extends AppCompatActivity {
                     for(HashMap comment: allComments){
                         if (!comment.equals(null)){
                             comment_text.add("id" + comment.get("id") + ":" + "\n      @id" + comment.get("mention")
-                                    + "   " + comment.get("text").toString());}
+                                    + "   " + comment.get("text"));}
                     }
                 }
             }

@@ -35,11 +35,6 @@ public class CreateCommentActivity extends AppCompatActivity {
         backToPost = findViewById(R.id.backToPost);
         commentInput = findViewById(R.id.makingCommentText);
 
-        //reference to firestore database
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference postsRef = db.document("community/Posts");
-        FirebaseUser postMaker = FirebaseAuth.getInstance().getCurrentUser();
-
         Intent intent = getIntent();
 
         String title = intent.getExtras().getString("title");
@@ -57,47 +52,29 @@ public class CreateCommentActivity extends AppCompatActivity {
 
                 String comment = commentInput.getText().toString();
 
-//                HashMap newComment = new HashMap();
-//
-//                newComment.put("id", id);
-//                newComment.put("text", comment);
-//                newComment.put("mention", mention);
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                DocumentReference postsRef = db.document("community/Posts");
 
-                DataAccess rawData = new DataAccess();
-                PostDataConverter converter = new PostDataConverter(rawData);
-                HashMap newPost = converter.makeComment(comment, id, mention, title);
-                rawData.updateData(newPost);
+                postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()){
+                            DocumentSnapshot document = task.getResult();
+                            HashMap postMap = (HashMap) document.get("PostList");
 
+                            PostDataConverter converter = new PostDataConverter(postMap);
+                            HashMap newPost = converter.makeComment(id, comment, mention, title);
 
+                            postMap.put(title, newPost);
 
-//                postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                        if(task.isSuccessful()){
-//                            DocumentSnapshot document = task.getResult();
-//                            HashMap postList = (HashMap) document.get("PostList");
-//                            HashMap currPost = (HashMap) postList.get(title);
+                            HashMap newPostList = new HashMap();
+                            newPostList.put("PostList", postMap);
 
-//                            PostDataConverter converter = new PostDataConverter(postList);
-//                            converter.makeComment(id, comment, mention, title);
+                            postsRef.set(newPostList);
 
-
-
-//                            ArrayList currComments = (ArrayList) currPost.get("comments");
-//                            currComments.add(newComment);
-//
-//                            currPost.put("comments", currComments);
-//
-//                            postList.put(title, currPost);
-//
-//                            HashMap newData = new HashMap<>();
-//
-//                            newData.put("PostList", postList);
-//
-//                            postsRef.set(newData);
-//                        }
-//                    }
-//                });
+                        }
+                    }
+                });
 
                 intent.putExtra("title", title);
                 startActivity(intent);
@@ -113,9 +90,5 @@ public class CreateCommentActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-    // message when making post successfully
-    private void showToast(String text){
-        Toast.makeText(CreateCommentActivity.this, text, Toast.LENGTH_SHORT).show();
     }
 }

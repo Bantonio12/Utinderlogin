@@ -6,30 +6,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PostDataConverter {
-    private DataAccess rawData;
 
-    public PostDataConverter(DataAccess rawData) {
-        this.rawData = rawData;
+    private HashMap postList;
+
+    public PostDataConverter(HashMap postList){
+        this.postList = postList;
     }
 
-
-    public HashMap makeComment(String comment, int id, Object mention, String title) {
-        PostManager p = new PostManager(rawData);
+    public HashMap makeComment(int id, String comment, Object mention, String title){
+        PostManager p = new PostManager(postList);
         Post newPost = p.makeComment(comment, id, mention, title);
-        HashMap post = convertPost(newPost);
-        return post;
+
+        HashMap newPostMap = new HashMap();
+
+        newPostMap.put("title", newPost.getTitle());
+        newPostMap.put("text", newPost.getText());
+        newPostMap.put("postMaker", newPost.getPostMaker());
+        newPostMap.put("comments", newPost.getComments());
+
+        return newPostMap;
+
     }
 
-    private HashMap convertPost(Post newPost) {
-        HashMap postMap = new HashMap();
-        String title = newPost.getTitle();
-        String text = newPost.getText();
-        ArrayList comments = newPost.getComments();
-        FirebaseUser postMaker = newPost.getPostMaker();
-        postMap.put("title", title);
-        postMap.put("text", text);
-        postMap.put("comments", comments);
-        postMap.put("postMaker", postMaker);
-        return postMap;
-    }
 }
