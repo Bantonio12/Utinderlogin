@@ -19,6 +19,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Page for making posts
+ * Can insert title / text of the post, and it will be created
+ */
 public class MakingPostActivity extends AppCompatActivity {
 
     EditText titleInput;
@@ -59,7 +63,11 @@ public class MakingPostActivity extends AppCompatActivity {
                 String title = titleInput.getText().toString();
                 String text = textInput.getText().toString();
 
-                Post newPost = new Post(text, postMaker, title);
+                HashMap postContent = new HashMap();
+                postContent.put("title", title);
+                postContent.put("text", text);
+                postContent.put("comments", new ArrayList<HashMap>());
+                postContent.put("postMaker", postMaker);
 
 
                 /**
@@ -73,9 +81,9 @@ public class MakingPostActivity extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             posts = (HashMap) document.get("PostList");
 
-                            posts.put(title, newPost);
-                            HashMap newData = new HashMap<>();
+                            posts.put(title, postContent);
 
+                            HashMap newData = new HashMap<>();
                             newData.put("PostList", posts);
                             postsRef.set(newData);
 
@@ -99,7 +107,7 @@ public class MakingPostActivity extends AppCompatActivity {
 
                             ArrayList currPostsList = (ArrayList) userPosts.get("admin");
 
-                            currPostsList.add(newPost);
+                            currPostsList.add(postContent);
 
                             userPosts.put("admin", currPostsList);
 

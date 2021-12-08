@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.example.myapplication.community.CommunityActivity;
 import com.example.myapplication.homepage.Homepage;
 import com.example.myapplication.event.ui.ActivityEvent;
+import com.example.myapplication.login.MainActivity;
 
 public class MyAccount extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class MyAccount extends AppCompatActivity {
         final Button eventbutton = findViewById(R.id.eventbutton);
         final Button communitybutton = findViewById(R.id.communitybutton);
         final Button mebutton = findViewById(R.id.mebutton);
+        final Button logOutButton = findViewById(R.id.logoutbutton);
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,6 +53,14 @@ public class MyAccount extends AppCompatActivity {
             public void onClick(View view) {
                 Intent mebutton_intent = new Intent(MyAccount.this, OtherAccount.class);
                 startActivity(mebutton_intent);
+                finish();
+            }
+        });
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent logOutButtonIntent = new Intent(MyAccount.this, MainActivity.class);
+                startActivity(logOutButtonIntent);
                 finish();
             }
         });

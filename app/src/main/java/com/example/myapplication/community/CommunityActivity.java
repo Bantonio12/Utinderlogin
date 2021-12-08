@@ -17,9 +17,16 @@ import com.google.firebase.firestore.*;
 
 import java.util.*;
 
+/**
+ * Page for showing all the main posts
+ * The main posts will be shown in a ListView showing each posts Title
+ * Main posts will be clickable and will enter into a new page once clicked
+ */
 public class CommunityActivity extends AppCompatActivity {
 
-    // Firestore database reference
+    /**
+     * Firestore database reference
+     */
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference postsRef = db.document("community/Posts");
 
@@ -40,7 +47,9 @@ public class CommunityActivity extends AppCompatActivity {
 
         ArrayList titles = new ArrayList();
 
-        // Posts retrieve and presenting on Community page
+        /**
+         * Posts retrieve and presenting on Community page
+         */
         postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -59,7 +68,9 @@ public class CommunityActivity extends AppCompatActivity {
             }
         });
 
-        // Command to enter individual post:
+        /**
+         * Command to enter individual post:
+         */
         posts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -75,8 +86,9 @@ public class CommunityActivity extends AppCompatActivity {
         });
 
 
-
-        //Navigation buttons onclick calls:
+        /**
+         * Navigation buttons onclick calls:
+         */
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,11 +141,4 @@ public class CommunityActivity extends AppCompatActivity {
         });
     }
 
-//    //Command to enter making new post page:
-//    public void makePost(View btn){
-//        Intent intent = new Intent(this, MakingPostActivity.class);
-//        startActivity(intent);
-//    }
-
 }
-
