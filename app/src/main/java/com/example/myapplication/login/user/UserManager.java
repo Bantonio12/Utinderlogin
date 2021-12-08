@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthEmailException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UserManager {
@@ -99,5 +100,10 @@ public class UserManager {
 
                     }
                 });
+    }
+
+    public void signOutUser() {
+        FirebaseUser user = mAuthenticator.getCurrentUser();
+        mAuthenticator.signOut();
     }
 }

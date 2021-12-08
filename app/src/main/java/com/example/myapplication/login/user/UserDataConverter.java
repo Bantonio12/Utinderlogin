@@ -10,18 +10,14 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public class UserDataConverter {
-    final private String email;
-    final private String password;
     final CountDownLatch countDownLatch = new CountDownLatch(1) ;
 
-    public UserDataConverter(String e, String p) {
-        this.email = e;
-        this.password = p;
+    public UserDataConverter() {
     }
 
-    public boolean createNewUser() throws FirebaseAuthEmailException, FirebaseAuthInvalidCredentialsException, FirebaseAuthWeakPasswordException {
+    public boolean createNewUser(String e, String p) throws FirebaseAuthEmailException, FirebaseAuthInvalidCredentialsException, FirebaseAuthWeakPasswordException {
         UserManager uManager = new UserManager();
-        Task<AuthResult> signUpTask = uManager.createUser(email, password);
+        Task<AuthResult> signUpTask = uManager.createUser(e, p);
         try {
             countDownLatch.await(3L, TimeUnit.SECONDS);
             return  signUpTask.isSuccessful();
@@ -30,14 +26,25 @@ public class UserDataConverter {
         }
     }
 
-    public boolean userSignIn() throws FirebaseAuthEmailException, FirebaseAuthInvalidCredentialsException, FirebaseAuthWeakPasswordException {
+    public boolean userSignIn(String e, String p) throws FirebaseAuthEmailException, FirebaseAuthInvalidCredentialsException, FirebaseAuthWeakPasswordException {
         UserManager uManager = new UserManager();
-        Task<AuthResult> signInTask = uManager.checkUser(email, password);
+        Task<AuthResult> signInTask = uManager.checkUser(e, p);
         try {
             countDownLatch.await(3L, TimeUnit.SECONDS);
             return  signInTask.isSuccessful();
         } catch (InterruptedException ie) {
             return false;
         }
+    }
+
+    public void singOutCurrentUser() {
+        UserManager uManager = new UserManager();
+        uManager.signOutUser();
+        /*try {
+            countDownLatch.await(1L, TimeUnit.SECONDS);
+            return uManager.signOutUser();
+        } catch (InterruptedException ie) {
+            return false;
+        }*/
     }
 }
