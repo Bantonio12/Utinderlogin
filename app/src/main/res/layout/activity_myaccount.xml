@@ -117,6 +117,7 @@
     </Button>
 
     <Button
+
         android:id="@+id/logoutbutton"
         android:layout_width="83dp"
         android:layout_height="40dp"
@@ -129,6 +130,7 @@
         android:textColorHint="@color/darkgrey"
         android:textSize="12sp"
         app:backgroundTint="@color/greyy"></Button>
+
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

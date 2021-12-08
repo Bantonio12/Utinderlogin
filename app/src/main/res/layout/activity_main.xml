@@ -25,6 +25,7 @@
             app:layout_constraintVertical_bias="0.093"/>
 
     <com.google.android.material.textfield.TextInputEditText
+
         android:id="@+id/textInputEditText"
         android:layout_width="315dp"
         android:layout_height="48dp"
@@ -40,6 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:targetApi="31" />
+
     <EditText
             android:id="@+id/Password"
             android:layout_width="315dp"

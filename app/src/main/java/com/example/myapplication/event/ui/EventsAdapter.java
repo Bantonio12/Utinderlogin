@@ -11,8 +11,9 @@ import android.widget.ArrayAdapter;
 import com.example.myapplication.R;
 import android.widget.TextView;
 
-/*
-    Reference:
+/**
+ * A class that helps to render the listview
+ * Reference: https://pillsfromtheweb.blogspot.com/2014/10/android-listview-inside-alertdialog.html
  */
 public class EventsAdapter extends ArrayAdapter<HashMap<String, String>>{
 

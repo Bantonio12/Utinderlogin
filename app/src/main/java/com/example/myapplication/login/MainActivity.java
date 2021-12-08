@@ -45,8 +45,10 @@ public class MainActivity extends AppCompatActivity {
                         wrongPtext.setText("Please enter a valid email or password");
                         wrongPtext.setVisibility(View.VISIBLE);
                     } else {
+
                         UserDataConverter uDataConverter = new UserDataConverter();
                         if (!uDataConverter.userSignIn(email, password)) {
+                          
                             wrongPtext.setVisibility(View.VISIBLE);
                         } else {
                             wrongPtext.setVisibility(View.INVISIBLE);

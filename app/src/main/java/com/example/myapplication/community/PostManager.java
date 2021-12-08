@@ -1,25 +1,46 @@
 package com.example.myapplication.community;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 
 public class PostManager {
 
-//    public PostManager(){}
-//    public void makeComment(String text/*, User postMaker*/, Post post){//not include user for now!!
-//        Post comment = new Post(text/*, postMaker*/);//not include user for now!!
-//        post.addComment(comment);
-//    }
+    private HashMap postList;
 
-    public void deleteComment(Post current_post, Post current_comment){
-        current_post.removeComment(current_comment);
+    public PostManager(HashMap postList){
+        this.postList = postList;
     }
 
-    public void likePost(Post post){
-        post.addLike();
+    public Post makeComment(String comment, int id, Object mention, String title) {
+
+        HashMap currPost = (HashMap) postList.get(title);
+
+        Post newPost = new Post((String) currPost.get("text"),
+                (FirebaseUser) currPost.get("postMaker"), (String) currPost.get("title"));
+
+        newPost.setComments((ArrayList<HashMap>) currPost.get("comments"));
+
+
+        HashMap newComment = new HashMap();
+
+        if (comment.equals("")) {
+            newComment.put("text", "empty_comment");
+        }
+        else {
+            newComment.put("text", comment);
+        }
+
+
+        newComment.put("id", id);
+        newComment.put("mention", mention);
+
+        newPost.addComment(newComment);
+
+        return newPost;
     }
 
-    public void unlikePost(Post post) { post.removeLike(); }
 }
