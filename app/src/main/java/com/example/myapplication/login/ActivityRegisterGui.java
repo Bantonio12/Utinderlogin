@@ -9,8 +9,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.login.user.UserManager;
-import com.example.myapplication.login.user.UserData;
+import com.example.myapplication.login.user.UserDataConverter;
+import com.google.firebase.auth.FirebaseAuthEmailException;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 
 public class ActivityRegisterGui extends AppCompatActivity {
@@ -29,24 +31,44 @@ public class ActivityRegisterGui extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                UserManager usermanager = new UserManager();
-                UserData data = new UserData();
+
                 String email = email_input.getText().toString();
-                String name = nickname_input.getText().toString();
+                /*String name = nickname_input.getText().toString();*/
                 String password = password_input.getText().toString();
-                if (!data.findUsername(name) && !data.findEmail(email)) {
-                    boolean temp = usermanager.createUser(name, email, password);
-                    if (temp) {
-                        Intent successfully_registered = new Intent(ActivityRegisterGui.this, ActivityAfterLogin.class);
-                        startActivity(successfully_registered);
-                        finish();
-                    } else {
-                        warning_message.setText("Account could not be created");
+                UserDataConverter uDataConverter = new UserDataConverter(email, password);
+                if (email.equals("") || password.equals("")) {
+                    warning_message.setText("Please enter a valid Email or a valid Password");
+                    warning_message.setVisibility(View.VISIBLE);
+                } else {
+                    try {
+                        /*if (!data.findUsername(name) && !data.findEmail(email)) {*/
+                        boolean temp = uDataConverter.createNewUser();
+                        System.out.println(temp);
+                        if (temp) {
+                            System.out.println("hi");
+                            Intent successfully_registered = new Intent(ActivityRegisterGui.this, ActivityAfterLogin.class);
+                            startActivity(successfully_registered);
+                            finish();
+                        } else {
+                            warning_message.setText("Account could not be created");
+                            warning_message.setVisibility(View.VISIBLE);
+                        }
+                /*} else {
+                    warning_message.setVisibility(View.VISIBLE);
+                }*/
+                    } catch(FirebaseAuthWeakPasswordException d) {
+                        warning_message.setText("Password is weak");
+                        warning_message.setVisibility(View.VISIBLE);
+                    } catch(FirebaseAuthEmailException duplicateEmailException) {
+                        warning_message.setText("This Email is already used");
+                        warning_message.setVisibility(View.VISIBLE);
+                    } catch (FirebaseAuthInvalidCredentialsException invalidEmailException) {
+                        warning_message.setText("Please Enter a valid Email");
                         warning_message.setVisibility(View.VISIBLE);
                     }
-                } else {
-                    warning_message.setVisibility(View.VISIBLE);
                 }
+
+
             }
         });
     }

@@ -17,30 +17,30 @@ public class PostManager {
 
     public Post makeComment(String comment, int id, Object mention, String title) {
 
-            HashMap currPost = (HashMap) postList.get(title);
+        HashMap currPost = (HashMap) postList.get(title);
 
-            Post newPost = new Post((String) currPost.get("text"),
-                    (FirebaseUser) currPost.get("postMaker"), (String) currPost.get("title"));
+        Post newPost = new Post((String) currPost.get("text"),
+                (FirebaseUser) currPost.get("postMaker"), (String) currPost.get("title"));
 
-            newPost.setComments((ArrayList<HashMap>) currPost.get("comments"));
-
-
-            HashMap newComment = new HashMap();
-
-            if (comment.equals("")) {
-                newComment.put("text", "empty_comment");
-            }
-            else {
-                newComment.put("text", comment);
-            }
+        newPost.setComments((ArrayList<HashMap>) currPost.get("comments"));
 
 
-            newComment.put("id", id);
-            newComment.put("mention", mention);
+        HashMap newComment = new HashMap();
 
-            newPost.addComment(newComment);
+        if (comment.equals("")) {
+            newComment.put("text", "empty_comment");
+        }
+        else {
+            newComment.put("text", comment);
+        }
 
-            return newPost;
+
+        newComment.put("id", id);
+        newComment.put("mention", mention);
+
+        newPost.addComment(newComment);
+
+        return newPost;
     }
 
 }

@@ -15,9 +15,9 @@ public class EventManager {
         this.events = new ArrayList<>();
     }
 
-    // TODO: add the javadoc
-    /*
-        In this method, we retrieve the list of Events from the database via EventDataConverter
+    /**
+     * Add all the events to the list
+     * @param listOfEvents  the list of events we want to add
      */
     public void setEvents(HashMap<String, ArrayList<Map<String, String>>> listOfEvents) {
         ArrayList<Event> newEvents = new ArrayList<>();
@@ -45,9 +45,15 @@ public class EventManager {
         this.events = newEvents;
     }
 
-    // TODO: add the javadoc
-    /*
-       If the event is already created, return the index of the event. Otherwise, return -1
+    /**
+     * Return the index of event in the list.
+     * If not found, return -1
+     * @param name  name of event
+     * @param date  date of event
+     * @param time  time of event
+     * @param location  location of event
+     * @param type  type of event
+     * @return  the index of event in the list
      */
     public int findEvent(String name, String date, String time, String location, String type) {
         for (int i = 0; i < this.events.size(); i++) {
@@ -61,7 +67,11 @@ public class EventManager {
         return -1;
     }
 
-    // TODO: add the javadoc
+    /**
+     * Return the list of events that happen on the specific date
+     * @param date  a date of events we're interested in
+     * @return  the list of events happening on that date
+     */
     public ArrayList<HashMap<String, String>> findEventOnDate(String date) {
         ArrayList<HashMap<String, String>> events = new ArrayList<>();
         for (int i = 0; i < this.events.size(); i++) {
@@ -78,9 +88,15 @@ public class EventManager {
         return events;
     }
 
-    // TODO: add the javadoc
-    /*
-       This method is responsible for creating an Event using the Simple Factory Design Pattern
+    /**
+     * If the event is new, then create, add to the list of events, and return True.
+     * Otherwise, return False
+     * @param name  a name of event
+     * @param date  a date of event
+     * @param time  a time of event
+     * @param location  a location of event
+     * @param type  a type of event
+     * @return  true/false of creating a new event
      */
     public boolean createEvent(String name, String date, String time, String location, String type) {
         int result = findEvent(name, date, time, location, type);
@@ -88,22 +104,27 @@ public class EventManager {
             EventFactory factory = new EventFactory();
             Event newEvent = factory.createEvent(name, date, time, location, type);
             this.events.add(newEvent);
-            // Update it in CourseManager
-
             return true;
         } else {
             return false;
         }
     }
 
-    // TODO: add the javadoc
+    /**
+     * Remove the specific event from the list and return true if it is successfully removed.
+     * @param old_event the event we want to remove
+     * @return  the status of removing event
+     */
     public boolean removeEvent(Event old_event) {
         this.events.remove(old_event);
         return this.findEvent(old_event.getEventName(), old_event.getEventDate(), old_event.getEventTime(),
                 old_event.getEventLocation(), old_event.getEventType()) == -1;
     }
 
-    // TODO: add the javadoc; decide whether to put toString() in Event class
+    /**
+     * Return the string representation of the list of events
+     * @return  the description of all the events
+     */
     @Override
     public String toString() {
         String statement = "This user has following events: ";
