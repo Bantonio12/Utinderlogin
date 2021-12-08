@@ -2,6 +2,7 @@ package com.example.myapplication.login;
 
 import com.example.myapplication.homepage.Homepage;
 import com.example.myapplication.R;
+import com.example.myapplication.login.user.UserDataConverter;
 import com.example.myapplication.login.user.UserManager;
 
 import android.annotation.SuppressLint;
@@ -13,38 +14,59 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthEmailException;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) throws NullPointerException{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mAuth = FirebaseAuth.getInstance();
+
         final Button loginbutton = findViewById(R.id.loginbutton);
-        final TextInputEditText username_input = findViewById(R.id.textInputEditText);
-        final EditText password_input = findViewById(R.id.Password);
+        final TextInputEditText emailInput = findViewById(R.id.textInputEditText);
+        final EditText passwordInput = findViewById(R.id.Password);
         final TextView wrongPtext = findViewById(R.id.wrongPtext);
-        final Button new_acc_button = findViewById(R.id.button2);
+        final Button newAccButton = findViewById(R.id.button2);
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             public void onClick(View v) {
-                String username = username_input.getText().toString();
-                String password = password_input.getText().toString();
-                UserManager manager = new UserManager();
-                if (!manager.checkUser(username, password)) {
+                try {
+                    String email = Objects.requireNonNull(emailInput.getText()).toString();
+                    String password = passwordInput.getText().toString();
+                    if (email.equals("") || password.equals("")) {
+                        wrongPtext.setText("Please enter a valid email or password");
+                        wrongPtext.setVisibility(View.VISIBLE);
+                    } else {
+                        UserDataConverter uDataConverter = new UserDataConverter(email, password);
+                        if (!uDataConverter.userSignIn()) {
+                            wrongPtext.setVisibility(View.VISIBLE);
+                        } else {
+                            wrongPtext.setVisibility(View.INVISIBLE);
+                            Intent afterLoginIntent = new Intent(MainActivity.this, Homepage.class);
+                            startActivity(afterLoginIntent);
+                            finish();
+                        }
+                    }
+                } catch(FirebaseAuthEmailException duplicateEmailException) {
+                    wrongPtext.setText("The Email is Wrong");
                     wrongPtext.setVisibility(View.VISIBLE);
-                } else {
-                    //textView.setText("Sign in complete!");
-                    //textView.setVisibility(View.VISIBLE);
-                    Intent afterLoginIntent = new Intent(MainActivity.this, Homepage.class);
-                    startActivity(afterLoginIntent);
-                    finish();
+                } catch (FirebaseAuthInvalidCredentialsException invalidEmailException) {
+                    wrongPtext.setText("Please Enter a valid Email");
+                    wrongPtext.setVisibility(View.VISIBLE);
                 }
+
             }
         });
 
-        new_acc_button.setOnClickListener(new View.OnClickListener() {
+        newAccButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent register_intent = new Intent(MainActivity.this, ActivityRegisterGui.class);

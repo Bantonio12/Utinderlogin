@@ -23,18 +23,23 @@
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.093"/>
+
     <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="315dp"
-            android:layout_height="48dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginLeft="55dp"
-            android:layout_marginStart="55dp" android:layout_marginRight="55dp" android:layout_marginEnd="55dp"
-            android:id="@+id/textInputEditText"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="280dp"
-            android:hint="@string/usercapital" android:fontFamily="@font/catamaran_medium" android:textSize="14sp"
-            android:textColor="@color/uoftcoloourr" android:textColorHint="@color/darkgrey"
-            tools:targetApi="31"/>
+        android:id="@+id/textInputEditText"
+        android:layout_width="315dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="55dp"
+        android:fontFamily="@font/catamaran_medium"
+        android:hint="@string/email2"
+        android:textColor="@color/uoftcoloourr"
+        android:textColorHint="@color/darkgrey"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="31" />
     <EditText
             android:id="@+id/Password"
             android:layout_width="315dp"
