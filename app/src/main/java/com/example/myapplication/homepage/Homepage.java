@@ -59,6 +59,7 @@ public class Homepage extends AppCompatActivity {
 
         LocalTime datetime = LocalTime.now();
         final TextView gretting = findViewById(R.id.greeting_homepageview);
+        final TextView datee = findViewById(R.id.date_txt);
         if (datetime.getHour() < 12){
             gretting.setText(morning_greet);
         } else if (datetime.getHour() >= 12 && datetime.getHour() < 18){

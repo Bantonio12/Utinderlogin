@@ -103,7 +103,7 @@
     <string name="potimer">Pomodoro Timer</string>
     <string name="makepost">Make Post</string>
     <string name="posttitle">Post Title</string>
-    <string name="checkbox"></string>
-    <string name="email2">EMAIL</string>
+    <string name="email2">Email</string>
+
 
 </resources>
