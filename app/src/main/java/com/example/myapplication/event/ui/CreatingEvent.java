@@ -30,6 +30,10 @@ public class CreatingEvent extends AppCompatActivity {
     private ArrayList courseEvents = new ArrayList<>();
     private ArrayList generalEvents = new ArrayList<>();
 
+    /**
+     * Render necessary components when the page is shown in the app
+     * @param savedInstanceState    the previous status
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

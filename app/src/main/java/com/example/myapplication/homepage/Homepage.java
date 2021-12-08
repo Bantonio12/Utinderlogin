@@ -33,7 +33,9 @@ import com.example.myapplication.me.MyAccount;
 import com.example.myapplication.community.CommunityActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
-
+/**
+ * An activity class for displaying components in the Homepage
+ */
 public class Homepage extends AppCompatActivity {
     private ListView listOfTasks;
     private ArrayList<String> taskList = new ArrayList<>();
