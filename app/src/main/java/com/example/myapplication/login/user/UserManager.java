@@ -81,89 +81,23 @@ public class UserManager {
         return email[0];
     }*/
 
-    public int createUser(String e, String p) throws FirebaseAuthInvalidCredentialsException, FirebaseAuthEmailException, FirebaseAuthWeakPasswordException {
-        System.out.println("huh");
-        final int[] registerSuccess = {1};
-        /*final boolean[] userDataUploadSuccess = {false};*/
-        mAuthenticator.createUserWithEmailAndPassword(e, p)
+    public Task<AuthResult> createUser(String e, String p) throws FirebaseAuthInvalidCredentialsException, FirebaseAuthEmailException, FirebaseAuthWeakPasswordException {
+        return mAuthenticator.createUserWithEmailAndPassword(e, p)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (!task.isSuccessful()) {
-                            registerSuccess[0] = 0;
-                        }
 
-                /*if (task.isSuccessful()) {
-                    registerSuccess[0] = true;
-                    return registerSuccess[0];
-                } else {
-                    try {
-                        throws task.getException();
-                    } catch(FirebaseAuthWeakPasswordException e) {
-                        registerSuccess[0] = task.isSuccessful();
-                    } catch(FirebaseAuthInvalidCredentialsException e) {
-
-                    } catch(FirebaseAuthEmailException e) {
-
-                    } catch(Exception e) {
-
-                    }
-                }*/
-
-
-                        /*temp = task.getException();*/
                     }
                 });
-        /*throw temp;*/
-
-                    /*registerSuccess[0] = task.isSuccessful();
-                    Map<String, String> temp = new HashMap<>();
-                    temp.put(n, p);
-                    database.collection("users")
-                            .document("UserNamePassword")
-                            .set(temp).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            userDataUploadSuccess[0] = true;
-                        }
-                    })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    userDataUploadSuccess[0] = false;
-                                }
-                    });
-                    temp.put(n, e);
-                    database.collection("users")
-                            .document("UserEmail")
-                            .set(temp).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            userDataUploadSuccess[0] = true;
-                        }
-                    })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    userDataUploadSuccess[0] = false;
-                                }
-                            });*/
-        //}
-        return registerSuccess[0];
     }
 
-    public boolean checkUser(String e, String p) throws FirebaseAuthInvalidCredentialsException, FirebaseAuthEmailException, FirebaseAuthWeakPasswordException {
-        //return this.findUsername(n) && this.getPassword(n).equals(p);
-        final boolean[] userCheck = {true};
-        mAuthenticator.signInWithEmailAndPassword(e, p)
+    public Task<AuthResult> checkUser(String e, String p) throws FirebaseAuthInvalidCredentialsException, FirebaseAuthEmailException, FirebaseAuthWeakPasswordException {
+        return mAuthenticator.signInWithEmailAndPassword(e, p)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (!task.isSuccessful()) {
-                            userCheck[0] = false;
-                        }
+
                     }
                 });
-        return userCheck[0];
     }
 }
