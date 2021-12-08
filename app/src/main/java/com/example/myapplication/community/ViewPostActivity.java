@@ -16,6 +16,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Page for viewing individual posts
+ * Button for making posts that extend to a new page
+ * Username displayed on screen
+ * Title displayed on screen
+ * Text displayed on screen
+ * ListView of all the comments displayed on screen
+ * Comments are clickable and can be replied to
+ */
 public class ViewPostActivity extends AppCompatActivity {
 
     Button backButton;

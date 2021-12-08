@@ -56,7 +56,9 @@ public class PostTest {
 
     }
 
-
+    /**
+     * Test to see whether the created comment was created in the correct Post
+     */
     @Test
     public void makeCommentTitleTest() {
         String comment = "Testing testing testingggg!!";
@@ -68,7 +70,9 @@ public class PostTest {
         assertTrue(createdTitle.equals(title));
     }
 
-
+    /**
+     * Test to see whether the created comment was created in the correct Post
+     */
     @Test
     public void makeCommentTextTest() {
         String comment = "Testing testing testingggg!!";
@@ -81,8 +85,9 @@ public class PostTest {
     }
 
 
-
-
+    /**
+     * Test to see whether the created comment has the correct text
+     */
     @Test
     public void makeCommentCommentTextTest() {
         String comment = "Testing testing testingggg!!";
@@ -95,6 +100,9 @@ public class PostTest {
         assertTrue(createdComment.get("text") == comment);
     }
 
+    /**
+     * Test to see whether the created comment has the correct id
+     */
     @Test
     public void makeCommentCommentIdTest() {
         String comment = "Testing testing testingggg!!";
@@ -107,6 +115,9 @@ public class PostTest {
         assertTrue(createdComment.get("id").equals(id));
     }
 
+    /**
+     * Test to see whether the created comment has teh correct mention
+     */
     @Test
     public void makeCommentCommentMentionTest() {
         String comment = "Testing testing testingggg!!";
@@ -119,117 +130,68 @@ public class PostTest {
         assertTrue(createdComment.get("mention").equals(mention));
     }
 
-//
-//    @Test
-//    // Test to see if posts can be deleted
-//    public void deletePostTest() {
-//        String text = "Testing testing testingggg!!";
-//        User user = testUser1;
-//        String title = "Test 2!!!";
-//        testManager.makePost(text,/* user,*/ title);
-//        Post createdPost = testManager.getPostList().get(0);
-//        testManager.deleteMainPost(createdPost);
-//        int postListLength = 0;
-//        int actualPostListLength = testManager.getPostList().size();
-//        assert postListLength == actualPostListLength;
-//    }
-//
-//    @Test
-//    // Test to see if posts can be edited
-//    public void editPostTest() {
-//        String text = "Testing testing testingggg!!";
-//        String newText = "Oopsies I made a typo!!";
-//        User user = testUser1;
-//        String title = "Test 3!!!";
-//        testManager.makePost(text, user, title);
-//        Post createdPost = testManager.getPostList().get(0);
-//        testManager.editPost(createdPost, newText);
-//        String actualText = createdPost.getText();
-//
-//        assert newText.equals(actualText);
-//    }
-//
-//    @Test
-//    // Test to see if comments can be made under a post
-//    public void makeCommentTest() {
-//        String postText = "Testing testing testingggg!!";
-//        String commentText = "Woahhh I'm apart of the test too!!";
-//        User user1 = testUser1;
-//        User user2 = testUser2;
-//        String title = "Test 4!!!";
-//        testManager.makePost(postText, user1, title);
-//        Post createdPost = testManager.getPostList().get(0);
-//        testManager.makeComment(commentText, user2, createdPost);
-//        Post createdComment = createdPost.getComments().get(0);
-//        assert commentText.equals(createdComment.getText());
-//    }
-//
-//    @Test
-//    // Test to see if comments can be deleted under a post
-//    public void deleteCommentTest() {
-//        String postText = "Testing testing testingggg!!";
-//        String commentText = "Woahhh I'm apart of the test too!!";
-//        User user1 = testUser1;
-//        User user2 = testUser2;
-//        String title = "Test 5!!!";
-//        testManager.makePost(postText, user1, title);
-//        Post createdPost = testManager.getPostList().get(0);
-//        testManager.makeComment(commentText, user2, createdPost);
-//        Post createdComment = createdPost.getComments().get(0);
-//        testManager.deleteComment(createdPost, createdComment);
-//        int numComments = 0;
-//        int actualNumComments = createdPost.getComments().size();
-//        assert numComments == actualNumComments;
-//    }
-//
-//    @Test
-//    // Test to see if like feature works
-//    public void likeTest1() {
-//        String postText = "Testing testing testingggg!!";
-//        User user1 = testUser1;
-//        String title = "Test 6!!!";
-//        testManager.makePost(postText, user1, title);
-//        Post createdPost = testManager.getPostList().get(0);
-//        testManager.likePost(createdPost);
-//        testManager.likePost(createdPost);
-//        testManager.likePost(createdPost);
-//        int numLikes = 3;
-//        int actualLikes = createdPost.getLikes();
-//        assert numLikes == actualLikes;
-//    }
-//
-//    @Test
-//    // Test to see if the unlike feature works
-//    public void likeTest2() {
-//        String postText = "Testing testing testingggg!!";
-//        User user1 = testUser1;
-//        String title = "Test 7!!!";
-//        testManager.makePost(postText, user1, title);
-//        Post createdPost = testManager.getPostList().get(0);
-//        testManager.likePost(createdPost);
-//        testManager.likePost(createdPost);
-//        testManager.unlikePost(createdPost);
-//        testManager.unlikePost(createdPost);
-//        int numLikes = 0;
-//        int actualLikes = createdPost.getLikes();
-//        assert numLikes == actualLikes;
-//    }
-//
-//    @Test
-//    // Test to see that likes won't become negative
-//    public void likeTest3() {
-//        String postText = "Testing testing testingggg!!";
-//        User user1 = testUser1;
-//        String title = "Test 8!!!";
-//        testManager.makePost(postText, user1, title);
-//        Post createdPost = testManager.getPostList().get(0);
-//        testManager.likePost(createdPost);
-//        testManager.unlikePost(createdPost);
-//        testManager.unlikePost(createdPost);
-//        int numLikes = 0;
-//        int actualLikes = createdPost.getLikes();
-//        assert numLikes == actualLikes;
-//    }
+    /**
+     * Test to see if multiple comments can be created and created correctly
+     */
+    @Test
+    public void makeMultiCommentTest() {
+        String comment = "Testing testing testingggg!!";
+        int id = 0;
+        Object mention = "_main";;
+        String title = "hello_world";
+        Post createdPost1 = testManager.makeComment(comment, id, mention, title);
+        Post createdPost2 = testManager.makeComment(comment, id, mention, title);
+        Post createdPost3 = testManager.makeComment(comment, id, mention, title);
+        ArrayList createdCommentList = createdPost1.getComments();
+        int size =  createdCommentList.size();
+        assertTrue(size == 4);
+    }
+
+    /**
+     * Test to see if the program recognizes empty comment texts and converts them to "empty_comment"
+     */
+    @Test
+    public void makeCommentNoTextTest() {
+        String comment = "";
+        int id = 0;
+        Object mention = "_main";;
+        String title = "hello_world";
+        Post createdPost = testManager.makeComment(comment, id, mention, title);
+        assertTrue(createdPost.getComments().get(1).get("text").equals("empty_comment"));
+    }
+
+    /**
+     * Test to see whether the function can be called on multiple different posts using the same comment
+     */
+    @Test
+    public void makeCommentOnDifferentPostTest() {
+        String comment = "";
+        int id = 0;
+        Object mention = "_main";;
+        String title1 = "hello_world";
+        String title2 = "good morning";
+        Post createdPost1 = testManager.makeComment(comment, id, mention, title1);
+        Post createdPost2 = testManager.makeComment(comment, id, mention, title2);
+        String createdComment1 = (String) createdPost1.getComments().get(1).get("text");
+        String createcComment2 = (String) createdPost1.getComments().get(1).get("text");
+        assertTrue(createdComment1.equals(createcComment2));
+    }
+
+    /**
+     * Test to see that if the same comment was posted twice then the comment text's should be the same
+     */
+    @Test
+    public void makeCommentDuplicatedTest() {
+        String comment = "";
+        int id = 0;
+        Object mention = "_main";;
+        String title1 = "hello_world";
+        Post createdPost1 = testManager.makeComment(comment, id, mention, title1);
+        Post createdPost2 = testManager.makeComment(comment, id, mention, title1);
+        String createdComment1 = (String) createdPost1.getComments().get(1).get("text");
+        String createcComment2 = (String) createdPost1.getComments().get(1).get("text");
+        assertTrue(createdComment1.equals(createcComment2));
+    }
 
 
 }

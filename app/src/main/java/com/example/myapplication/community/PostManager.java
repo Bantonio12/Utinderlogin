@@ -27,7 +27,14 @@ public class PostManager {
 
             HashMap newComment = new HashMap();
 
-            newComment.put("text", comment);
+            if (comment.equals("")) {
+                newComment.put("text", "empty_comment");
+            }
+            else {
+                newComment.put("text", comment);
+            }
+
+
             newComment.put("id", id);
             newComment.put("mention", mention);
 

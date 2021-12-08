@@ -20,6 +20,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Page for creating comments:
+ * Should add comments to the specified posts
+ * Comments should consist of three elements: text, id, mention
+ * text: The text within the comment
+ * id: The id of the specific comment
+ * mention: The comment/ post this comment is mentioning
+ */
+
 public class CreateCommentActivity extends AppCompatActivity {
 
     Button postComment;
@@ -43,7 +52,9 @@ public class CreateCommentActivity extends AppCompatActivity {
 
         Object mention = intent.getExtras().get("mention");
 
-        //Command to create the comment and update database
+        /**
+         * Command to create the comment and update database
+         */
         postComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +94,9 @@ public class CreateCommentActivity extends AppCompatActivity {
             }
         });
 
-        // Command to go back to main post
+        /**
+         * Command to go back to main post
+         */
         backToPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
