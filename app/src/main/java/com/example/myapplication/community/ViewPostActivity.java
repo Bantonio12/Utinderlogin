@@ -127,7 +127,7 @@ public class ViewPostActivity extends AppCompatActivity {
         });
 
         /**
-         * Command to reply individual comment by entering Create Comment Page
+         * Command to reply individual comment by entering Create Comment Page.
          */
         comments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
