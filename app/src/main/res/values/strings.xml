@@ -109,5 +109,6 @@
     <string name="please_input_a_valid_email">Please Input a Valid Email</string>
     <string name="please_verify_your_email_to_access_utinder_this_is_for_the_security_of_utinder_community_and_its_users_sorry_for_the_inconvenience_if_you_haven_t_received_any_verification_email_please_click_the_button_below">Please verify your email to access Utinder. This is for the security of Utinder community and its users. Sorry for the inconvenience. If you haven\'t received any verification email, please click the button below.</string>
     <string name="resend">Resend</string>
+    <string name="forgot_password">Forgot Password?</string>
 
 </resources>

@@ -1,97 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   tools:context=".login.MainActivity" android:background="#B1D4E0">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.MainActivity" android:background="#B1D4E0">
 
     <TextView
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="@string/sin"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginLeft="55dp" android:layout_marginStart="50dp"
-            app:layout_constraintHorizontal_bias="0.01" app:layout_constraintVertical_bias="0.369"
-            android:textSize="25sp" android:fontFamily="@font/catamaran_medium"
-            android:textColorHint="@color/uoftcoloourr" android:textColor="@color/uoftcoloourr"/>
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="@string/sin"
+        android:layout_marginStart="50dp" android:layout_alignBottom="@+id/textInputEditText"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintHorizontal_bias="0.01"
+        android:textSize="25sp" android:fontFamily="@font/catamaran_medium"
+        android:textColorHint="@color/uoftcoloourr" android:textColor="@color/uoftcoloourr"/>
 
     <ImageView
-            android:layout_width="179dp"
-            android:layout_height="194dp" app:srcCompat="@drawable/_200px_utoronto_coa_svg"
-            android:id="@+id/imageView" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.093"/>
+        android:layout_width="179dp"
+        android:layout_height="194dp" app:srcCompat="@drawable/_200px_utoronto_coa_svg"
+        android:id="@+id/imageView" android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText"
         android:layout_width="315dp"
         android:layout_height="48dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="280dp"
-        android:layout_marginEnd="55dp"
-        android:fontFamily="@font/catamaran_medium"
-        android:hint="@string/email2"
-        android:textColor="@color/uoftcoloourr"
-        android:textColorHint="@color/darkgrey"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:targetApi="31" />
+        android:layout_centerHorizontal="true" android:layout_alignTop="@+id/imageView"
+        android:id="@+id/textInputEditText" android:layout_marginTop="250dp"
+        android:hint="@string/usercapital" android:fontFamily="@font/catamaran_medium" android:textSize="14sp"
+        android:textColor="@color/uoftcoloourr" android:textColorHint="@color/darkgrey"
+        tools:targetApi="31"/>
     <EditText
-            android:id="@+id/Password"
-            android:layout_width="315dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginLeft="55dp"
-            android:ems="10"
-            android:hint="@string/pwcapital"
-            android:inputType="textPassword"
-            app:layout_constraintStart_toStartOf="parent"
-            android:importantForAutofill="no"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
-            android:layout_marginEnd="55dp" android:layout_marginRight="55dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:fontFamily="@font/catamaran_medium" android:textSize="14sp"
-            android:textColor="@color/uoftcoloourr" android:textColorHint="@color/darkgrey"/>
+        android:id="@+id/Password"
+        android:layout_width="315dp"
+        android:layout_height="48dp"
+        android:ems="10" android:layout_centerHorizontal="true"
+        android:hint="@string/pwcapital" android:layout_alignTop="@+id/textInputEditText"
+        android:layout_marginTop="50dp"
+        android:inputType="textPassword"
+        android:importantForAutofill="no"
+        android:fontFamily="@font/catamaran_medium" android:textSize="14sp"
+        android:textColor="@color/uoftcoloourr" android:textColorHint="@color/darkgrey"/>
 
     <Button
         android:id="@+id/loginbutton"
         android:layout_width="100dp"
         android:layout_height="50dp"
+        android:layout_alignTop="@+id/Password"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="135dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="135dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginBottom="198dp"
         android:fontFamily="@font/catamaran_medium"
         android:text="@string/logincapi"
         android:textSize="15sp"
-        app:backgroundTint="@color/uoftcoloourr"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
-
+        app:backgroundTint="@color/uoftcoloourr" />
     <Button
-        android:id="@+id/button2"
-        android:layout_width="160dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="161dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="196dp"
-        android:backgroundTint="@color/white"
-        android:fontFamily="@font/catamaran_semibold"
         android:text="@string/newacc"
-        android:textColor="@color/uoftcoloourr"
-        android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.933"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="128dp"
+        android:layout_height="33dp" android:id="@+id/button2"
+        android:textSize="8sp"
+        android:layout_marginStart="248dp"  android:layout_marginTop="150dp"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/uoftcoloourr" android:fontFamily="@font/catamaran_semibold"
+        android:layout_alignTop="@+id/Password"
 
+        />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="86dp"
+        android:layout_marginLeft="86dp"
+        android:layout_marginTop="472dp"
+        android:layout_marginEnd="87dp"
+        android:layout_marginRight="87dp"
+        android:text="@string/its_wrong"
+        android:textColor="@color/darkgrey"
+        android:textColorHint="@color/darkgrey"
+        android:textSize="30sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/wrongPtext"
         android:layout_width="wrap_content"
@@ -99,29 +94,22 @@
         android:layout_marginStart="98dp"
         android:layout_marginTop="9dp"
         android:layout_marginEnd="98dp"
-        android:gravity="center_horizontal"
         android:text="@string/wrong_password_or_username"
-        android:textAlignment="center"
+        android:textAlignment="center" android:gravity="center_horizontal"
         android:textColor="#DD2C00"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Password" />
+        android:textSize="13sp" android:layout_alignTop="@+id/Password"
+
+        android:fontFamily="@font/catamaran_medium"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/forgotPasswordButton"
-        android:layout_width="140dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="138dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="139dp"
+        android:layout_width="120dp"
+        android:layout_height="33dp"
         android:backgroundTint="@color/uoftcoloourr"
-        android:text="Forgot Password?"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wrongPtext" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="Forgot Password?" android:fontFamily="@font/catamaran_semibold"
+        android:textSize="8sp"
+        android:layout_alignTop="@+id/Password" android:layout_marginStart="250dp"
+        android:layout_marginTop="120dp"
+        />
+</RelativeLayout>

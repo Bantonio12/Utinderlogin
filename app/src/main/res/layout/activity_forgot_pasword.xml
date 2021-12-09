@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".login.forgotPaswordActivity">
 
+    <TextView
+        android:text="@string/forgot_password"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:id="@+id/textView13" android:fontFamily="@font/catamaran_semibold"
+        android:textSize="25sp" android:textColor="@color/uoftcoloourr"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="84dp" android:layout_marginStart="28dp"/>
     <EditText
         android:id="@+id/emailInputText"
         android:layout_width="265dp"
@@ -13,7 +20,7 @@
         android:layout_marginStart="73dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="73dp"
-        android:ems="10"
+        android:ems="10" android:fontFamily="@font/catamaran_light"
         android:hint="@string/email_input"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,18 +30,17 @@
 
     <TextView
         android:id="@+id/instructionText"
-        android:layout_width="350dp"
-        android:layout_height="82dp"
+        android:layout_width="350dp" android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="31dp"
         android:text="@string/please_enter_your_email_you_made_your_account_with_an_email_with_the_link_to_reset_your_password_will_be_sent"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="15sp" android:fontFamily="@font/catamaran_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
         android:id="@+id/sendButton"
@@ -42,12 +48,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="159dp"
         android:layout_marginEnd="158dp"
-        android:layout_marginBottom="400dp"
-        android:text="@string/send"
+        android:layout_marginBottom="400dp" android:backgroundTint="@color/uoftcoloourr"
+        android:text="@string/send" android:background="@color/uoftcoloourr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/warningMessage"

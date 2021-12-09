@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuthEmailException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
@@ -55,6 +56,14 @@ public class UserManager {
             public void onComplete(@NonNull Task<Void> task) {
 
             }
+        });
+    }
+
+    public void setDisplayName(String n) {
+        UserProfileChangeRequest updatingUserName = new UserProfileChangeRequest.Builder()
+                .setDisplayName(n).build();
+        mAuthenticator.getCurrentUser().updateProfile(updatingUserName).addOnCompleteListener(task -> {
+
         });
     }
 }

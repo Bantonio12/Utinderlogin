@@ -5,6 +5,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuthEmailException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -24,6 +25,11 @@ public class UserDataConverter {
         } catch (InterruptedException ie) {
             return false;
         }
+    }
+
+    public void setUserName(String n) {
+        UserManager uManager = new UserManager();
+        uManager.setDisplayName(n);
     }
 
     public boolean userSignIn(String e, String p) throws FirebaseAuthEmailException, FirebaseAuthInvalidCredentialsException, FirebaseAuthWeakPasswordException {
