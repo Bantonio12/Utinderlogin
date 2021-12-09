@@ -11,10 +11,8 @@
 
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:text="@string/sin"
-        android:layout_marginStart="50dp" android:layout_alignBottom="@+id/textInputEditText"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintHorizontal_bias="0.01"
-        android:textSize="25sp" android:fontFamily="@font/catamaran_medium"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="230dp" android:textSize="25sp" android:fontFamily="@font/catamaran_medium"
         android:textColorHint="@color/uoftcoloourr" android:textColor="@color/uoftcoloourr"/>
 
 
@@ -22,15 +20,15 @@
         android:layout_width="179dp"
         android:layout_height="194dp" app:srcCompat="@drawable/_200px_utoronto_coa_svg"
         android:id="@+id/imageView" android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         />
 
     <com.google.android.material.textfield.TextInputEditText
 
         android:layout_width="315dp"
         android:layout_height="48dp"
-        android:layout_centerHorizontal="true" android:layout_alignTop="@+id/imageView"
-        android:id="@+id/textInputEditText" android:layout_marginTop="250dp"
+        android:layout_centerHorizontal="true" android:layout_alignBottom="@+id/imageView"
+        android:id="@+id/textInputEditText" android:layout_marginBottom="-80dp"
         android:hint="@string/usercapital" android:fontFamily="@font/catamaran_medium" android:textSize="14sp"
         android:textColor="@color/uoftcoloourr" android:textColorHint="@color/darkgrey"
         tools:targetApi="31"/>
@@ -46,21 +44,19 @@
         android:importantForAutofill="no"
         android:fontFamily="@font/catamaran_medium" android:textSize="14sp"
         android:textColor="@color/uoftcoloourr" android:textColorHint="@color/darkgrey"/>
-
     <Button
         android:id="@+id/loginbutton"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_alignTop="@+id/Password"
-        android:layout_centerHorizontal="true"
         android:layout_marginStart="135dp"
-        android:layout_marginTop="70dp"
         android:layout_marginEnd="135dp"
         android:layout_marginBottom="198dp"
-        android:fontFamily="@font/catamaran_medium"
-        android:text="@string/logincapi"
+        android:text="@string/logincapi" android:fontFamily="@font/catamaran_medium"
         android:textSize="15sp"
-        app:backgroundTint="@color/uoftcoloourr" />
+        app:backgroundTint="@color/uoftcoloourr"
+        android:layout_alignTop="@+id/Password" android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        />
     <Button
         android:text="@string/newacc"
         android:layout_width="128dp"
@@ -72,25 +68,20 @@
         android:layout_alignTop="@+id/Password"
 
         />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="86dp"
-        android:layout_marginLeft="86dp"
-        android:layout_marginTop="472dp"
         android:layout_marginEnd="87dp"
-        android:layout_marginRight="87dp"
         android:text="@string/its_wrong"
-        android:textColor="@color/darkgrey"
-        android:textColorHint="@color/darkgrey"
-        android:textSize="30sp"
+        android:textSize="30sp" android:textColorHint="@color/darkgrey" android:textColor="@color/darkgrey"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="86dp"
+        android:layout_marginRight="87dp"
+        app:layout_constraintHorizontal_bias="0.504" app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="472dp"/>
     <TextView
         android:id="@+id/wrongPtext"
         android:layout_width="wrap_content"
