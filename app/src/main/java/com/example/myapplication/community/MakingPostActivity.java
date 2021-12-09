@@ -59,7 +59,7 @@ public class MakingPostActivity extends AppCompatActivity {
                 DocumentReference postsRef = db.document("community/Posts");
                 DocumentReference userPostsTestRef = db.document("community/UserPosts");
 
-                String postMaker = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+                String postMaker = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 String title = titleInput.getText().toString();
                 String text = textInput.getText().toString();
 
@@ -67,7 +67,10 @@ public class MakingPostActivity extends AppCompatActivity {
                 postContent.put("title", title);
                 postContent.put("text", text);
                 postContent.put("comments", new ArrayList<HashMap>());
-                postContent.put("postMaker", postMaker);
+                if (postMaker != null) {
+                    postContent.put("postMaker", postMaker);
+                } else {postContent.put("postMaker", null );}
+
 
 
                 /**
@@ -105,11 +108,18 @@ public class MakingPostActivity extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             userPosts = (HashMap) document.get("UserPostsList");
 
-                            ArrayList currPostsList = (ArrayList) userPosts.get("admin");
+                            String postMaker = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+
+                            ArrayList currPostsList = new ArrayList();
+
+                            if (userPosts.keySet().contains(postMaker)) {
+                                currPostsList = (ArrayList) userPosts.get(postMaker);
+                            }
 
                             currPostsList.add(postContent);
 
-                            userPosts.put("admin", currPostsList);
+                            userPosts.put(postMaker, currPostsList);
 
                             HashMap newData = new HashMap();
 

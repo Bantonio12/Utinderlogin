@@ -19,8 +19,7 @@ public class PostManager {
 
         HashMap currPost = (HashMap) postList.get(title);
 
-        Post newPost = new Post((String) currPost.get("text"),
-                (FirebaseUser) currPost.get("postMaker"), (String) currPost.get("title"));
+        Post newPost = new Post((String) currPost.get("text"), (String) currPost.get("postMaker"), (String) currPost.get("title"));
 
         newPost.setComments((ArrayList<HashMap>) currPost.get("comments"));
 

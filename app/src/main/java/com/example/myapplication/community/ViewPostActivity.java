@@ -78,7 +78,7 @@ public class ViewPostActivity extends AppCompatActivity {
                     postTitle.setText(currPost.get("title").toString());
                     postText.setText(currPost.get("text").toString());
                     allComments = (ArrayList<HashMap>) currPost.get("comments");
-                    userName.setText("admin");
+                    userName.setText(currPost.get("postMaker").toString());
 
                     /** currPost.get("comments") is an array list of dictionarys (which are comments) */
                     for(HashMap comment: allComments){
