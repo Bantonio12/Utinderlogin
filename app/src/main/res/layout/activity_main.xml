@@ -62,8 +62,9 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginStart="135dp"
+        android:layout_marginTop="11dp"
         android:layout_marginEnd="135dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="136dp"
         android:fontFamily="@font/catamaran_medium"
         android:text="@string/logincapi"
         android:textSize="15sp"
@@ -71,7 +72,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <Button
         android:id="@+id/button2"
@@ -79,7 +81,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="161dp"
         android:layout_marginEnd="45dp"
-        android:layout_marginBottom="212dp"
+        android:layout_marginBottom="196dp"
         android:backgroundTint="@color/white"
         android:fontFamily="@font/catamaran_semibold"
         android:text="@string/newacc"

@@ -47,10 +47,16 @@ public class MainActivity extends AppCompatActivity {
                         if (!userConverter.userSignIn(email, password)) {
                             wrongPtext.setVisibility(View.VISIBLE);
                         } else {
-                            wrongPtext.setVisibility(View.INVISIBLE);
-                            Intent afterLoginIntent = new Intent(MainActivity.this, Homepage.class);
-                            startActivity(afterLoginIntent);
-                            finish();
+                            if (userConverter.checkEmailVerificationStatus()) {
+                                Intent afterLoginIntent = new Intent(MainActivity.this, Homepage.class);
+                                startActivity(afterLoginIntent);
+                                finish();
+                            } else {
+                                Intent noVerificationIntent = new Intent(MainActivity.this, NoneVerifiedEmailActivity.class);
+                                startActivity(noVerificationIntent);
+                                finish();
+                            }
+
                         }
                     }
                 } catch(FirebaseAuthEmailException duplicateEmailException) {

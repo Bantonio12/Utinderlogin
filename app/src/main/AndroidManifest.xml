@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UTindergui">
         <activity
+            android:name=".login.NoneVerifiedEmailActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.forgotPaswordActivity"
             android:exported="false" />
         <activity
@@ -52,7 +55,7 @@
         <activity
             android:name=".login.ActivityRegisterGui"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".login.ActivityAfterLogin"
             android:exported="true"
@@ -115,15 +118,15 @@
         <activity
             android:name=".community.CreateCommentActivity"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".community.ViewPostActivity"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".community.MakingPostActivity"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".community.CommunityActivity"
             android:exported="true"
@@ -139,7 +142,7 @@
         <activity
             android:name=".me.Pomodoro"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
 
         <meta-data
             android:name="preloaded_fonts"

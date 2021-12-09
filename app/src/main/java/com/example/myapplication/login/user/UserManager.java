@@ -13,6 +13,8 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Objects;
+
 public class UserManager {
     private FirebaseAuth mAuthenticator;
     FirebaseFirestore database = FirebaseFirestore.getInstance();
@@ -22,7 +24,7 @@ public class UserManager {
 
 
     public void verifyUser() {
-        mAuthenticator.getCurrentUser().sendEmailVerification();
+        Objects.requireNonNull(mAuthenticator.getCurrentUser()).sendEmailVerification();
     }
 
 
@@ -32,10 +34,14 @@ public class UserManager {
                 });
     }
 
-    public Task<AuthResult> checkUser(String e, String p) {
+    public Task<AuthResult> checkUserEmailPassword(String e, String p) {
         return mAuthenticator.signInWithEmailAndPassword(e, p)
                 .addOnCompleteListener(task -> {
                 });
+    }
+
+    public boolean checkUserVerification() {
+        return Objects.requireNonNull(mAuthenticator.getCurrentUser()).isEmailVerified();
     }
 
     public void signOutUser() {

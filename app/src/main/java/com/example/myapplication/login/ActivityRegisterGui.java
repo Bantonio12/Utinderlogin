@@ -44,7 +44,7 @@ public class ActivityRegisterGui extends AppCompatActivity {
                         /*if (!data.findUsername(name) && !data.findEmail(email)) {*/
                         boolean temp = uDataConverter.createNewUser(email, password);
                         if (temp) {
-                            System.out.println("hi");
+                            uDataConverter.sendVerification();
                             Intent successfully_registered = new Intent(ActivityRegisterGui.this, ActivityAfterLogin.class);
                             startActivity(successfully_registered);
                             finish();

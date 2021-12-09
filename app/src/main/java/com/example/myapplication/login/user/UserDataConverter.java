@@ -18,9 +18,8 @@ public class UserDataConverter {
     public boolean createNewUser(String e, String p) throws FirebaseAuthEmailException, FirebaseAuthInvalidCredentialsException, FirebaseAuthWeakPasswordException {
         UserManager uManager = new UserManager();
         Task<AuthResult> signUpTask = uManager.createUser(e, p);
-        uManager.verifyUser();
         try {
-            countDownLatch.await(500L, TimeUnit.MILLISECONDS);
+            countDownLatch.await(1L, TimeUnit.SECONDS);
             return signUpTask.isSuccessful();
         } catch (InterruptedException ie) {
             return false;
@@ -29,13 +28,24 @@ public class UserDataConverter {
 
     public boolean userSignIn(String e, String p) throws FirebaseAuthEmailException, FirebaseAuthInvalidCredentialsException, FirebaseAuthWeakPasswordException {
         UserManager uManager = new UserManager();
-        Task<AuthResult> signInTask = uManager.checkUser(e, p);
+        Task<AuthResult> signInTask = uManager.checkUserEmailPassword(e, p);
         try {
             countDownLatch.await(500L, TimeUnit.MILLISECONDS);
             return  signInTask.isSuccessful();
         } catch (InterruptedException ie) {
             return false;
         }
+    }
+
+    public boolean checkEmailVerificationStatus() {
+        UserManager uManager = new UserManager();
+        /*try {
+            countDownLatch.await(500L, TimeUnit.MILLISECONDS);
+            return  signInTask.isSuccessful();
+        } catch (InterruptedException ie) {
+            return false;
+        }*/
+        return uManager.checkUserVerification();
     }
 
     public void singOutCurrentUser() {
@@ -52,5 +62,10 @@ public class UserDataConverter {
         } catch (InterruptedException ie) {
             return false;
         }
+    }
+
+    public void sendVerification() {
+        UserManager uManager = new UserManager();
+        uManager.verifyUser();
     }
 }
