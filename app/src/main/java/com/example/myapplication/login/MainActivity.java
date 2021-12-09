@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                         wrongPtext.setVisibility(View.VISIBLE);
                     } else {
                         if (!userConverter.userSignIn(email, password)) {
+
                             wrongPtext.setVisibility(View.VISIBLE);
                         } else {
                             if (userConverter.checkEmailVerificationStatus()) {

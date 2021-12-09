@@ -39,6 +39,7 @@ public class ActivityRegisterGui extends AppCompatActivity {
                 String email = email_input.getText().toString();
                 String name = nickname_input.getText().toString();
                 String password = password_input.getText().toString();
+              
                 UserDataConverter uDataConverter = new UserDataConverter();
                 FirebaseAuth mAuth;
                 mAuth = FirebaseAuth.getInstance();
@@ -48,6 +49,7 @@ public class ActivityRegisterGui extends AppCompatActivity {
                     warning_message.setVisibility(View.VISIBLE);
                 } else {
                     try {
+
                         boolean temp = uDataConverter.createNewUser(email, password);
 
                         if (temp) {
@@ -60,9 +62,7 @@ public class ActivityRegisterGui extends AppCompatActivity {
                             warning_message.setText("Account could not be created");
                             warning_message.setVisibility(View.VISIBLE);
                         }
-                /*} else {
-                    warning_message.setVisibility(View.VISIBLE);
-                }*/
+               
                     } catch(FirebaseAuthWeakPasswordException d) {
                         warning_message.setText("Password is weak");
                         warning_message.setVisibility(View.VISIBLE);

@@ -13,6 +13,7 @@ import com.example.myapplication.event.ui.ActivityEvent;
 import com.example.myapplication.login.MainActivity;
 import com.example.myapplication.login.user.UserDataConverter;
 
+
 public class MyAccount extends AppCompatActivity {
 
     @Override
@@ -60,8 +61,10 @@ public class MyAccount extends AppCompatActivity {
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 UserDataConverter userConverter = new UserDataConverter();
                 userConverter.singOutCurrentUser();
+
                 Intent logOutButtonIntent = new Intent(MyAccount.this, MainActivity.class);
                 startActivity(logOutButtonIntent);
                 finish();

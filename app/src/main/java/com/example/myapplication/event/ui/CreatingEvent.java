@@ -16,22 +16,24 @@ import com.example.myapplication.R;
 import com.example.myapplication.event.converter.EventDataConverter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- */
 public class CreatingEvent extends AppCompatActivity {
 
     private HashMap events = new HashMap<>();
     private ArrayList courseEvents = new ArrayList<>();
     private ArrayList generalEvents = new ArrayList<>();
 
-    // TODO: add the javadoc
+    /**
+     * Render necessary components when the page is shown in the app
+     * @param savedInstanceState    the previous status
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +79,8 @@ public class CreatingEvent extends AppCompatActivity {
                     newEvent.put("time", time);
                     newEvent.put("type", type);
 
+                    FirebaseUser currUser = FirebaseAuth.getInstance().getCurrentUser();
+                    String currUserUid = currUser.getUid();
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     DocumentReference userEvents = db.collection("users")
                             .document("UserEvent");
@@ -86,21 +90,23 @@ public class CreatingEvent extends AppCompatActivity {
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.isSuccessful()) {
                                 DocumentSnapshot document = task.getResult();
-                                events = (HashMap) document.get("admin");
-                                courseEvents = (ArrayList) events.get("CourseEvents");
-                                generalEvents = (ArrayList) events.get("GeneralEvents");
+                                HashMap allData = (HashMap) document.getData();
+                                events = (HashMap) document.get(currUserUid);
+                                if (events == null) {
+                                    courseEvents = new ArrayList();
+                                    generalEvents = new ArrayList();
+                                } else {
+                                    courseEvents = (ArrayList) events.get("CourseEvents");
+                                    generalEvents = (ArrayList) events.get("GeneralEvents");
+                                }
 
-                                HashMap<String, HashMap> newData = new HashMap<>();
-                                HashMap<String, ArrayList> prevAdminData = new HashMap<>();
-                                HashMap<String, ArrayList> newAdminData = new HashMap<>();
+                                HashMap<String, ArrayList> prevUserData = new HashMap<>();
+                                HashMap<String, ArrayList> newUserData = new HashMap<>();
 
-                                prevAdminData.put("CourseEvents", courseEvents);
-                                prevAdminData.put("GeneralEvents", generalEvents);
+                                prevUserData.put("CourseEvents", courseEvents);
+                                prevUserData.put("GeneralEvents", generalEvents);
 
-                                // System.out.println(prevAdminData.toString());
-
-                                // Check whether the data is duplicated or not
-                                boolean result = checkAddingData(prevAdminData, name, date, time, location, code, type);
+                                boolean result = checkAddingData(prevUserData, name, date, time, location, code, type);
 
                                 if (result) {
                                     // When the event is general event (e.g. meeting, extracurricular event)
@@ -113,13 +119,12 @@ public class CreatingEvent extends AppCompatActivity {
                                         courseEvents.add(newEvent);
                                     }
 
-                                    newAdminData.put("GeneralEvents", generalEvents);
-                                    newAdminData.put("CourseEvents", courseEvents);
-                                    // We are currently dealing with the data under the User "admin"
-                                    newData.put("admin", newAdminData);
-                                    System.out.println(newAdminData.toString());
-                                    userEvents.set(newData);
-                                    // TODO: Update on the CalendarView
+                                    newUserData.put("GeneralEvents", generalEvents);
+                                    newUserData.put("CourseEvents", courseEvents);
+
+                                    allData.put(currUserUid, newUserData);
+
+                                    userEvents.set(allData);
                                     Log.d("Creating Event", "Successfully added new data");
                                     Intent back_to_event = new Intent(CreatingEvent.this,
                                             ActivityEvent.class);
@@ -142,10 +147,17 @@ public class CreatingEvent extends AppCompatActivity {
         });
     }
 
-    // TODO: add the javadoc
-    /*
-        Check whether new data is duplicated in the database or not.
-        If it is a new data, then return true. Otherwise, return false.
+    /**
+     * Check whether new data is duplicated in the database or not.
+     * If it is a new data, then return true. Otherwise, return false.
+     * @param newData   a dataset with newly added data
+     * @param name  the event name
+     * @param date  the event date
+     * @param time  the event time
+     * @param location  the event location
+     * @param code  the course code for assignment/exam/others event
+     * @param type  the type of the event
+     * @return  true/false
      */
     public static boolean checkAddingData(HashMap newData, String name, String date, String time, String location, String code, String type) {
         EventDataConverter dataConverter= new EventDataConverter(newData);
