@@ -29,6 +29,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+
 public class MyAccount extends AppCompatActivity {
     private HashMap<String, ArrayList<String>> userFollowList = new HashMap<>();
     private ArrayList<String> userFollower = new ArrayList<>();
@@ -128,8 +129,14 @@ public class MyAccount extends AppCompatActivity {
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent logoutButtonIntent = new Intent(MyAccount.this, MainActivity.class);
-                startActivity(logoutButtonIntent);
+
+
+                UserDataConverter userConverter = new UserDataConverter();
+                userConverter.singOutCurrentUser();
+
+                Intent logOutButtonIntent = new Intent(MyAccount.this, MainActivity.class);
+                startActivity(logOutButtonIntent);
+
                 finish();
             }
         });

@@ -16,6 +16,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Page for viewing individual posts
+ * Button for making posts that extend to a new page
+ * Username displayed on screen
+ * Title displayed on screen
+ * Text displayed on screen
+ * ListView of all the comments displayed on screen
+ * Comments are clickable and can be replied to
+ */
 public class ViewPostActivity extends AppCompatActivity {
 
     Button backButton;
@@ -45,13 +54,20 @@ public class ViewPostActivity extends AppCompatActivity {
         userName = findViewById(R.id.userName);
 
         /**
-         * reference to firestore database
+         * Visualizing the comments of the current post in form of scrollable/ clickable
+         * list view.
+         */
+        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, comment_text);
+        comments.setAdapter(arrayAdapter);
+
+        /**
+         * reference to firestore database and corresponding document
          */
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference postsRef = db.document("community/Posts");
 
         /**
-         * obtain current post info from firebase and visualize in current page
+         * Retrieving current post info from firestore database and visualize in the current page
          */
         postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -63,20 +79,21 @@ public class ViewPostActivity extends AppCompatActivity {
                     postTitle.setText(currPost.get("title").toString());
                     postText.setText(currPost.get("text").toString());
                     allComments = (ArrayList<HashMap>) currPost.get("comments");
-                    userName.setText("admin");
+                    userName.setText(currPost.get("postMaker").toString());
 
                     /** currPost.get("comments") is an array list of dictionarys (which are comments) */
                     for(HashMap comment: allComments){
                         if (!comment.equals(null)){
                             comment_text.add("id" + comment.get("id") + ":" + "\n      @id" + comment.get("mention")
-                                    + "   " + comment.get("text").toString());}
+                                    + "   " + comment.get("text"));
+                        }
                     }
                 }
             }
         });
 
         /**
-         * Back to community call
+         * Command navigate back to community page without changing anything
          */
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +113,7 @@ public class ViewPostActivity extends AppCompatActivity {
         });
 
         /**
-         * Command to enter creating comment page
+         * Command to reply to the current post by entering the Create Comment Page
          */
         replyButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,15 +126,8 @@ public class ViewPostActivity extends AppCompatActivity {
             }
         });
 
-
         /**
-         * Visualizing the scrollable list view
-         */
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, comment_text);
-        comments.setAdapter(arrayAdapter);
-
-        /**
-         * Command to enter individual comment page
+         * Command to reply individual comment by entering Create Comment Page.
          */
         comments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

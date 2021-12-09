@@ -8,11 +8,13 @@
     tools:context=".login.MainActivity" android:background="#B1D4E0">
 
     <TextView
+
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:text="@string/sin"
         android:layout_marginStart="50dp"
         android:layout_marginTop="230dp" android:textSize="25sp" android:fontFamily="@font/catamaran_medium"
         android:textColorHint="@color/uoftcoloourr" android:textColor="@color/uoftcoloourr"/>
+
 
     <ImageView
         android:layout_width="179dp"
@@ -22,6 +24,7 @@
         />
 
     <com.google.android.material.textfield.TextInputEditText
+
         android:layout_width="315dp"
         android:layout_height="48dp"
         android:layout_centerHorizontal="true" android:layout_alignBottom="@+id/imageView"
@@ -29,6 +32,7 @@
         android:hint="@string/usercapital" android:fontFamily="@font/catamaran_medium" android:textSize="14sp"
         android:textColor="@color/uoftcoloourr" android:textColorHint="@color/darkgrey"
         tools:targetApi="31"/>
+
     <EditText
         android:id="@+id/Password"
         android:layout_width="315dp"

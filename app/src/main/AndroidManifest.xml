@@ -15,25 +15,21 @@
         <activity
             android:name=".login.forgotPaswordActivity"
             android:exported="false" />
+
         <activity
             android:name=".event.ui.CreatingEvent"
             android:exported="true"
             android:theme="@style/Theme.Design.NoActionBar">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN"/> -->
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-            <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".event.ui.ActivityEvent"
-            android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar">
+                android:name=".me.MyAccount"
+                android:exported="true"
+                android:theme="@style/Theme.Design.NoActionBar">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN"/> -->
+
 
 
             <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
@@ -44,12 +40,6 @@
             android:exported="true"
             android:theme="@style/Theme.Design.NoActionBar">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN"/> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-            <!-- </intent-filter> -->
 
         </activity>
         <activity
@@ -66,8 +56,7 @@
             <!-- <action android:name="android.intent.action.MAIN"/> -->
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-            <!-- </intent-filter> -->
+
 
         </activity>
         <activity
@@ -75,12 +64,7 @@
             android:exported="true"
             android:theme="@style/Theme.Design.NoActionBar">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN"/> -->
 
-
-            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-            <!-- </intent-filter> -->
 
         </activity>
         <activity
@@ -92,8 +76,18 @@
             <!-- <action android:name="android.intent.action.MAIN"/> -->
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-            <!-- </intent-filter> -->
+
+             <category android:name="android.intent.category.LAUNCHER"/>
+             </intent-filter>
+        </activity>
+        <activity android:name=".me.OtherAccount"
+                  android:exported="true"
+                  android:theme="@style/Theme.Design.NoActionBar">
+
+        </activity>
+        <activity android:name=".community.CreateCommentActivity"
+                  android:exported="true"
+                  android:theme="@style/Theme.Design.NoActionBar">
         </activity>
         <activity
             android:name=".login.Welcomescreen"
@@ -115,29 +109,17 @@
             <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity
-            android:name=".community.CreateCommentActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar" />
-        <activity
-            android:name=".community.ViewPostActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar" />
-        <activity
-            android:name=".community.MakingPostActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar" />
-        <activity
-            android:name=".community.CommunityActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar">
 
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-            -->
+        <activity android:name=".community.CommunityActivity"
+                  android:exported="true"
+                  android:theme="@style/Theme.Design.NoActionBar">
+
+        </activity>
+        <activity android:name=".me.Pomodoro"
+                  android:exported="true"
+                  android:theme="@style/Theme.Design.NoActionBar">
+
+
         </activity>
         <activity
             android:name=".me.Pomodoro"

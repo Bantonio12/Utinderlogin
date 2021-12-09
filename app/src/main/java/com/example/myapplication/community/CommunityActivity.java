@@ -17,9 +17,16 @@ import com.google.firebase.firestore.*;
 
 import java.util.*;
 
+/**
+ * Page for showing all the main posts
+ * The main posts will be shown in a ListView showing each posts Title
+ * Main posts will be clickable and will enter into a new page once clicked
+ */
 public class CommunityActivity extends AppCompatActivity {
 
-    // Firestore database reference
+    /**
+     * Firestore database reference
+     */
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference postsRef = db.document("community/Posts");
 
@@ -40,7 +47,10 @@ public class CommunityActivity extends AppCompatActivity {
 
         ArrayList titles = new ArrayList();
 
-        // Posts retrieve and presenting on Community page
+        /**
+         * Posts of all users retrieved from firestore database, and presented on the community page
+         * as scrollable list views.
+         */
         postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -59,7 +69,10 @@ public class CommunityActivity extends AppCompatActivity {
             }
         });
 
-        // Command to enter individual post:
+        /**
+         * Command to enter individual post for viewing the content of the given post by clicking
+         * at title of the post presented in Community Page:
+         */
         posts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -75,8 +88,13 @@ public class CommunityActivity extends AppCompatActivity {
         });
 
 
+        /**
+         * Navigation buttons onclick calls:
+         */
 
-        //Navigation buttons onclick calls:
+        /**
+         * Navigate to Home Page by clicking at the home button at the bottom of the page:
+         */
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,6 +103,10 @@ public class CommunityActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        /**
+         * Navigate to Event Page by clicking at the event button at the bottom of the page:
+         */
         eventbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,6 +115,10 @@ public class CommunityActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        /**
+         * Navigate to Community Page by clicking at the community button at the bottom of the page:
+         */
         communitybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,6 +128,9 @@ public class CommunityActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Navigate to Pomodoro Page by clicking at the pomodoro button at the bottom of the page:
+         */
         pomodorobutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +140,9 @@ public class CommunityActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Navigate to Me Page by clicking at the me button at the bottom of the page:
+         */
         mebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +152,9 @@ public class CommunityActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Command to create a new post by entering the Making New Post Page:
+         */
         makePostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,11 +164,4 @@ public class CommunityActivity extends AppCompatActivity {
         });
     }
 
-//    //Command to enter making new post page:
-//    public void makePost(View btn){
-//        Intent intent = new Intent(this, MakingPostActivity.class);
-//        startActivity(intent);
-//    }
-
 }
-

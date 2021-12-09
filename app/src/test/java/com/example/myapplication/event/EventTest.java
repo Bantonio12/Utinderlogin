@@ -33,7 +33,9 @@ public class EventTest {
         testManager.setEvents(events);
     }
 
-    // Test for the general events
+    /**
+     * Test whether the event is successfully created
+     */
     @Test
     public void EventCreationFail() {
         // When there is a duplicated event, then it returns false!
@@ -46,6 +48,9 @@ public class EventTest {
         assertFalse(actual_result);
     }
 
+    /**
+     * Test whether the duplicated event is not created
+     */
     @Test
     public void EventCreationSuccess() {
         String eventName = "Meeting with CSC207 Prof";
@@ -57,6 +62,9 @@ public class EventTest {
         assertTrue(actual_result);
     }
 
+    /**
+     * Test whether the already existing event is found
+     */
     @Test
     public void FindEventFound() {
         String eventName = "KOVA Meeting";
@@ -68,6 +76,9 @@ public class EventTest {
         assertEquals(actualResult, 0);
     }
 
+    /**
+     * Test whether the new event returns -1
+     */
     @Test
     public void FindEventNotFound() {
         String name = "Exercise 10";
@@ -79,6 +90,9 @@ public class EventTest {
         assertEquals(actualResult, -1);
     }
 
+    /**
+     * Test whether we find the right events on the specific date
+     */
     @Test
     public void FindEventOnThisDateFound() {
         String date = "2021-11-01";
@@ -97,6 +111,9 @@ public class EventTest {
 
     }
 
+    /**
+     * Test whether we return the empty list on the date that has no events
+     */
     @Test
     public void FindEventOnThisDateNotFound() {
         String date = "2021-11-03";
@@ -105,6 +122,4 @@ public class EventTest {
 
         assertEquals(actualResult, expectedResult);
     }
-
-    // TODO: Add the test for changing the event information
 }

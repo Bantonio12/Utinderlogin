@@ -7,7 +7,17 @@
                  android:layout_height="match_parent"
                  android:id="@+id/main"
                  tools:context=".homepage.TaskItem" android:background="@color/white">
-<TextView
+
+    <CheckBox
+
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/checkboxforaddingtask"
+            android:buttonTint="@color/uoftcoloourr"
+            android:visibility="visible" android:checked="false"/>
+
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/taskname"
@@ -16,7 +26,10 @@
         android:textSize="15sp"
         android:fontFamily="@font/catamaran_medium"
         android:paddingLeft="15dp"
-        android:textColorHint="@color/uoftcoloourr">
-</TextView>
+        android:textColorHint="@color/uoftcoloourr"
+        android:layout_marginStart="20dp">
+    </TextView>
+
+
 
 </RelativeLayout>

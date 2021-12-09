@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PostTest {
     private PostManager testManager;
@@ -15,10 +16,18 @@ public class PostTest {
 
     @Before
     public void setUp() {
+        ArrayList testingPostList = new ArrayList();
+        HashMap post1 = new HashMap();
+        HashMap post2 = new HashMap();
+        HashMap post3 = new HashMap();
+
+        post1.put("title", "")
+
         testManager = new PostManager();
         testUser1 = new User("michael", "123@utoronto.ca", "123abc");
         testUser2 = new User("kex", "456@utoronto.ca", "456def");
     }
+
 
 //    @Test
 //    // Test to see if posts can be created

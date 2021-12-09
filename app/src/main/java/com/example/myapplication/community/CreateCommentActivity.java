@@ -20,6 +20,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Page for creating comments:
+ * Should add comments to the specified posts
+ * Comments should consist of three elements: text, id, mention
+ * text: The text within the comment
+ * id: The id of the specific comment
+ * mention: The comment/ post this comment is mentioning
+ */
+
 public class CreateCommentActivity extends AppCompatActivity {
 
     Button postComment;
@@ -35,11 +44,6 @@ public class CreateCommentActivity extends AppCompatActivity {
         backToPost = findViewById(R.id.backToPost);
         commentInput = findViewById(R.id.makingCommentText);
 
-        //reference to firestore database
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference postsRef = db.document("community/Posts");
-        FirebaseUser postMaker = FirebaseAuth.getInstance().getCurrentUser();
-
         Intent intent = getIntent();
 
         String title = intent.getExtras().getString("title");
@@ -48,7 +52,10 @@ public class CreateCommentActivity extends AppCompatActivity {
 
         Object mention = intent.getExtras().get("mention");
 
-        //Command to create the comment and update database
+        /**
+         * Command to create the comment in form: "@" + id of the original post or comment + input comment
+         * and update corresponding post data in database. Then navigate back to the original post:
+         */
         postComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,32 +64,37 @@ public class CreateCommentActivity extends AppCompatActivity {
 
                 String comment = commentInput.getText().toString();
 
-                HashMap newComment = new HashMap();
+                /**
+                 * Reference to the firestore firebase, and corresponding document saving information of
+                 * current posts from all users.
+                 */
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                DocumentReference postsRef = db.document("community/Posts");
 
-                newComment.put("id", id);
-                newComment.put("text", comment);
-                newComment.put("mention", mention);
 
+                HashMap newPostMap = new HashMap();
+
+                /**
+                 * Updating the post in database by adding the comment made to the corresponding
+                 * comments list.
+                 */
                 postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if(task.isSuccessful()){
                             DocumentSnapshot document = task.getResult();
-                            HashMap postList = (HashMap) document.get("PostList");
-                            HashMap currPost = (HashMap) postList.get(title);
+                            HashMap postMap = (HashMap) document.get("PostList");
 
-                            ArrayList currComments = (ArrayList) currPost.get("comments");
-                            currComments.add(newComment);
+                            PostDataConverter converter = new PostDataConverter(postMap);
+                            HashMap newPost = converter.makeComment(id, comment, mention, title);
 
-                            currPost.put("comments", currComments);
+                            postMap.put(title, newPost);
 
-                            postList.put(title, currPost);
+                            HashMap newPostList = new HashMap();
+                            newPostList.put("PostList", postMap);
 
-                            HashMap newData = new HashMap<>();
+                            postsRef.set(newPostList);
 
-                            newData.put("PostList", postList);
-
-                            postsRef.set(newData);
                         }
                     }
                 });
@@ -92,7 +104,9 @@ public class CreateCommentActivity extends AppCompatActivity {
             }
         });
 
-        // Command to go back to main post
+        /**
+         * Command to navigate back to the original post page without changing any thing:
+         */
         backToPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,9 +115,5 @@ public class CreateCommentActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-    // message when making post successfully
-    private void showToast(String text){
-        Toast.makeText(CreateCommentActivity.this, text, Toast.LENGTH_SHORT).show();
     }
 }

@@ -11,7 +11,9 @@ import com.google.firebase.auth.FirebaseAuthEmailException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+
 import com.google.firebase.auth.UserProfileChangeRequest;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
@@ -27,6 +29,7 @@ public class UserManager {
     public void verifyUser() {
         Objects.requireNonNull(mAuthenticator.getCurrentUser()).sendEmailVerification();
     }
+
 
 
     public Task<AuthResult> createUser(String e, String p) throws FirebaseAuthInvalidCredentialsException, FirebaseAuthEmailException, FirebaseAuthWeakPasswordException {
@@ -48,6 +51,7 @@ public class UserManager {
     public void signOutUser() {
         FirebaseUser user = mAuthenticator.getCurrentUser();
         mAuthenticator.signOut();
+
     }
 
     public Task<Void> passwordResetEmail(String e) {
