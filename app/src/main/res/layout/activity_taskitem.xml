@@ -9,11 +9,13 @@
                  tools:context=".homepage.TaskItem" android:background="@color/white">
 
     <CheckBox
-            android:text="@string/checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/checkboxforaddingtask"
-            android:buttonTint="@color/uoftcoloourr"
-            android:visibility="visible" android:checked="false"/>
+        android:id="@+id/checkboxforaddingtask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/uoftcoloourr"
+        android:checked="false"
+        android:text="@string/checkbox"
+        android:visibility="visible" />
 
     <TextView
         android:layout_width="wrap_content"
