@@ -48,7 +48,8 @@ public class CommunityActivity extends AppCompatActivity {
         ArrayList titles = new ArrayList();
 
         /**
-         * Posts retrieve and presenting on Community page
+         * Posts of all users retrieved from firestore database, and presented on the community page
+         * as scrollable list views.
          */
         postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -69,7 +70,8 @@ public class CommunityActivity extends AppCompatActivity {
         });
 
         /**
-         * Command to enter individual post:
+         * Command to enter individual post for viewing the content of the given post by clicking
+         * at title of the post presented in Community Page:
          */
         posts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -89,6 +91,10 @@ public class CommunityActivity extends AppCompatActivity {
         /**
          * Navigation buttons onclick calls:
          */
+
+        /**
+         * Navigate to Home Page by clicking at the home button at the bottom of the page:
+         */
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,6 +103,10 @@ public class CommunityActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        /**
+         * Navigate to Event Page by clicking at the event button at the bottom of the page:
+         */
         eventbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,6 +115,10 @@ public class CommunityActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        /**
+         * Navigate to Community Page by clicking at the community button at the bottom of the page:
+         */
         communitybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,6 +128,9 @@ public class CommunityActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Navigate to Pomodoro Page by clicking at the pomodoro button at the bottom of the page:
+         */
         pomodorobutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,6 +140,9 @@ public class CommunityActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Navigate to Me Page by clicking at the me button at the bottom of the page:
+         */
         mebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,6 +152,9 @@ public class CommunityActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Command to create a new post by entering the Making New Post Page:
+         */
         makePostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
