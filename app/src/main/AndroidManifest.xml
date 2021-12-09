@@ -13,35 +13,20 @@
                 android:name=".event.ui.CreatingEvent"
                 android:exported="true"
                 android:theme="@style/Theme.Design.NoActionBar">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN"/>-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
-<!--            </intent-filter>-->
         </activity>
         <activity
                 android:name=".event.ui.ActivityEvent"
                 android:exported="true"
                 android:theme="@style/Theme.Design.NoActionBar">
 
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN"/>-->
 
-
-<!--             <category android:name="android.intent.category.LAUNCHER"/>-->
-<!--             </intent-filter>-->
         </activity>
         <activity
                 android:name=".me.MyAccount"
                 android:exported="true"
                 android:theme="@style/Theme.Design.NoActionBar">
 
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN"/>-->
-
-
-<!--             <category android:name="android.intent.category.LAUNCHER"/>-->
-<!--             </intent-filter>-->
 
         </activity>
         <activity
@@ -55,12 +40,6 @@
                 android:parentActivityName=".login.MainActivity"
                 android:theme="@style/Theme.Design.NoActionBar">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN"/> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-            <!-- </intent-filter> -->
 
         </activity>
         <activity
@@ -68,24 +47,12 @@
                 android:exported="true"
                 android:theme="@style/Theme.Design.NoActionBar">
 
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN"/>-->
-
-<!--             <category android:name="android.intent.category.LAUNCHER"/>-->
-<!--             </intent-filter>-->
 
         </activity>
         <activity
                 android:name=".login.MainActivity"
                 android:exported="true"
                 android:theme="@style/Theme.Design.NoActionBar">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN"/> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-            <!-- </intent-filter> -->
         </activity>
         <activity
                 android:name=".login.Welcomescreen"
@@ -102,10 +69,7 @@
         <activity android:name=".me.OtherAccount"
                   android:exported="true"
                   android:theme="@style/Theme.Design.NoActionBar">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN"/>-->
-<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
-<!--            </intent-filter>-->
+
         </activity>
         <activity android:name=".community.CreateCommentActivity"
                   android:exported="true"
@@ -122,10 +86,6 @@
         <activity android:name=".community.CommunityActivity"
                   android:exported="true"
                   android:theme="@style/Theme.Design.NoActionBar">
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>-->
         </activity>
         <activity android:name=".me.Pomodoro"
                   android:exported="true"

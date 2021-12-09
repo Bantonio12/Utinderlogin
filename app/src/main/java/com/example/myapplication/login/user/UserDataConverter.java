@@ -40,11 +40,5 @@ public class UserDataConverter {
     public void singOutCurrentUser() {
         UserManager uManager = new UserManager();
         uManager.signOutUser();
-        /*try {
-            countDownLatch.await(1L, TimeUnit.SECONDS);
-            return uManager.signOutUser();
-        } catch (InterruptedException ie) {
-            return false;
-        }*/
     }
 }
