@@ -7,14 +7,20 @@
                                                    tools:context=".login.MainActivity" android:background="#B1D4E0">
 
     <TextView
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="@string/sin"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginLeft="55dp" android:layout_marginStart="50dp"
-            app:layout_constraintHorizontal_bias="0.01" app:layout_constraintVertical_bias="0.369"
-            android:textSize="25sp" android:fontFamily="@font/catamaran_medium"
-            android:textColorHint="@color/uoftcoloourr" android:textColor="@color/uoftcoloourr"/>
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_marginStart="50dp"
+        android:fontFamily="@font/catamaran_medium"
+        android:text="@string/sin"
+        android:textColor="@color/uoftcoloourr"
+        android:textColorHint="@color/uoftcoloourr"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
             android:layout_width="179dp"
