@@ -10,7 +10,7 @@ import java.util.TimerTask;
 
 public class Welcomescreen extends AppCompatActivity {
 
-    private final int DISPLAY_TIME = 3000;
+    private final int DELAY_TIME = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,6 @@ public class Welcomescreen extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, DISPLAY_TIME);
+        }, DELAY_TIME);
     }
 }

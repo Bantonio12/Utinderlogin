@@ -22,39 +22,42 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) throws NullPointerException{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mAuth = FirebaseAuth.getInstance();
 
         final Button loginbutton = findViewById(R.id.loginbutton);
         final TextInputEditText emailInput = findViewById(R.id.textInputEditText);
         final EditText passwordInput = findViewById(R.id.Password);
         final TextView wrongPtext = findViewById(R.id.wrongPtext);
         final Button newAccButton = findViewById(R.id.button2);
+        final Button forgetPasswordButton = findViewById(R.id.forgotPasswordButton);
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             public void onClick(View v) {
                 try {
                     String email = Objects.requireNonNull(emailInput.getText()).toString();
                     String password = passwordInput.getText().toString();
+                    UserDataConverter userConverter = new UserDataConverter();
                     if (email.equals("") || password.equals("")) {
                         wrongPtext.setText("Please enter a valid email or password");
                         wrongPtext.setVisibility(View.VISIBLE);
                     } else {
+                        if (!userConverter.userSignIn(email, password)) {
 
-                        UserDataConverter uDataConverter = new UserDataConverter();
-                        if (!uDataConverter.userSignIn(email, password)) {
-                          
                             wrongPtext.setVisibility(View.VISIBLE);
                         } else {
-                            wrongPtext.setVisibility(View.INVISIBLE);
-                            Intent afterLoginIntent = new Intent(MainActivity.this, Homepage.class);
-                            startActivity(afterLoginIntent);
-                            finish();
+                            if (userConverter.checkEmailVerificationStatus()) {
+                                Intent afterLoginIntent = new Intent(MainActivity.this, Homepage.class);
+                                startActivity(afterLoginIntent);
+                                finish();
+                            } else {
+                                Intent noVerificationIntent = new Intent(MainActivity.this, NoneVerifiedEmailActivity.class);
+                                startActivity(noVerificationIntent);
+                                finish();
+                            }
+
                         }
                     }
                 } catch(FirebaseAuthEmailException duplicateEmailException) {
@@ -64,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
                     wrongPtext.setText("Please Enter a valid Email");
                     wrongPtext.setVisibility(View.VISIBLE);
                 }
-
             }
         });
 
@@ -72,6 +74,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent register_intent = new Intent(MainActivity.this, ActivityRegisterGui.class);
+                startActivity(register_intent);
+            }
+        });
+
+        forgetPasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent register_intent = new Intent(MainActivity.this, forgotPaswordActivity.class);
                 startActivity(register_intent);
             }
         });

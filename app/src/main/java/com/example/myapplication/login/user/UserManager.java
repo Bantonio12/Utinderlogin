@@ -12,7 +12,11 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 
+import com.google.firebase.auth.UserProfileChangeRequest;
+
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Objects;
 
 public class UserManager {
     private FirebaseAuth mAuthenticator;
@@ -22,91 +26,48 @@ public class UserManager {
     }
 
 
-    /*public boolean findUsername(String n) {
-        final boolean[] usernameExists = {false};
-        Query usernameDoc = database.collection("users").whereIn("username",
-                Collections.singletonList(n));
-        usernameDoc.whereIn("username", Collections.singletonList(n)).get();
-        if (usernameDoc.whereIn("username", Collections.singletonList(n)).get() != "") {
-
-        }
-        *//*documentReading.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot doc = task.getResult();
-                    System.out.println("w");
-                    if (doc.exists()) {
-                        usernameExists[0] = true;
-                        System.out.println("F");
-                    }
-                }
-                System.out.println("L");
-            }
-        });
-        return usernameExists[0];*//*
-    }*/
-
-    /*public String getPassword(String n) {
-        final String[] password = {""};
-        DocumentReference documentReading = database.collection("users")
-                .document("UserNamePassword");
-        documentReading.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot doc = task.getResult();
-                    if (doc.exists()) {
-                        password[0] = doc.get(n).toString();
-                    }
-                }
-            }
-        });
-        return password[0];
+    public void verifyUser() {
+        Objects.requireNonNull(mAuthenticator.getCurrentUser()).sendEmailVerification();
     }
 
-    public String getEmail(String n) {
-        final String[] email = {""};
-        DocumentReference documentReading = database.collection("users")
-                .document("UserEmail");
-        documentReading.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot doc = task.getResult();
-                    if (doc.exists()) {
-                        email[0] = doc.get(n).toString();
-                    }
-                }
-            }
-        });
-        return email[0];
-    }*/
 
 
     public Task<AuthResult> createUser(String e, String p) throws FirebaseAuthInvalidCredentialsException, FirebaseAuthEmailException, FirebaseAuthWeakPasswordException {
         return mAuthenticator.createUserWithEmailAndPassword(e, p)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-                    }
+                .addOnCompleteListener(task -> {
                 });
     }
 
-    public Task<AuthResult> checkUser(String e, String p) throws FirebaseAuthInvalidCredentialsException, FirebaseAuthEmailException, FirebaseAuthWeakPasswordException {
+    public Task<AuthResult> checkUserEmailPassword(String e, String p) {
         return mAuthenticator.signInWithEmailAndPassword(e, p)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-                    }
+                .addOnCompleteListener(task -> {
                 });
+    }
+
+    public boolean checkUserVerification() {
+        return Objects.requireNonNull(mAuthenticator.getCurrentUser()).isEmailVerified();
     }
 
     public void signOutUser() {
         FirebaseUser user = mAuthenticator.getCurrentUser();
         mAuthenticator.signOut();
 
+    }
+
+    public Task<Void> passwordResetEmail(String e) {
+        return mAuthenticator.sendPasswordResetEmail(e).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+            }
+        });
+    }
+
+    public void setDisplayName(String n) {
+        UserProfileChangeRequest updatingUserName = new UserProfileChangeRequest.Builder()
+                .setDisplayName(n).build();
+        mAuthenticator.getCurrentUser().updateProfile(updatingUserName).addOnCompleteListener(task -> {
+
+        });
     }
 }
