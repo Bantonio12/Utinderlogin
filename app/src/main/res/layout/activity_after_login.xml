@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".login.ActivityAfterLogin" android:background="#B1D4E0">
+        tools:context=".login.ui.ActivityAfterLogin" android:background="#B1D4E0">
 
     <Button
             android:text="@string/backto"

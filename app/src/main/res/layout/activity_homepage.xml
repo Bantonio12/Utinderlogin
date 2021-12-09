@@ -38,36 +38,18 @@
             android:background="@drawable/round_shape_tedurikk">
 
         <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:hint="@string/addingtask" android:id="@+id/addingtask" android:fontFamily="@font/catamaran_light"
-                android:textColorHint="@color/uoftcoloourr" android:textColor="@color/uoftcoloourr"
-                android:textSize="15sp" android:inputType="text"/>
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="13dp"
+                android:layout_marginStart="7dp"
+                android:id="@+id/addingtask"
+                android:hint="@string/addingtask"
+                android:textSize="13sp" android:text="@string/nothing"
+                android:fontFamily="@font/catamaran_light" android:textColor="@color/uoftcoloourr"
+                android:textColorHint="@color/uoftcoloourr"
+                android:inputType="text"/>
 
-
-        <!--        </com.google.android.material.textfield.TextInputEditText>-->
-        <!--                android:layout_margin="0dp"-->
-        <!--                android:paddingTop="0dp"-->
-        <!--                android:paddingBottom="0dp"-->
-        <!--                android:textAlignment="center"-->
-        <!--                android:id="@+id/addingtask"-->
-        <!--                android:hint="@string/addingtask"-->
-        <!--                android:textSize="13sp"-->
-        <!--                android:fontFamily="@font/catamaran_light"-->
-        <!--                android:textColorHint="@color/uoftcoloourr" android:textColor="@color/uoftcoloourr"-->
-        <!--                android:inputType="text"-->
-        <!--                android:layout_centerInParent="true"/>-->
-
-
-
-        <!--        <EditText-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="25dp"-->
-        <!--                android:layout_margin="5dp"-->
-        <!--                android:id="@+id/addingtask"-->
-        <!--                android:textSize="30sp" android:hint="@string/addingtask"-->
-        <!--                android:fontFamily="@font/catamaran_light"-->
-        <!--                android:textColorHint="@color/uoftcoloourr" android:textColor="@color/uoftcoloourr"-->
-        <!--                android:layout_centerInParent="true"/>-->
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -92,7 +74,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/tasks_list">
-
         </ListView>
     </LinearLayout>
 

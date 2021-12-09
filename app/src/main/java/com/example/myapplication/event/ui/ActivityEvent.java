@@ -14,11 +14,13 @@ import android.app.Dialog;
 
 import java.util.*;
 
-import com.example.myapplication.community.CommunityActivity;
+import com.example.myapplication.community.ui.CommunityActivity;
 import com.example.myapplication.event.converter.EventDataConverter;
 import com.example.myapplication.homepage.Homepage;
 import com.example.myapplication.me.MyAccount;
-import com.example.myapplication.me.Pomodoro;
+import com.example.myapplication.pomodoro.Pomodoro;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -107,7 +109,8 @@ public class ActivityEvent extends AppCompatActivity {
      * @param selectedDate  the date that the User selected on the calendar
      */
     private void showPopUp(String selectedDate) {
-        // TODO: Extract the data for the selected date and add the info to the page
+        FirebaseUser currUser = FirebaseAuth.getInstance().getCurrentUser();
+        String currUserUid = currUser.getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference userEvents = db.collection("users")
                 .document("UserEvent");
@@ -115,17 +118,22 @@ public class ActivityEvent extends AppCompatActivity {
         userEvents.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
-                events = (HashMap) document.get("admin");
-                courseEvents = (ArrayList) events.get("CourseEvents");
-                generalEvents = (ArrayList) events.get("GeneralEvents");
+                events = (HashMap) document.get(currUserUid);
+                if (events == null) {
+                    courseEvents = new ArrayList();
+                    generalEvents = new ArrayList();
+                } else {
+                    courseEvents = (ArrayList) events.get("CourseEvents");
+                    generalEvents = (ArrayList) events.get("GeneralEvents");
 
-                HashMap<String, ArrayList> userData = new HashMap<>();
+                    HashMap<String, ArrayList> userData = new HashMap<>();
 
-                userData.put("CourseEvents", courseEvents);
-                userData.put("GeneralEvents", generalEvents);
+                    userData.put("CourseEvents", courseEvents);
+                    userData.put("GeneralEvents", generalEvents);
 
-                EventDataConverter eventDataConverter = new EventDataConverter(userData);
-                eventsOnDate = eventDataConverter.findEvent(selectedDate);
+                    EventDataConverter eventDataConverter = new EventDataConverter(userData);
+                    eventsOnDate = eventDataConverter.findEvent(selectedDate);
+                }
 
                 arrayAdapter = new EventsAdapter(context, R.layout.activity_event_popup_item, eventsOnDate);
 
