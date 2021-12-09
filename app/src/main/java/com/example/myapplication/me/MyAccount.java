@@ -16,10 +16,10 @@ import android.content.Intent;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.myapplication.community.ui.CommunityActivity;
+import com.example.myapplication.community.CommunityActivity;
 import com.example.myapplication.homepage.Homepage;
 import com.example.myapplication.event.ui.ActivityEvent;
-import com.example.myapplication.login.ui.MainActivity;
+import com.example.myapplication.login.MainActivity;
 import com.example.myapplication.pomodoro.Pomodoro;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
