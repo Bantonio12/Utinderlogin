@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.community.ui.CommunityActivity;
+import com.example.myapplication.community.CommunityActivity;
 import com.example.myapplication.event.ui.ActivityEvent;
 import com.example.myapplication.homepage.Homepage;
 import com.example.myapplication.pomodoro.Pomodoro;
