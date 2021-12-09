@@ -59,7 +59,7 @@ public class MakingPostActivity extends AppCompatActivity {
                 DocumentReference postsRef = db.document("community/Posts");
                 DocumentReference userPostsTestRef = db.document("community/UserPosts");
 
-                FirebaseUser postMaker = FirebaseAuth.getInstance().getCurrentUser();
+                String postMaker = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
                 String title = titleInput.getText().toString();
                 String text = textInput.getText().toString();
 

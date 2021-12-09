@@ -54,6 +54,12 @@ public class ViewPostActivity extends AppCompatActivity {
         userName = findViewById(R.id.userName);
 
         /**
+         * Visualizing the scrollable list view
+         */
+        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, comment_text);
+        comments.setAdapter(arrayAdapter);
+
+        /**
          * reference to firestore database
          */
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -78,7 +84,8 @@ public class ViewPostActivity extends AppCompatActivity {
                     for(HashMap comment: allComments){
                         if (!comment.equals(null)){
                             comment_text.add("id" + comment.get("id") + ":" + "\n      @id" + comment.get("mention")
-                                    + "   " + comment.get("text"));}
+                                    + "   " + comment.get("text"));
+                        }
                     }
                 }
             }
@@ -117,13 +124,6 @@ public class ViewPostActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-        /**
-         * Visualizing the scrollable list view
-         */
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, comment_text);
-        comments.setAdapter(arrayAdapter);
 
         /**
          * Command to enter individual comment page
