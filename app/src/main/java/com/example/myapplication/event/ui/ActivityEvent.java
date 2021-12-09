@@ -14,11 +14,13 @@ import android.app.Dialog;
 
 import java.util.*;
 
-import com.example.myapplication.community.CommunityActivity;
+import com.example.myapplication.community.ui.CommunityActivity;
 import com.example.myapplication.event.converter.EventDataConverter;
 import com.example.myapplication.homepage.Homepage;
 import com.example.myapplication.me.MyAccount;
-import com.example.myapplication.me.Pomodoro;
+
+import com.example.myapplication.pomodoro.Pomodoro;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;

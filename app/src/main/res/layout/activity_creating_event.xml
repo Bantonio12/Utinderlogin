@@ -144,6 +144,14 @@
             android:layout_marginLeft="50dp" android:layout_marginStart="50dp">
     </TextView>
 
+    <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="320dp" android:layout_height="50dp" android:textSize="12sp"
+            android:hint="Type your event's category!" android:textColorHint="@color/uoftcoloourr"
+            android:fontFamily="@font/catamaran_light" android:layout_centerHorizontal="true"
+            android:layout_alignTop="@+id/category" android:layout_marginTop="40dp"
+            android:textColor="@color/uoftcoloourr" android:textColorLink="@color/uoftcoloourr">
+    </com.google.android.material.textfield.TextInputEditText>
+
     <EditText
             android:layout_width="320dp" android:layout_height="30dp"
             android:id="@+id/categorizing" android:autofillHints="@string/description"

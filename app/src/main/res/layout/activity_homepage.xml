@@ -50,6 +50,10 @@
                 android:textColorHint="@color/uoftcoloourr"
                 android:inputType="text"/>
 
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -78,7 +82,10 @@
         <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/tasks_list"/>
+
+                android:id="@+id/tasks_list">
+        </ListView>
+
     </LinearLayout>
 
 

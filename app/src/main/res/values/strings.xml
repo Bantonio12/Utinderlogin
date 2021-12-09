@@ -13,7 +13,7 @@
     <string name="its_wrong">Its wrong</string>
     <string name="welcome">Welcome to</string>
     <string name="utinder">UTinder.</string>
-    <string name="nothing" />
+    <string name="nothing"/>
     <string name="sibal">Your friendly school life manager</string>
     <string name="startt">Get Started</string>
     <string name="logo">Logo</string>
@@ -103,6 +103,11 @@
     <string name="potimer">Pomodoro Timer</string>
     <string name="makepost">Make Post</string>
     <string name="posttitle">Post Title</string>
+
+    <string name="checkbox"></string>
+    <string name="email2">EMAIL</string>
+    <string name="followname"></string>
+
     <string name="email2">Email</string>
 
     <string name="please_enter_your_email_you_made_your_account_with_an_email_with_the_link_to_reset_your_password_will_be_sent">Please Enter your email you made your account with. An email with the link to reset your password will be sent.</string>
