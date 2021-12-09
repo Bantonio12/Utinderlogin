@@ -18,9 +18,10 @@ public class UserDataConverter {
     public boolean createNewUser(String e, String p) throws FirebaseAuthEmailException, FirebaseAuthInvalidCredentialsException, FirebaseAuthWeakPasswordException {
         UserManager uManager = new UserManager();
         Task<AuthResult> signUpTask = uManager.createUser(e, p);
+        uManager.verifyUser();
         try {
-            countDownLatch.await(3L, TimeUnit.SECONDS);
-            return  signUpTask.isSuccessful();
+            countDownLatch.await(500L, TimeUnit.MILLISECONDS);
+            return signUpTask.isSuccessful();
         } catch (InterruptedException ie) {
             return false;
         }
@@ -30,7 +31,7 @@ public class UserDataConverter {
         UserManager uManager = new UserManager();
         Task<AuthResult> signInTask = uManager.checkUser(e, p);
         try {
-            countDownLatch.await(3L, TimeUnit.SECONDS);
+            countDownLatch.await(500L, TimeUnit.MILLISECONDS);
             return  signInTask.isSuccessful();
         } catch (InterruptedException ie) {
             return false;
@@ -40,5 +41,16 @@ public class UserDataConverter {
     public void singOutCurrentUser() {
         UserManager uManager = new UserManager();
         uManager.signOutUser();
+    }
+
+    public boolean resetPassword(String e) {
+        UserManager uManger = new UserManager();
+        Task<Void> reset = uManger.passwordResetEmail(e);
+        try {
+            countDownLatch.await(1L, TimeUnit.SECONDS);
+            return  reset.isSuccessful();
+        } catch (InterruptedException ie) {
+            return false;
+        }
     }
 }
