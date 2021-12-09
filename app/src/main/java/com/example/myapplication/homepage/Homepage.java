@@ -52,14 +52,25 @@ public class Homepage extends AppCompatActivity {
         Button addTaskButton = findViewById(R.id.addtaskbutton);
         TextInputEditText newTaskName = findViewById(R.id.addingtask);
 
-        String morning_greet = "Good Morning, ";
-        String afternoon_greet = "Good Afternoon, " ;
-        String evening_greet = "Good Evening, " ;
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uoft_email = user.getEmail().toString();
+
+//        String morning_greet = "Good Morning, ";
+//        String afternoon_greet = "Good Afternoon, " ;
+//        String evening_greet = "Good Evening, " ;
+
+        String [] email_split = uoft_email.split("\\.");
+        String first_name = email_split[0];
+        String morning_greet = "Good Morning, " + first_name.substring(0, 1).toUpperCase() +
+                first_name.substring(1);
+        String afternoon_greet = "Good Afternoon, " + first_name.substring(0, 1).toUpperCase() +
+                first_name.substring(1);
+        String evening_greet = "Good Evening, " + first_name.substring(0, 1).toUpperCase() +
+                first_name.substring(1);
 
 
         LocalTime datetime = LocalTime.now();
         final TextView gretting = findViewById(R.id.greeting_homepageview);
-        final TextView datee = findViewById(R.id.date_txt);
         if (datetime.getHour() < 12){
             gretting.setText(morning_greet);
         } else if (datetime.getHour() >= 12 && datetime.getHour() < 18){
@@ -72,7 +83,6 @@ public class Homepage extends AppCompatActivity {
         arrayAdapter = new TaskAdapter(this, R.layout.activity_taskitem, taskList);
         listOfTasks.setAdapter((arrayAdapter));
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserId = user.getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference userTaskData = db.collection("users").document("UserTask");
