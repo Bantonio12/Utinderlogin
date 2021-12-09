@@ -36,6 +36,7 @@ public class MakingPostActivity extends AppCompatActivity {
     private HashMap userPosts = new HashMap();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -49,12 +50,16 @@ public class MakingPostActivity extends AppCompatActivity {
         back_button = findViewById(R.id.backToPostButton);
 
         /**
-         * Command to create the new post and update database
+         * Command to create the new post with input title, text, current user, and default comments list,
+         * and update the firestore database by adding the new post created to the corresponding documents.
          */
         post_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                /**
+                 * Reference for firestore database and corresponding documents
+                 */
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 DocumentReference postsRef = db.document("community/Posts");
                 DocumentReference userPostsTestRef = db.document("community/UserPosts");
@@ -74,7 +79,7 @@ public class MakingPostActivity extends AppCompatActivity {
 
 
                 /**
-                 * update Posts document in database
+                 * updating Posts document in the firestore database
                  */
                 postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -98,7 +103,7 @@ public class MakingPostActivity extends AppCompatActivity {
                 });
 
                 /**
-                 * update UserPosts document in database
+                 * updating the UserPosts document in the firestore database
                  */
                 userPostsTestRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -146,7 +151,7 @@ public class MakingPostActivity extends AppCompatActivity {
         });
 
         /**
-         * Command to go back to community page:
+         * Command to navigate back to community page without changing anything:
          */
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override

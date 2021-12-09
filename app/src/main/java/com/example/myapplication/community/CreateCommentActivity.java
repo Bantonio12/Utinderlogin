@@ -53,7 +53,8 @@ public class CreateCommentActivity extends AppCompatActivity {
         Object mention = intent.getExtras().get("mention");
 
         /**
-         * Command to create the comment and update database
+         * Command to create the comment in form: "@" + id of the original post or comment + input comment
+         * and update corresponding post data in database. Then navigate back to the original post:
          */
         postComment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,11 +64,20 @@ public class CreateCommentActivity extends AppCompatActivity {
 
                 String comment = commentInput.getText().toString();
 
+                /**
+                 * Reference to the firestore firebase, and corresponding document saving information of
+                 * current posts from all users.
+                 */
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 DocumentReference postsRef = db.document("community/Posts");
 
 
                 HashMap newPostMap = new HashMap();
+
+                /**
+                 * Updating the post in database by adding the comment made to the corresponding
+                 * comments list.
+                 */
                 postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -95,7 +105,7 @@ public class CreateCommentActivity extends AppCompatActivity {
         });
 
         /**
-         * Command to go back to main post
+         * Command to navigate back to the original post page without changing any thing:
          */
         backToPost.setOnClickListener(new View.OnClickListener() {
             @Override

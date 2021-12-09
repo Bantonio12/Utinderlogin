@@ -54,19 +54,20 @@ public class ViewPostActivity extends AppCompatActivity {
         userName = findViewById(R.id.userName);
 
         /**
-         * Visualizing the scrollable list view
+         * Visualizing the comments of the current post in form of scrollable/ clickable
+         * list view.
          */
         ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, comment_text);
         comments.setAdapter(arrayAdapter);
 
         /**
-         * reference to firestore database
+         * reference to firestore database and corresponding document
          */
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference postsRef = db.document("community/Posts");
 
         /**
-         * obtain current post info from firebase and visualize in current page
+         * Retrieving current post info from firestore database and visualize in the current page
          */
         postsRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -92,7 +93,7 @@ public class ViewPostActivity extends AppCompatActivity {
         });
 
         /**
-         * Back to community call
+         * Command navigate back to community page without changing anything
          */
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +113,7 @@ public class ViewPostActivity extends AppCompatActivity {
         });
 
         /**
-         * Command to enter creating comment page
+         * Command to reply to the current post by entering the Create Comment Page
          */
         replyButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,7 +127,7 @@ public class ViewPostActivity extends AppCompatActivity {
         });
 
         /**
-         * Command to enter individual comment page
+         * Command to reply individual comment by entering Create Comment Page
          */
         comments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
