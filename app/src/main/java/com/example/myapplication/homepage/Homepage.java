@@ -1,5 +1,7 @@
 package com.example.myapplication.homepage;
 
+import android.app.Activity;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.widget.AdapterView;
 import androidx.annotation.NonNull;
@@ -19,6 +21,8 @@ import java.time.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.example.myapplication.R;
 import com.example.myapplication.me.Pomodoro;
@@ -42,6 +46,12 @@ public class Homepage extends AppCompatActivity {
     private ArrayList<String> prevData = new ArrayList<>();
     private TaskAdapter arrayAdapter;
     private HashMap<String, ArrayList<String>> allData = new HashMap<>();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    DocumentReference userTaskData = db.collection("users").document("UserTask");
+    private String currentUserId = user.getUid();
+
+    int index_to_delete;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -49,15 +59,14 @@ public class Homepage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
+        arrayAdapter = new TaskAdapter(this, R.layout.activity_taskitem, taskList);
+
+        Button clearCheckedButton = findViewById(R.id.clear_btn);
         Button addTaskButton = findViewById(R.id.addtaskbutton);
         TextInputEditText newTaskName = findViewById(R.id.addingtask);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uoft_email = user.getEmail().toString();
 
-//        String morning_greet = "Good Morning, ";
-//        String afternoon_greet = "Good Afternoon, " ;
-//        String evening_greet = "Good Evening, " ;
+        String uoft_email = user.getEmail().toString();
 
         String [] email_split = uoft_email.split("\\.");
         String first_name = email_split[0];
@@ -80,12 +89,8 @@ public class Homepage extends AppCompatActivity {
         }
 
         listOfTasks = findViewById(R.id.tasks_list);
-        arrayAdapter = new TaskAdapter(this, R.layout.activity_taskitem, taskList);
-        listOfTasks.setAdapter((arrayAdapter));
 
-        String currentUserId = user.getUid();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference userTaskData = db.collection("users").document("UserTask");
+        listOfTasks.setAdapter((arrayAdapter));
 
         userTaskData.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -101,12 +106,12 @@ public class Homepage extends AppCompatActivity {
                             arrayAdapter.notifyDataSetChanged2();
                         }
                     }
-                    return;
                 }else {
                     Log.w("Adding task", "Failed to load previous tasks");
                 }
             }
         });
+
 
 
         addTaskButton.setOnClickListener(new View.OnClickListener() {
@@ -118,9 +123,20 @@ public class Homepage extends AppCompatActivity {
                     userTaskData.set(allData);
                     arrayAdapter.notifyDataSetChanged2();
                     newTaskName.setText("");
+                    System.out.println("hi" + index_to_delete);
                 }
             }
         });
+
+        clearCheckedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println(index_to_delete);
+                allData.put(currentUserId, (ArrayList) arrayAdapter.getList());
+                userTaskData.set(allData);
+            }
+        });
+
 
         final Button homebutton = findViewById(R.id.homebutton);
         final Button eventbutton = findViewById(R.id.eventbutton);
@@ -168,4 +184,9 @@ public class Homepage extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+
 }

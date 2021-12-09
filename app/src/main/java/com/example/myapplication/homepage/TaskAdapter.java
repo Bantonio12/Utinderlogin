@@ -22,11 +22,11 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 
 import com.example.myapplication.R;
+
 import java.util.List;
-import java.time.*;
+
 
 public class TaskAdapter extends ArrayAdapter<String> {
-    private CountDownTimer countDownTimer;
     private List<String> tasks;
     private List<Boolean> checked;
     public TaskAdapter(Context context, int resourceId, ArrayList<String> tasks) {
@@ -51,8 +51,6 @@ public class TaskAdapter extends ArrayAdapter<String> {
         TextView name = curView.findViewById(R.id.taskname);
         name.setText(task);
 
-        LocalTime datetime = LocalTime.now();
-
         final CheckBox checkbox = curView.findViewById(R.id.checkboxforaddingtask);
         checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -63,31 +61,33 @@ public class TaskAdapter extends ArrayAdapter<String> {
                     delete(position);
                     checkbox.setChecked(false);
                 }
+
             }
         });
 
-//        if(datetime.getHour() == 18 && datetime.getMinute() == 25){
-//            for(int i=0; i <= checked.size(); i++){
-//                if(checked.get(i)){
-//                    delete(i);
-//                }
-//            }
-//        }
 
         return curView;
     }
 
-    public void delete(int position) {
+    /**
+     *  Function to remove the task from the tasks and checked list
+     * @param position - index of the task being removed
+     */
+     public void delete(int position) {
         this.tasks.remove(position);
         this.checked.remove(position);
-
         super.notifyDataSetChanged();
+
+    }
+    /**
+    Returns the list of tasks**/
+    public List<String> getList(){
+        return this.tasks;
     }
 
-    public List<Boolean> getCheckBoxList() {
-        return this.checked;
-    }
-
+    /**
+     * Overides notifyDataSet1
+     */
     public void notifyDataSetChanged2() {
         super.notifyDataSetChanged();
         checked.add(false);
